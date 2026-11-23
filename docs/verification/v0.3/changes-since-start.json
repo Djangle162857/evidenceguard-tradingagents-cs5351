@@ -1,0 +1,120 @@
+{
+  "created_at": "2026-11-19T16:16:11.607046+00:00",
+  "starting_manifest": "docs/verification/v0.3/starting-manifest.json",
+  "starting_file_count": 50,
+  "changes": [
+    {
+      "path": "src/evidenceguard/batch_cli.py",
+      "change": "modified",
+      "starting_sha256": "99bff4a707a0455ec1c9a2835b35907afcfc6a598af0c7a031c48dd3af16653e",
+      "current_sha256": "d7a92577ca035158ce38f0f23e45b85e6b0163aa2bca398a59eb4f788182a845"
+    },
+    {
+      "path": "src/evidenceguard/gate.py",
+      "change": "modified",
+      "starting_sha256": "db23adb31b1ad2c9967d05fe913b8003d70804c80080613a394d1de57258c4f6",
+      "current_sha256": "bf8eca60bcba9bec53e60b7f1327c4653426006382c3c1d84eaf20858a8a8fa8"
+    },
+    {
+      "path": "src/evidenceguard/integration.py",
+      "change": "modified",
+      "starting_sha256": "b1273bbf95b6734ce97629dcca77a706ab8ec8955f615f6022f78e88b9e41d55",
+      "current_sha256": "8a241860521886f613f92fb2f24ecac3a90e63dfcea4624942f455e4d47ae2e1"
+    },
+    {
+      "path": "src/evidenceguard/live_cli.py",
+      "change": "modified",
+      "starting_sha256": "732d20021b2ad877d35ea16ac58ffa7ee4553aae2df4f2cc2373900de7d35149",
+      "current_sha256": "442ca411b10a00b4236efe63280d9b8967d5899f568d0d50adcccab4ff962da1"
+    },
+    {
+      "path": "src/evidenceguard/research_brief.py",
+      "change": "added_since_starting_manifest",
+      "starting_sha256": null,
+      "current_sha256": "7094f7270836130efccc225bba3e3424c8154ca3a5189f9bc0b6eae5596a61bd"
+    },
+    {
+      "path": "src/evidenceguard/research_context.py",
+      "change": "added_since_starting_manifest",
+      "starting_sha256": null,
+      "current_sha256": "79d427d3ed5fca391db2780dbb54584bcb65d956d5673921affed04bfee55bae"
+    },
+    {
+      "path": "src/evidenceguard/upstream_runner.py",
+      "change": "modified",
+      "starting_sha256": "72c34e88af7b80e32c9fdddca5b882219bacac2a9f227d03b2b2ca961f0e4477",
+      "current_sha256": "719b94bc3203580192ee399525fc1d820564a83789e43b6c67218b36bc10407d"
+    },
+    {
+      "path": "src/evidenceguard/web/app.js",
+      "change": "modified",
+      "starting_sha256": "779afd800be9f046357d96be26643c0b0147e6e72370efa584d4c1b6270db9f7",
+      "current_sha256": "0123ca4eb715e53f6b1b576852e988ed0061bb857519b6d23a49378dcb42a78e"
+    },
+    {
+      "path": "src/evidenceguard/web/daily.js",
+      "change": "added_since_starting_manifest",
+      "starting_sha256": null,
+      "current_sha256": "4e916c948deb6fc04b65e1364b93bdccf939825bb423d75507ee707793fc1b41"
+    },
+    {
+      "path": "src/evidenceguard/web/index.html",
+      "change": "modified",
+      "starting_sha256": "1422ab5f45e20b219232dd171ac3d845f28a332c3555cf6d5a61e7c56df64334",
+      "current_sha256": "78f11bb59d46747a40e6794275ac916b6e254e13138569a4d90332690e4af9be"
+    },
+    {
+      "path": "src/evidenceguard/web/report-store.js",
+      "change": "added_since_starting_manifest",
+      "starting_sha256": null,
+      "current_sha256": "1eb1953bb38b99b7010ce98ea5b1574fae78143be2b8d16ba2a7358684b50cc8"
+    },
+    {
+      "path": "src/evidenceguard/web/style.css",
+      "change": "modified",
+      "starting_sha256": "e61cd7f05dd551bf382ee52755b37884154aa4546a4d6482a49db21f21d59041",
+      "current_sha256": "4cd5c3b218564df30b67d64b252a651556cf8ebc558deebd7c304d504835c3e9"
+    },
+    {
+      "path": "src/evidenceguard/web/workbench.js",
+      "change": "added_since_starting_manifest",
+      "starting_sha256": null,
+      "current_sha256": "32a207a92db8ef85aef279d6e6a2986fc4ff07ccee7979ea57119560cb313aa0"
+    },
+    {
+      "path": "test/offline/test_research_context_v03.py",
+      "change": "added_since_starting_manifest",
+      "starting_sha256": null,
+      "current_sha256": "6d17bd623d63448277e9e3e069199a27f390b41f359a1cd045c38d2f09ae4fc9"
+    }
+  ],
+  "historical_test_files_in_starting_manifest": 21,
+  "all_starting_test_hashes_unchanged": true,
+  "protected_web_files": {
+    "src/evidenceguard/web/demo.json": {
+      "sha256": "5acdd53b3d299b0864502ed855392c7eb1fb6ac1b7c4cbc046d8b922e781f879",
+      "unchanged": true
+    },
+    "src/evidenceguard/web/forecast-demo.json": {
+      "sha256": "66d04f1704ba35215d86826507f6f1d8d358190588841542b32717cfb49498c2",
+      "unchanged": true
+    },
+    "src/evidenceguard/web/forecast-plot.js": {
+      "sha256": "35d88872142957f17aa28def45af19be9c63aef536e315e14f7fa0403ac77312",
+      "unchanged": true
+    },
+    "src/evidenceguard/web/forecast.js": {
+      "sha256": "76d629998b29089e9c213e8d81448e0a77ee410017941e182369e14f0b7428ab",
+      "unchanged": true
+    },
+    "src/evidenceguard/web/forecast.json": {
+      "sha256": "66d04f1704ba35215d86826507f6f1d8d358190588841542b32717cfb49498c2",
+      "unchanged": true
+    },
+    "src/evidenceguard/web/market.js": {
+      "sha256": "81a1441e97c401546b0d1dbe92c760d409eba08a0b521f999ae7ef6bc9ee29c3",
+      "unchanged": true
+    }
+  },
+  "limitation": "Starting manifest stores hashes, not all starting bytes. No v0.3-only textual diff is claimed. Full candidate application/test diff is against imported baseline HEAD."
+}

@@ -1,0 +1,66 @@
+{
+  "config": {
+    "analysts": [
+      "market",
+      "news"
+    ],
+    "as_of_utc": "2026-11-18T21:00:00Z",
+    "baseline_sha": "9fa1196fffbcfd9de5146d2dd2869df84ab99838",
+    "budget": {
+      "attempt_limit": 30,
+      "deadline_seconds": 900,
+      "input_upper_per_call": 8000,
+      "output_upper_per_call": 1024,
+      "token_limit": 60000
+    },
+    "candidate_sha": "0000000000000000000000000000000000000000",
+    "dataset_hash": "8d1f6150fb99db6cdce85c1dfdfe7d1ebd0b4d6c6003548a052627ff0e666752",
+    "model_id": "CS5351/DeepSeek-V4-Flash",
+    "policy_version": "1.0",
+    "prompt_version": "1.0",
+    "revision": 1,
+    "run_id": "run-a",
+    "schema_version": "1.0",
+    "ticker": "AAPL"
+  },
+  "final": {
+    "limitations": [
+      "Synthetic offline demonstration only."
+    ],
+    "rating": "Hold",
+    "report": "Synthetic fixture price is 100 [claim:0]. This is not real market research."
+  },
+  "now": "2026-11-18T22:00:00Z",
+  "records": [
+    {
+      "available_at": "2026-11-18T20:00:00Z",
+      "content": "SYNTHETIC TEST DATA: price 100; not a real quote",
+      "content_hash": "0a4cbc8845327a2dd00ef6b91d900bd3ea8a37fa0bbfb480d906eb581747cc66",
+      "kind": "market",
+      "retrieved_at": "2026-11-18T21:10:00Z",
+      "run_id": "run-a",
+      "source_uri": "https://example.test/synthetic"
+    }
+  ],
+  "turns": [
+    {
+      "payload": {
+        "cards": [
+          {
+            "evidence_ids": [
+              "ev-fb995147703644f327d3519e06f37fa136c936431a530480211d446ed4e78996"
+            ],
+            "kind": "fact",
+            "parent_claim_ids": [],
+            "text": "Synthetic fixture price is 100",
+            "uncertainty": "Synthetic data only"
+          }
+        ],
+        "conflicts": [],
+        "reply_to": [],
+        "stop_reason": "completed"
+      },
+      "role": "bull"
+    }
+  ]
+}

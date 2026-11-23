@@ -1,0 +1,50 @@
+[
+  {
+    "path": "docs/verification/v0.3/screenshots/desktop-dark-top.jpg",
+    "width": 1425,
+    "height": 990,
+    "bytes": 116171,
+    "sha256": "0e5897fd28bbe37257d19695f61268bfd0b6047ba8c2b75a362612e76f3941e6",
+    "origin": "actual browser QA capture; synthetic report fixture"
+  },
+  {
+    "path": "docs/verification/v0.3/screenshots/desktop-dark.jpg",
+    "width": 1424,
+    "height": 2328,
+    "bytes": 219372,
+    "sha256": "b95295a5d041181f1705d0c347c34363b51d356908f1fc951c0b803e443ca74a",
+    "origin": "actual browser QA capture; synthetic report fixture"
+  },
+  {
+    "path": "docs/verification/v0.3/screenshots/forecast-phone.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 33309,
+    "sha256": "5a6df0b24edc4b14a28e8d2b4fc0313bee5bebb729cba65f70f0339fd95f33e4",
+    "origin": "actual browser QA capture; synthetic report fixture"
+  },
+  {
+    "path": "docs/verification/v0.3/screenshots/forecast-refresh-failure.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 35441,
+    "sha256": "bdb5643403a24da78aa2ce5ab1f9eaa8492b3acbee4149a290c6db8877597449",
+    "origin": "actual browser QA capture; synthetic report fixture"
+  },
+  {
+    "path": "docs/verification/v0.3/screenshots/phone-dark.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 44228,
+    "sha256": "25f593e32a637667386659d1a2c62f80bcba980fd9879b619b7f00565c1d4060",
+    "origin": "actual browser QA capture; synthetic report fixture"
+  },
+  {
+    "path": "docs/verification/v0.3/screenshots/phone-light.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 41773,
+    "sha256": "3bd81a516d4f4176b14a6e4658186ec34be4f7645051750c332f0fb5ac43c211",
+    "origin": "actual browser QA capture; synthetic report fixture"
+  }
+]

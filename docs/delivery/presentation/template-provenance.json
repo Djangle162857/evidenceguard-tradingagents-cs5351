@@ -1,0 +1,42 @@
+{
+  "repository": "https://github.com/inscripoem/cityu-beamer",
+  "commit": "13e6b1d2f56e9480563d91e75df5b3215f235470",
+  "community_template": true,
+  "files": [
+    {
+      "path": "beamerthemeCityU.sty",
+      "sha256": "66ccd334354ebd0aaaf930f0df475393e8c57e67b9eb6efb2602ffb36c7de321",
+      "source": "https://raw.githubusercontent.com/inscripoem/cityu-beamer/13e6b1d2f56e9480563d91e75df5b3215f235470/beamerthemeCityU.sty"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "7e57dbc80206d8999f5333349e251eba9e1d1b511951f7d130cfb5b102ef41c0",
+      "source": "https://raw.githubusercontent.com/inscripoem/cityu-beamer/13e6b1d2f56e9480563d91e75df5b3215f235470/LICENSE"
+    },
+    {
+      "path": "NOTICE.md",
+      "sha256": "45137a855571712839b93eb1ca59593f13e7d5936f2649a7290747e41bc96421",
+      "source": "https://raw.githubusercontent.com/inscripoem/cityu-beamer/13e6b1d2f56e9480563d91e75df5b3215f235470/NOTICE.md"
+    },
+    {
+      "path": "assets/title.png",
+      "sha256": "c159c16cc824742a72c09c903162fd4ce0532f9bf199014eb1be9c06e10cf537",
+      "source": "https://raw.githubusercontent.com/inscripoem/cityu-beamer/13e6b1d2f56e9480563d91e75df5b3215f235470/assets/title.png"
+    },
+    {
+      "path": "assets/section.png",
+      "sha256": "099e24a06c59f38dc8bfb643f82a8c78091c792f86b2abc5a60c95fca7ae9e17",
+      "source": "https://raw.githubusercontent.com/inscripoem/cityu-beamer/13e6b1d2f56e9480563d91e75df5b3215f235470/assets/section.png"
+    },
+    {
+      "path": "assets/content.png",
+      "sha256": "c7eab9bf81a50f838b366201c1bbeda10b51b38da03fb2b2b5214e8a3f7a7905",
+      "source": "https://raw.githubusercontent.com/inscripoem/cityu-beamer/13e6b1d2f56e9480563d91e75df5b3215f235470/assets/content.png"
+    },
+    {
+      "path": "assets/closing.png",
+      "sha256": "913b3f4abcfee9b194a489d45a1c763600f4679164a677435a226be1476f0bb1",
+      "source": "https://raw.githubusercontent.com/inscripoem/cityu-beamer/13e6b1d2f56e9480563d91e75df5b3215f235470/assets/closing.png"
+    }
+  ]
+}

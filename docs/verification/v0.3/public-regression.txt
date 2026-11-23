@@ -1,0 +1,7 @@
+2026-11-23 (Asia/Singapore): full historical offline suite from the working candidate.
+Command: python -m pytest -p no:cacheprovider --color=no
+1687 passed, 1 skipped, 1 deselected, 24 warnings in 11.60s.
+Skip: optional langchain_aws dependency. Deselection: online integration.
+The suite does not exercise BUG-V03-001, which remains open.
+A separate synthetic replay produced completed / passed / pending / draft.
+Publish with an empty review store exited 2 without producing a published file.

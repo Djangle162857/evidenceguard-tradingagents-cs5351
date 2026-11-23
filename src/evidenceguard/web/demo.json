@@ -1,0 +1,98 @@
+{
+  "artifact_hash": "c958257de382f9c5482253c3418408b2053f6a406a9253dcf3d1780a4fda52c2",
+  "claims": [
+    {
+      "claim_id": "cl-44243f249dc361eeb8504f762ebe3df72625fbe3daa5a6a7a9c53357695e1d0d",
+      "evidence_ids": [
+        "ev-fb995147703644f327d3519e06f37fa136c936431a530480211d446ed4e78996"
+      ],
+      "kind": "fact",
+      "parent_claim_ids": [],
+      "text": "Synthetic fixture price is 100",
+      "uncertainty": "Synthetic data only"
+    }
+  ],
+  "evidence": [
+    {
+      "available_at": "2026-11-18T20:00:00Z",
+      "content": "SYNTHETIC TEST DATA: price 100; not a real quote",
+      "content_hash": "0a4cbc8845327a2dd00ef6b91d900bd3ea8a37fa0bbfb480d906eb581747cc66",
+      "eligibility": "eligible",
+      "evidence_id": "ev-fb995147703644f327d3519e06f37fa136c936431a530480211d446ed4e78996",
+      "excerpt": null,
+      "exclusion_reason": null,
+      "kind": "market",
+      "published_at": null,
+      "qualification_time": "2026-11-18T20:00:00Z",
+      "retrieved_at": "2026-11-18T21:10:00Z",
+      "run_id": "run-a",
+      "source_uri": "https://example.test/synthetic"
+    }
+  ],
+  "execution_status": "completed",
+  "gate_results": {
+    "passed": true,
+    "violations": []
+  },
+  "limitations": [
+    "Synthetic offline demonstration only."
+  ],
+  "manifest": {
+    "analysts": [
+      "market",
+      "news"
+    ],
+    "as_of_utc": "2026-11-18T21:00:00Z",
+    "baseline_sha": "9fa1196fffbcfd9de5146d2dd2869df84ab99838",
+    "budget": {
+      "attempt_limit": 30,
+      "deadline_seconds": 900,
+      "input_upper_per_call": 8000,
+      "output_upper_per_call": 1024,
+      "token_limit": 60000
+    },
+    "candidate_sha": "0000000000000000000000000000000000000000",
+    "dataset_hash": "8d1f6150fb99db6cdce85c1dfdfe7d1ebd0b4d6c6003548a052627ff0e666752",
+    "model_id": "CS5351/DeepSeek-V4-Flash",
+    "policy_version": "1.0",
+    "prompt_version": "1.0",
+    "revision": 1,
+    "run_id": "run-a",
+    "schema_version": "1.0",
+    "ticker": "AAPL"
+  },
+  "measurement": {
+    "errors": [],
+    "source_mode": "offline_replay",
+    "transcript": [
+      {
+        "cards": [
+          {
+            "claim_id": "cl-44243f249dc361eeb8504f762ebe3df72625fbe3daa5a6a7a9c53357695e1d0d",
+            "evidence_ids": [
+              "ev-fb995147703644f327d3519e06f37fa136c936431a530480211d446ed4e78996"
+            ],
+            "kind": "fact",
+            "parent_claim_ids": [],
+            "text": "Synthetic fixture price is 100",
+            "uncertainty": "Synthetic data only"
+          }
+        ],
+        "conflicts": [],
+        "rendered": "role=bull stop_reason=completed\nclaim cl-44243f249dc361eeb8504f762ebe3df72625fbe3daa5a6a7a9c53357695e1d0d kind=fact text=Synthetic fixture price is 100 evidence=[ev-fb995147703644f327d3519e06f37fa136c936431a530480211d446ed4e78996] parents=[-] uncertainty=Synthetic data only\nreply_to=[]\nconflicts=[]",
+        "reply_to": [],
+        "role": "bull",
+        "stop_reason": "completed"
+      }
+    ]
+  },
+  "policy_version": "1.0",
+  "publication_status": "draft",
+  "rating": "Hold",
+  "report": "Synthetic fixture price is 100 [cl-44243f249dc361eeb8504f762ebe3df72625fbe3daa5a6a7a9c53357695e1d0d]. This is not real market research.",
+  "review_status": "pending",
+  "revision": 1,
+  "run_id": "run-a",
+  "schema_version": "1.0",
+  "validation_status": "passed"
+}

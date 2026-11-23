@@ -1,0 +1,44 @@
+[
+  {
+    "path": "src/evidenceguard/web/app.js",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "path": "src/evidenceguard/web/daily.js",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "path": "src/evidenceguard/web/forecast-plot.js",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "path": "src/evidenceguard/web/forecast.js",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "path": "src/evidenceguard/web/market.js",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "path": "src/evidenceguard/web/report-store.js",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "path": "src/evidenceguard/web/workbench.js",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

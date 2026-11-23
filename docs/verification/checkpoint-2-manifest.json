@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.0",
+  "scope": "verified_backend_checkpoint_2",
+  "generated_at_utc": "2026-11-19T14:04:49.286673+00:00",
+  "author": "Codex orchestration/documentation; application and tests through local OpenCode",
+  "model_id": "CS5351/DeepSeek-V4-Flash",
+  "baseline_upstream_sha": "9fa1196fffbcfd9de5146d2dd2869df84ab99838",
+  "local_import_commit": "4419f12",
+  "human_review_status": "pending",
+  "human_exact_test_source_preapproval": "not_recorded",
+  "live_business_evaluation": "not_run",
+  "released_artifacts": 0,
+  "excluded_scope": [
+    "concurrently developed src/evidenceguard/web/ assets and ADR-004",
+    "formal experiments",
+    "GitHub enforcement",
+    "unexecuted acceptance protocols"
+  ],
+  "source_and_test_files": [
+    {
+      "path": "examples/offline-replay.json",
+      "sha256": "76cfa5ca94cda3d02808d05016841e412cab1065b1526baf7a6d26b3f246a18f"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "6b248848b2b406959f6c67334dbf42a13e4029725809c84f54eb7a87220cc777"
+    },
+    {
+      "path": "src/evidenceguard/__init__.py",
+      "sha256": "2edda98db13ad42765b18478177aaee999f6258c1f0e8c4360194b31959f51b5"
+    },
+    {
+      "path": "src/evidenceguard/__main__.py",
+      "sha256": "4ecd0ccf84f3308b6f032a0b1477d6adcc97f94ffcda877d9c3d446eb1ffa3fa"
+    },
+    {
+      "path": "src/evidenceguard/budget.py",
+      "sha256": "862d48a28e021c104d7a6dd53baa1601f172a04f3e849560e9089ba2af58db17"
+    },
+    {
+      "path": "src/evidenceguard/claims.py",
+      "sha256": "a2d60ab652c7b52591102724ed8da946bb5894b1834eb825eca40ad4a65c17f4"
+    },
+    {
+      "path": "src/evidenceguard/contracts.py",
+      "sha256": "e13c2c04e0ef95bfe0874f275ffa3e61deeeb9b39080b1a24bf49cb8e868322a"
+    },
+    {
+      "path": "src/evidenceguard/evaluation.py",
+      "sha256": "cda9d3e96a38e6a1a1abc5f8d78967bc5d383d5c58b12f2bcc783e720f7ca283"
+    },
+    {
+      "path": "src/evidenceguard/evidence.py",
+      "sha256": "3d073c55c891477aad660c34cc5b473731f3755145070d383902e9c7bddd4955"
+    },
+    {
+      "path": "src/evidenceguard/gate.py",
+      "sha256": "db23adb31b1ad2c9967d05fe913b8003d70804c80080613a394d1de57258c4f6"
+    },
+    {
+      "path": "src/evidenceguard/integration.py",
+      "sha256": "b1273bbf95b6734ce97629dcca77a706ab8ec8955f615f6022f78e88b9e41d55"
+    },
+    {
+      "path": "src/evidenceguard/live_cli.py",
+      "sha256": "8ca6cdf887a850acd5c746f800764dc13ccabbdf8a1a5c780be758b856ea6f48"
+    },
+    {
+      "path": "src/evidenceguard/review.py",
+      "sha256": "e9414a17d9bab375d325367e6ea746189886616203b70577cbdaadff5552fbb1"
+    },
+    {
+      "path": "src/evidenceguard/runner.py",
+      "sha256": "43affc82328707081e157cf4d5deff83b7dc20227f83b42c13f121d0a908d582"
+    },
+    {
+      "path": "src/evidenceguard/snapshot.py",
+      "sha256": "dac8924c1b4ae10e9141e1a00e236cc03729836318d5ce44bb3328a8a1508ab6"
+    },
+    {
+      "path": "src/evidenceguard/transport.py",
+      "sha256": "28a108bf0ebce95861edabaf99cc1118ab43953a0c137f26ea222cb6ba1c12d6"
+    },
+    {
+      "path": "src/evidenceguard/upstream_runner.py",
+      "sha256": "72c34e88af7b80e32c9fdddca5b882219bacac2a9f227d03b2b2ca961f0e4477"
+    },
+    {
+      "path": "test/offline/test_budget.py",
+      "sha256": "19b3519a5e49d8abc0131b5f2cd31aa8522bf899199f5797f6c8fbf7c76adfd9"
+    },
+    {
+      "path": "test/offline/test_contracts_preapproval.py",
+      "sha256": "971bb8492a456ca4caaf976ab287e4228a310fff56f0fc036d921fe5aab2c6e1"
+    },
+    {
+      "path": "test/offline/test_evaluation.py",
+      "sha256": "449c9ff909b2a00b899600b7b220dd2c720b389e5eda3a51b81899c67d99cfdc"
+    },
+    {
+      "path": "test/offline/test_evidence_claims.py",
+      "sha256": "5d3d39c7bb22155ab1d8211c52893c61fa9081842320955fea106b880cc238f6"
+    },
+    {
+      "path": "test/offline/test_gate_review.py",
+      "sha256": "07fa23d19bf75c8397be3e6d1386f7958a54d9e7db9f64e787889abde1d4cee7"
+    },
+    {
+      "path": "test/offline/test_graph_sdk.py",
+      "sha256": "24a3cb65c2dc83d4ccd335abd2d3c1a80e7fd20715762476739f4508c8a89551"
+    },
+    {
+      "path": "test/offline/test_integration_context.py",
+      "sha256": "a3e6b0951c6981829a8b12e3149ac8933cb33850db96c92e93c328848aa04066"
+    },
+    {
+      "path": "test/offline/test_live_cli.py",
+      "sha256": "cac4dbe41b86231eb7ab31a6d727751a2a8678b1761568d28a1b0fa133fe5afc"
+    },
+    {
+      "path": "test/offline/test_runner.py",
+      "sha256": "456c6d217ff913e4d02b2cb4209c05ffd460c21f05091acbbd17113a11e2a7d5"
+    },
+    {
+      "path": "test/offline/test_snapshot.py",
+      "sha256": "b5fb225eaf6d90a16cba1ded621b4796e5f9b27c0f62378bb96e41d168c216ca"
+    },
+    {
+      "path": "test/offline/test_tools_compaction.py",
+      "sha256": "c1d92eb172a89dfa41dccea4734fe80755be995253f2d960951fa79bbf7da645"
+    },
+    {
+      "path": "test/offline/test_transport.py",
+      "sha256": "6d00f55c434e0366c242c6a235b339a65b91a93a763729aad7fc3fb81463e63d"
+    },
+    {
+      "path": "test/offline/test_upstream_runner.py",
+      "sha256": "fcbffe46cac3f289c2dc259a18825c747106d1c22364638f18d131f62ae2507a"
+    },
+    {
+      "path": "tradingagents/graph/setup.py",
+      "sha256": "6fe1a75df1d8338c90c7fbae64ea2f73a682521f60eb774236cfe072137c060d"
+    }
+  ],
+  "review_materials": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "384c6788c53e8e0f53456935995997792e1e93438b14565f948a43ce53ad4047"
+    },
+    {
+      "path": "Prompt.md",
+      "sha256": "4f49b1dac718fd2f79e57b4a0e0f028e81690fcc4a0c93e431263db2e6c0a120"
+    },
+    {
+      "path": "Blueprint.md",
+      "sha256": "fb068030a1907956a8f43d77cb0c96d2badd352a08f19d7f5c1447e5a52b6f2b"
+    },
+    {
+      "path": "docs/execution-plan.md",
+      "sha256": "7f09bbc1911cc1eadfd243f19de36b8c9d9a65652303e4fb75e74b251d5f0135"
+    },
+    {
+      "path": "docs/approvals/execution-authorization.md",
+      "sha256": "31312e6bc3978e4ddc72ef491908356b2c785b6bde7ef94d67625420c1969004"
+    },
+    {
+      "path": "docs/req/requirements-analysis.md",
+      "sha256": "55ef8c76ae576ea4efe5a4d3a281b6bcb42a36c0adf6322a761ef5cc73bd00b9"
+    },
+    {
+      "path": "docs/req/requirements.yaml",
+      "sha256": "cddb8faab2eb990dbc39f19018c7a866d5cbb437d7f91f846fe0b9ad34bd5c7b"
+    },
+    {
+      "path": "docs/req/product.yaml",
+      "sha256": "078835b30a30d5ab5c17bbe1464a4fe5ce3e93a76a8c48e6d5edda6c0e9355ab"
+    },
+    {
+      "path": "docs/req/req-schema.json",
+      "sha256": "47fd3af7336cc80129ae82a48099e308ee3e9412c0b8c0edfe1b2649228ebbbd"
+    },
+    {
+      "path": "docs/architecture/interface-contracts.md",
+      "sha256": "3c775e1a79e3b6766074ec50d08af85e0e4526ae76ef385ca220c6d0afe00624"
+    },
+    {
+      "path": "docs/architecture/invariants.md",
+      "sha256": "2e3261aaf392c1c7bc98bf6796b248ee53ceceadb5b2ca3f032336cc87e00504"
+    },
+    {
+      "path": "docs/architecture/adr/ADR-001-incremental-boundaries.md",
+      "sha256": "addc0e25aa3221a3d054be11f4916f01522afeb4199f933070628af09ae98624"
+    },
+    {
+      "path": "docs/architecture/adr/ADR-002-implementation-evidence.md",
+      "sha256": "780f455efac83520d51987c7cae4d747c48087dcc8f8a39bce3098b9c68031d0"
+    },
+    {
+      "path": "docs/architecture/adr/ADR-003-upstream-context.md",
+      "sha256": "580265ed6be46656571ceb10982d2e35ea5bf26b577064280aed9a78f863d56a"
+    },
+    {
+      "path": "docs/verification/test-plan.md",
+      "sha256": "5d3bec50517835b4a7023ecfd51d606b9213086be71fb6131bd2ee1b6cf0a7a9"
+    },
+    {
+      "path": "docs/verification/case-catalog.yaml",
+      "sha256": "24b543a97ed4228232f6e41c26f092c5513925bb5f997a70c46c194b5d83bf5e"
+    },
+    {
+      "path": "docs/verification/checkpoint-2.md",
+      "sha256": "f5d179d8a198f5eb21d1a01f823a8214464b23ebf35845b6ea10fa0e5476f2a6"
+    },
+    {
+      "path": "docs/ai-sessions/manifest.json",
+      "sha256": "c45d9f7ae72370303531edd94d49ee66a576786a299c64f17794b17cba18a89a"
+    },
+    {
+      "path": "docs/review-memo.md",
+      "sha256": "bf6916958932e9637e8dc5ce4c4ab73d68704affb184030584a86abc478aa24d"
+    },
+    {
+      "path": "docs/bug-diary.md",
+      "sha256": "35900b480b0f3bb69492d31802c305d48db144c9b61429e8b4b4881290686179"
+    },
+    {
+      "path": "docs/debt-register.md",
+      "sha256": "0c75677f0c7c00aae75511399b5e7efd669da8df4cb298a798861c49b408c24b"
+    }
+  ],
+  "diff": {
+    "path": "docs/verification/backend-diff.patch",
+    "sha256": "0eec720f31356e004e4558ebe3bc4733313c65ce3d73d739cfd6d5568224d686"
+  },
+  "regression": {
+    "command": ".venv/bin/python -m pytest -q",
+    "exit_code": 0,
+    "passed": 1617,
+    "subtests_passed": 100,
+    "skipped": 1,
+    "deselected": 1,
+    "elapsed_seconds": 10.88,
+    "evidence": "docs/verification/backend-regression.txt",
+    "public_sha256": "9735c64e45036dbea18598802e848873b3bceaf4191bfbf5ceb5a287c1c61880",
+    "original_private_sha256": "12225543d74d05e2118fbbfc2a0697059841ca42743f44811ae5913a89f2d587"
+  },
+  "static": {
+    "command": ".venv/bin/python -m ruff check src/evidenceguard test/offline tradingagents/graph/setup.py --output-format concise",
+    "exit_code": 0
+  },
+  "evaluation_cli_smoke": {
+    "rows": 12,
+    "plan_hash": "cc637893a96b9b266d3d49e89f123051b2e12c531d69cd9d10d2506f072f7b53",
+    "data": "synthetic",
+    "model_calls": 0
+  },
+  "python_version": "3.12.14",
+  "platform": "Linux-6.18.60-1-lts-x86_64-with-glibc2.44",
+  "notes": [
+    "Source hashes bind the verified backend, not later edits or the in-progress frontend.",
+    "Commands were actually run; no human approval or semantic label is inferred.",
+    "238 catalogued scenarios and 52 planned acceptance IDs are specifications, not completed protocol counts."
+  ],
+  "checkpoint_hash": "abbfb67dff40befdb24da7a87ff1bf1c281b660634bc3b7ba04f5d39ec5865e2"
+}

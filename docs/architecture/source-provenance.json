@@ -1,0 +1,756 @@
+{
+  "schema_version": "1.0",
+  "authoring_tool": "local OpenCode",
+  "model_id": "CS5351/DeepSeek-V4-Flash",
+  "orchestrator": "Codex",
+  "human_approval": "not_recorded",
+  "files": [
+    {
+      "path": ".github/workflows/course-gates.yml",
+      "current_sha256": "76cf43b5ed5a312bd346b32f01b5c8c1d3ba24bef6be74db55d113aef2a4e8fd",
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "pyproject.toml",
+      "current_sha256": "1be2c351a0174d41563e47dea7548994b917839ea3e34ef1f5989f21b0a18c42",
+      "last_verbatim_capture_sha256": null,
+      "capture_sessions": [],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/__init__.py",
+      "current_sha256": "2edda98db13ad42765b18478177aaee999f6258c1f0e8c4360194b31959f51b5",
+      "last_verbatim_capture_sha256": null,
+      "capture_sessions": [],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/__main__.py",
+      "current_sha256": "4ecd0ccf84f3308b6f032a0b1477d6adcc97f94ffcda877d9c3d446eb1ffa3fa",
+      "last_verbatim_capture_sha256": "0aeba3449e5ae7f6d7690cf60d8e28b5e3522c5208bea538e46d9764404f1a53",
+      "capture_sessions": [
+        "ses_e0c47c0adffeSw1Wh3ORU7EZB0",
+        "ses_e0c453bc6ffeZZy2f6hjaX1DMn"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/batch_cli.py",
+      "current_sha256": "d7a92577ca035158ce38f0f23e45b85e6b0163aa2bca398a59eb4f788182a845",
+      "last_verbatim_capture_sha256": "6218d3f263c721fc52327578716277037cf4792582dfcd93a6cb934b1779f215",
+      "capture_sessions": [
+        "ses_e0bc0ff1effedRnS75tgIbzqrB"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "src/evidenceguard/budget.py",
+      "current_sha256": "862d48a28e021c104d7a6dd53baa1601f172a04f3e849560e9089ba2af58db17",
+      "last_verbatim_capture_sha256": "951804da4b8328062bae3166841532ad07d773cdee21680060b1d0e08f42cff0",
+      "capture_sessions": [
+        "ses_e0c5c2f83ffekzQsQ6NfJW22NL",
+        "ses_e0c58a84affeelvnha12Hf94q0",
+        "ses_e0c5615aaffe7zNIpWIWaGEyVz"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/claims.py",
+      "current_sha256": "a2d60ab652c7b52591102724ed8da946bb5894b1834eb825eca40ad4a65c17f4",
+      "last_verbatim_capture_sha256": "94931eaf3b783e6c9c8196cefc0b7d17beb63f189f514816f4178ee52c5bf057",
+      "capture_sessions": [
+        "ses_e0c755f33ffeIS54c0U1KyDif3"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/contracts.py",
+      "current_sha256": "e13c2c04e0ef95bfe0874f275ffa3e61deeeb9b39080b1a24bf49cb8e868322a",
+      "last_verbatim_capture_sha256": "3ccd0e882377607f86c1b9f52e9828582ac4c73c759ee920589130d0d7694403",
+      "capture_sessions": [
+        "ses_e0c7a18caffe0lmlXNwSHmzd0Y"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/evaluation.py",
+      "current_sha256": "cda9d3e96a38e6a1a1abc5f8d78967bc5d383d5c58b12f2bcc783e720f7ca283",
+      "last_verbatim_capture_sha256": "159b68074231f3f7a148b0a987d8320f9ac2df1b9bf1396884aca501554edf5a",
+      "capture_sessions": [
+        "ses_e0bfd19f7ffep0rxiJfG1IQ4p5"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/evidence.py",
+      "current_sha256": "3d073c55c891477aad660c34cc5b473731f3755145070d383902e9c7bddd4955",
+      "last_verbatim_capture_sha256": "2694db041ec326d9a529778f0ef365213b411f11d0a4cc925304e0dd595d09f0",
+      "capture_sessions": [
+        "ses_e0c77f3adffeWtvMw67I4D9st3",
+        "ses_e0c6bfd48ffeiAyi4snL8eUoVH"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/gate.py",
+      "current_sha256": "bf8eca60bcba9bec53e60b7f1327c4653426006382c3c1d84eaf20858a8a8fa8",
+      "last_verbatim_capture_sha256": "a916f89a7c044c4d4c8f7d023a96304b7b6bb46c255db6fd68eab12715ea4a3b",
+      "capture_sessions": [
+        "ses_e0c6f49b2ffe0Pk45y50LvGqEE"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "src/evidenceguard/integration.py",
+      "current_sha256": "8a241860521886f613f92fb2f24ecac3a90e63dfcea4624942f455e4d47ae2e1",
+      "last_verbatim_capture_sha256": "cd2182dd5755d0696b37326c6ff099cec83604955d5f1c78b76a3fa2842edafd",
+      "capture_sessions": [
+        "ses_e0c3a3497ffehNORETc7LTghn1",
+        "ses_e0c36a380fferrNBdNhmtJ1i6x",
+        "ses_e0c2f6051ffeld8HF6UWuSYyo5"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "src/evidenceguard/live_cli.py",
+      "current_sha256": "442ca411b10a00b4236efe63280d9b8967d5899f568d0d50adcccab4ff962da1",
+      "last_verbatim_capture_sha256": "6ecabf8dc833f6e74e909cf6071afcfda94f51dc08d3b6070ac1340f6fb158f8",
+      "capture_sessions": [
+        "ses_e0c0bb845ffeYkSG3psSSVzSEh",
+        "ses_e0c081e9dffeTABWze9IcAhhBp"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "src/evidenceguard/quality.py",
+      "current_sha256": "cd8c23289f001943cc69af63701cdba7ec069f107b745e0f800c8f8ebc68b3d8",
+      "last_verbatim_capture_sha256": "cdd62cb4c4fd063d13e232b96a18d90a0db2706d81a3e00ff43b94f67282a64f",
+      "capture_sessions": [
+        "ses_e0bd13e79ffehZqmcGOiQrfOpw"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/review.py",
+      "current_sha256": "e9414a17d9bab375d325367e6ea746189886616203b70577cbdaadff5552fbb1",
+      "last_verbatim_capture_sha256": "e90911eb50386f940b679b551af5280cb03f56bf34c10dfb22398ba7b95a0ce3",
+      "capture_sessions": [
+        "ses_e0c5d8287ffe794EWET7Q6rJbm",
+        "ses_e0c5b9739ffeg50DwxD72xcJkn",
+        "ses_e0c56d39dffezsnXzYS63esube"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/runner.py",
+      "current_sha256": "43affc82328707081e157cf4d5deff83b7dc20227f83b42c13f121d0a908d582",
+      "last_verbatim_capture_sha256": "07d724824982b1e43d1eafe6d27096b3193bc3ab8950702a53094825c43c1dc0",
+      "capture_sessions": [
+        "ses_e0c49f06fffeg6OT7gyS65oGQ4"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/snapshot.py",
+      "current_sha256": "dac8924c1b4ae10e9141e1a00e236cc03729836318d5ce44bb3328a8a1508ab6",
+      "last_verbatim_capture_sha256": "60856c6fdcc0102bdc85f45cc09a455cd71889b92db65ee8b189c620a6581db7",
+      "capture_sessions": [
+        "ses_e0c23cdadffeFWEKQinPE57zfy",
+        "ses_e0c1f6d79ffelWHWHsOMMNL1tt"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/transport.py",
+      "current_sha256": "28a108bf0ebce95861edabaf99cc1118ab43953a0c137f26ea222cb6ba1c12d6",
+      "last_verbatim_capture_sha256": "f1b13b961044e8b4d211d21f8337db788957379393bb625ef5830b5eb6830883",
+      "capture_sessions": [
+        "ses_e0c3b5a1bffeowViV2i1SMVg1P",
+        "ses_e0c38edefffePMqj39jZrQiewf",
+        "ses_e0c35a06affeKPyyCuEUqpSiJs"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/upstream_runner.py",
+      "current_sha256": "719b94bc3203580192ee399525fc1d820564a83789e43b6c67218b36bc10407d",
+      "last_verbatim_capture_sha256": "850ec0adf0417c746b0d20e84e8dc47e72f72aad51a6e6349660b163c652a864",
+      "capture_sessions": [
+        "ses_e0c286f12ffeQkjxLkrs1ZD0cH"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "src/evidenceguard/verification.py",
+      "current_sha256": "9857d96be1033a9f1c27dcb5d44d4e9121a77a68ff4e4db3cf9f2fabce8898b9",
+      "last_verbatim_capture_sha256": "90d05d375eca0df7ca9e18be9cb6e8a863d8ef849e56071fbc33302ef211b7f7",
+      "capture_sessions": [
+        "ses_e0bcd5494ffeNqnnEB5ymKXkxR"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/web/app.js",
+      "current_sha256": "0123ca4eb715e53f6b1b576852e988ed0061bb857519b6d23a49378dcb42a78e",
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "src/evidenceguard/web/demo.json",
+      "current_sha256": "5acdd53b3d299b0864502ed855392c7eb1fb6ac1b7c4cbc046d8b922e781f879",
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/web/index.html",
+      "current_sha256": "78f11bb59d46747a40e6794275ac916b6e254e13138569a4d90332690e4af9be",
+      "last_verbatim_capture_sha256": "1ae979410551fd15be4016731f0659fb5eb06a35f11aac52a0059b3f1a0931cd",
+      "capture_sessions": [
+        "ses_e0bea99abffeNwiD4bZyIEup6B"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "src/evidenceguard/web/market.js",
+      "current_sha256": "81a1441e97c401546b0d1dbe92c760d409eba08a0b521f999ae7ef6bc9ee29c3",
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/web/style.css",
+      "current_sha256": "4cd5c3b218564df30b67d64b252a651556cf8ebc558deebd7c304d504835c3e9",
+      "last_verbatim_capture_sha256": "e0ed05ed42370dcda4aec6de807bec7df63ed9c052201efbfca59ce71fa5f8f2",
+      "capture_sessions": [
+        "ses_e0be8b60fffe3asXpJm1m355pk"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "test/offline/test_batch_annotations.py",
+      "current_sha256": "a32ba9ebf69471d3d3f1c343e4cb7d90f6177707c6791bf8f4a318e494ae0274",
+      "last_verbatim_capture_sha256": "f4ef875a7befb7a88cb31dcb94e07f74f0407dcdf70b81cfaffbe76b9273a901",
+      "capture_sessions": [
+        "ses_e0bbbbc80ffekN8QgRBD7T06t0"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_batch_cli.py",
+      "current_sha256": "4c8a6b9681101417aecf686f373829a672e8bfd68b635238ef81bcf5814ec7b6",
+      "last_verbatim_capture_sha256": "179ad7764fa5fa5842866e71c3ae7971a420da03361e96c6a45b22904c5fe67f",
+      "capture_sessions": [
+        "ses_e0bbe7612ffeLEFb0dcB3aQ9pl",
+        "ses_e0bbc83b4ffeEpROqagUIVl6wb"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_budget.py",
+      "current_sha256": "19b3519a5e49d8abc0131b5f2cd31aa8522bf899199f5797f6c8fbf7c76adfd9",
+      "last_verbatim_capture_sha256": "a8339263063def83da13acd2075cf2d634d9a16a3e4be86440bf048b5804746b",
+      "capture_sessions": [
+        "ses_e0c59db39ffeca1n86vl9jwdmo"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_contracts_preapproval.py",
+      "current_sha256": "971bb8492a456ca4caaf976ab287e4228a310fff56f0fc036d921fe5aab2c6e1",
+      "last_verbatim_capture_sha256": null,
+      "capture_sessions": [],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_cost_quality.py",
+      "current_sha256": "7a980499e45b1ac3b5e35ec4ba105c484e874cbd83b82d4ee910610d4a33bcda",
+      "last_verbatim_capture_sha256": "5902c55aa2c7f29fe68c36bc7b90115761adab653223f429de94b7644c794475",
+      "capture_sessions": [
+        "ses_e0bb292eaffeITNV6TIOgJS5At"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_evaluation.py",
+      "current_sha256": "449c9ff909b2a00b899600b7b220dd2c720b389e5eda3a51b81899c67d99cfdc",
+      "last_verbatim_capture_sha256": "8bb1fb6df07c207219ddb7765ac8708d19c826263e2b261adbf8fc74e82b64a4",
+      "capture_sessions": [
+        "ses_e0bee6856ffet99U7x8YP7Jqez"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_evidence_claims.py",
+      "current_sha256": "5d3d39c7bb22155ab1d8211c52893c61fa9081842320955fea106b880cc238f6",
+      "last_verbatim_capture_sha256": "59cb44dc307a74af579951d42bd6d6a413d568628cdd1a88901508c47e9cbafb",
+      "capture_sessions": [
+        "ses_e0c70553affei0L4rllgYoCPKc",
+        "ses_e0c6ce679ffen97mNlQiPqabd1"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_gate_performance.py",
+      "current_sha256": "d77e32c511b14c5cceb5a42c4e77e07f2631b10c33c5728a452b4dc52e30e597",
+      "last_verbatim_capture_sha256": "12c203b74342a4866110e898e055d5a8493911b2d18afdba8dcfc1345447d67c",
+      "capture_sessions": [
+        "ses_e0bb4c829ffe1XGhgpKZ0QyYqE"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_gate_review.py",
+      "current_sha256": "07fa23d19bf75c8397be3e6d1386f7958a54d9e7db9f64e787889abde1d4cee7",
+      "last_verbatim_capture_sha256": "075713b213af56097cc6f9ed4914a76475cbcf2a3bb4a8ba43f8512640479bbc",
+      "capture_sessions": [
+        "ses_e0c5aae35ffeEU6YEH56HrdLIq",
+        "ses_e0c57e6a7ffexzm0QsJ2JyO90k"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_graph_sdk.py",
+      "current_sha256": "24a3cb65c2dc83d4ccd335abd2d3c1a80e7fd20715762476739f4508c8a89551",
+      "last_verbatim_capture_sha256": "de573aa40f085580d374b6b5082512712bcf305d2890c2c79ef93d3771f14d20",
+      "capture_sessions": [
+        "ses_e0c2b51e6ffexpEuhCYpTVboZQ"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_integration_context.py",
+      "current_sha256": "a3e6b0951c6981829a8b12e3149ac8933cb33850db96c92e93c328848aa04066",
+      "last_verbatim_capture_sha256": "07188b558edf1bffa963d5ed32cda0f3b5968be797d74c9de8f17457990a8b49",
+      "capture_sessions": [
+        "ses_e0c2e9bc6ffe6zeOPX6cnSizhJ"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_live_cli.py",
+      "current_sha256": "cac4dbe41b86231eb7ab31a6d727751a2a8678b1761568d28a1b0fa133fe5afc",
+      "last_verbatim_capture_sha256": "936ba8655b20cfd0d68b2c1fcb749e2af3d64552a594a667fed12985f0cef3b3",
+      "capture_sessions": [
+        "ses_e0bfddc39fferK7lnaEBO31ft7"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_quality.py",
+      "current_sha256": "ba5d55e6957873c2f4f5f1d9fc0f5ac72142ad9000611792becf1efdeb1b940b",
+      "last_verbatim_capture_sha256": "6165aaf907e3c55d654a5d9ab184bdedd66041ef0964f7ddf8f1a0a9c47c745c",
+      "capture_sessions": [
+        "ses_e0bcfc4abffeUHk8jwKNlcP0tV",
+        "ses_e0bca6d1affeKkJ25qO9nHqLFq"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_runner.py",
+      "current_sha256": "456c6d217ff913e4d02b2cb4209c05ffd460c21f05091acbbd17113a11e2a7d5",
+      "last_verbatim_capture_sha256": "8c3b89b29f321b7893b42161ccf612afcdf74ced62bcd25e3a39978836816320",
+      "capture_sessions": [
+        "ses_e0c44169dffemIjVNFDszwzdwZ",
+        "ses_e0c4248bbffe9YVqyMLetNAy9u"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_semantic_evidence.py",
+      "current_sha256": "8eb8642c1df59f211cd5e78c05760593a8f913a2137560cdab168d1b034c10b8",
+      "last_verbatim_capture_sha256": "31b59d9dd39435f2208e2cdda405fe534ee5e5775ba8d7224be4d93b0d08f84f",
+      "capture_sessions": [
+        "ses_e0bb9dd9effesjsZtoRNjFfIe1",
+        "ses_e0bb864e9ffeURUv2N3TcOafyL"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_semantic_tamper.py",
+      "current_sha256": "be73605814c9e44203acd285a62fdfe0d47147e75e6be36b5f688f717edacf06",
+      "last_verbatim_capture_sha256": "9919471bd3864a6becb5992c0bec580d925e9e969deec4243a5080f3c6ee4f3c",
+      "capture_sessions": [
+        "ses_e0bb56a1affeePcUKc7Esp4cX3"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_snapshot.py",
+      "current_sha256": "b5fb225eaf6d90a16cba1ded621b4796e5f9b27c0f62378bb96e41d168c216ca",
+      "last_verbatim_capture_sha256": "30ee71ff371dd2537e6a87c692ebdca257e3b7c05201c41eecbc26113e4597e7",
+      "capture_sessions": [
+        "ses_e0c14df3cffe6g0Sq2mqMH2WbU",
+        "ses_e0c0dc37bffebsBEc3NU0neDI0"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_tools_compaction.py",
+      "current_sha256": "c1d92eb172a89dfa41dccea4734fe80755be995253f2d960951fa79bbf7da645",
+      "last_verbatim_capture_sha256": "d74cd3a99ca4ca9655e7ad86beb85799d3a64dd8c35ec1c36f8c4b6c52111a33",
+      "capture_sessions": [
+        "ses_e0c222921ffewHx6X24HOC9fct"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_transport.py",
+      "current_sha256": "6d00f55c434e0366c242c6a235b339a65b91a93a763729aad7fc3fb81463e63d",
+      "last_verbatim_capture_sha256": "cc3ee5cf82df7b0676ef1a6557409ad975d6b425da244ed639f439826274f403",
+      "capture_sessions": [
+        "ses_e0c3765e5ffe2OLs6vo611OgD8",
+        "ses_e0c33146fffecpldaPc5QRWNwa",
+        "ses_e0c314578ffekOSUz61JxteBPk"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_upstream_runner.py",
+      "current_sha256": "fcbffe46cac3f289c2dc259a18825c747106d1c22364638f18d131f62ae2507a",
+      "last_verbatim_capture_sha256": "3f91ad5cec9fc09444eb4c8d3ae93cab56354c695e8199dfa17e9f88179d8215",
+      "capture_sessions": [
+        "ses_e0c206578ffemCOsrWQDeW6pwk",
+        "ses_e0c1570f8ffeO0s4u1ZHu9l7Er",
+        "ses_e0c108749ffeTOfFZf1NLVpYze"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "test/offline/test_verification.py",
+      "current_sha256": "d6220e1263487da2b37e117ccfaabd904469e94924746cf79f10959c553644b7",
+      "last_verbatim_capture_sha256": "3ceea0258b701dd792e2e6b60aa775fd105f98e6f51eaece0e08dfc3ce1f0c14",
+      "capture_sessions": [
+        "ses_e0bc59b93ffeMverqxF2Kwz2e4"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "tradingagents/graph/setup.py",
+      "current_sha256": "6fe1a75df1d8338c90c7fbae64ea2f73a682521f60eb774236cfe072137c060d",
+      "last_verbatim_capture_sha256": "cc96f9f9e367001fc978e650c9d017bddd623ef2eae95daec837b37b76675516",
+      "capture_sessions": [
+        "ses_e0c3239c5ffewlFrF5F94l9fW1"
+      ],
+      "transformations": "Local OpenCode course-model generation/repair; OpenCode-directed Ruff where applicable. Current hash describes this tree; capture hash may precede patches/formatting. See private application log and published review."
+    },
+    {
+      "path": "src/evidenceguard/research_brief.py",
+      "current_sha256": "7094f7270836130efccc225bba3e3424c8154ca3a5189f9bc0b6eae5596a61bd",
+      "transformations": "Local OpenCode course-model generation and repair; see v0.3 supplement for captures, patches and limitations.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "src/evidenceguard/research_context.py",
+      "current_sha256": "79d427d3ed5fca391db2780dbb54584bcb65d956d5673921affed04bfee55bae",
+      "transformations": "Local OpenCode course-model generation and repair; see v0.3 supplement for captures, patches and limitations.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "src/evidenceguard/web/daily.js",
+      "current_sha256": "4e916c948deb6fc04b65e1364b93bdccf939825bb423d75507ee707793fc1b41",
+      "transformations": "Local OpenCode course-model generation and repair; see v0.3 supplement for captures, patches and limitations.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "src/evidenceguard/web/report-store.js",
+      "current_sha256": "1eb1953bb38b99b7010ce98ea5b1574fae78143be2b8d16ba2a7358684b50cc8",
+      "transformations": "Local OpenCode course-model generation and repair; see v0.3 supplement for captures, patches and limitations.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "src/evidenceguard/web/workbench.js",
+      "current_sha256": "32a207a92db8ef85aef279d6e6a2986fc4ff07ccee7979ea57119560cb313aa0",
+      "transformations": "Local OpenCode course-model generation and repair; see v0.3 supplement for captures, patches and limitations.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    },
+    {
+      "path": "test/offline/test_research_context_v03.py",
+      "current_sha256": "6d17bd623d63448277e9e3e069199a27f390b41f359a1cd045c38d2f09ae4fc9",
+      "transformations": "Local OpenCode course-model generation and repair; see v0.3 supplement for captures, patches and limitations.",
+      "v03_provenance_supplement": "docs/verification/v0.3/source-provenance.json"
+    }
+  ],
+  "generated_patch_captures": [
+    {
+      "capture_sha256": "e3961af80b69850693e19c5f911bf2b910f2b029a7252b68ecc0d0ba626ebc92",
+      "sessions": [
+        "ses_e0c518bb4ffeRD1x5XYEAYD2q8"
+      ],
+      "name": "budget-final.py"
+    },
+    {
+      "capture_sha256": "deb712bd608a7e57768ae745b0d2768398f3c3457b5586ef81a79f08cbd1bbf0",
+      "sessions": [
+        "ses_e0c50c2a2ffeLymar2kyONtEd8"
+      ],
+      "name": "budget-tests.py"
+    },
+    {
+      "capture_sha256": "a5d7dae9426eb06837219639a774a9038a1fdfb7440b577738d5d659d0af25b1",
+      "sessions": [
+        "ses_e0c493834ffeEbQd1ovcYZ13Fe"
+      ],
+      "name": "budget-events.py"
+    },
+    {
+      "capture_sha256": "f873ed2b4886e4f87d7da67fb75555679599a9cc1ff73debc1ad79996d6ba176",
+      "sessions": [
+        "ses_e0c488939ffeRtO4cjXqFnE1H2"
+      ],
+      "name": "runner.py"
+    },
+    {
+      "capture_sha256": "0aeba3449e5ae7f6d7690cf60d8e28b5e3522c5208bea538e46d9764404f1a53",
+      "sessions": [
+        "ses_e0c453bc6ffeZZy2f6hjaX1DMn"
+      ],
+      "name": "cli.py"
+    },
+    {
+      "capture_sha256": "8c179764c90f2eb98f1d6b9834fbcc2442fec309c3d01d00fd53035ad0431ebb",
+      "sessions": [
+        "ses_e0c43212dffeU1mqynPaPca5BQ"
+      ],
+      "name": "packaging.py"
+    },
+    {
+      "capture_sha256": "7b725d0e4cd132a02897168a2de62a636621c843e67eadc4a0634e93404d9c60",
+      "sessions": [
+        "ses_e0c410f24ffeKfEQUrGMTG5zWq"
+      ],
+      "name": "demo-fixture.py"
+    },
+    {
+      "capture_sha256": "cfd96ae97d9bf4bc21b4d5663a6ac7fb9799bed45eb7c700229ddcb8568e6f6c",
+      "sessions": [
+        "ses_e0c3fdaa4ffem31WLyVu56K6we"
+      ],
+      "name": "static-cleanup.py"
+    },
+    {
+      "capture_sha256": "492c2259c6ab5c21741c0e8c415f952aa89a2e09e8491c0eaf34ff6e3a4d9b42",
+      "sessions": [
+        "ses_e0c3f394fffehHmSuv2kN9gEXa"
+      ],
+      "name": "demo-fix.py"
+    },
+    {
+      "capture_sha256": "22cc07e831b31389ce731b646e29fb22d9f7d9191d49505e5b1ef68bd0b70718",
+      "sessions": [
+        "ses_e0c3dfaa2ffe8YfHtuislWCyDw"
+      ],
+      "name": "format-final.py"
+    },
+    {
+      "capture_sha256": "f77725ea40c50b2dc78b692cba744d6a2654c583c0ff38bdcd8eb7f6839442c7",
+      "sessions": [
+        "ses_e0c36a380fferrNBdNhmtJ1i6x"
+      ],
+      "name": "integration-fix.py"
+    },
+    {
+      "capture_sha256": "f1b13b961044e8b4d211d21f8337db788957379393bb625ef5830b5eb6830883",
+      "sessions": [
+        "ses_e0c35a06affeKPyyCuEUqpSiJs"
+      ],
+      "name": "transport-fix.py"
+    },
+    {
+      "capture_sha256": "cc96f9f9e367001fc978e650c9d017bddd623ef2eae95daec837b37b76675516",
+      "sessions": [
+        "ses_e0c3239c5ffewlFrF5F94l9fW1"
+      ],
+      "name": "graph-hook.py"
+    },
+    {
+      "capture_sha256": "cc3ee5cf82df7b0676ef1a6557409ad975d6b425da244ed639f439826274f403",
+      "sessions": [
+        "ses_e0c314578ffekOSUz61JxteBPk"
+      ],
+      "name": "transport-tests-fix.py"
+    },
+    {
+      "capture_sha256": "cd2182dd5755d0696b37326c6ff099cec83604955d5f1c78b76a3fa2842edafd",
+      "sessions": [
+        "ses_e0c2f6051ffeld8HF6UWuSYyo5"
+      ],
+      "name": "context-compact.py"
+    },
+    {
+      "capture_sha256": "1957848cad7d79ce29c1c06b5967feafeacc8a11d14104cfa69c5a7989ad8fde",
+      "sessions": [
+        "ses_e0c2c8452ffe6eNNV9A1wRFvGH"
+      ],
+      "name": "context-message-fix.py"
+    },
+    {
+      "capture_sha256": "c33c1cc4deff95d13e74f3e4c13562a3bcf049541d3d48c6a8d09b829673b3a3",
+      "sessions": [
+        "ses_e0c29768dfferm1TB0JVyidbpK"
+      ],
+      "name": "mechanical-fix.py"
+    },
+    {
+      "capture_sha256": "e9a04bb7a50eea541b3d93db37dfcdb108f4d24ffd747391dffced6fac8478ed",
+      "sessions": [
+        "ses_e0c25b4d5ffePULKzAu94l6Ptu"
+      ],
+      "name": "sdk-dict-fix.py"
+    },
+    {
+      "capture_sha256": "3e1f1fc46d70cde3748f79181b81f59540c887680ac3ae6de087449de7943fe8",
+      "sessions": [
+        "ses_e0c24af16ffewFNADdloXRMvlX"
+      ],
+      "name": "upstream-runner-fix.py"
+    },
+    {
+      "capture_sha256": "621d193c560fbdd88bcc67e0c7aead288f6f12ea7d6597d351d32155c7683cce",
+      "sessions": [
+        "ses_e0c16efeaffep2HFk3WWYKhwWW"
+      ],
+      "name": "snapshot-wire-fix.py"
+    },
+    {
+      "capture_sha256": "038d3c1c72c33d4e79b7dc369feeb2529a1aded520c5180289d8adc1f1dc534d",
+      "sessions": [
+        "ses_e0c1bf34effePLQbcB5hbIkAvc"
+      ],
+      "name": "tools-tests-fix.py"
+    },
+    {
+      "capture_sha256": "3f91ad5cec9fc09444eb4c8d3ae93cab56354c695e8199dfa17e9f88179d8215",
+      "sessions": [
+        "ses_e0c108749ffeTOfFZf1NLVpYze"
+      ],
+      "name": "runner-test-fixture-fix.py"
+    },
+    {
+      "capture_sha256": "7e1ae020cf0491a34dae04ebc52fd0f1289eaadb893bd97e78534188124865de",
+      "sessions": [
+        "ses_e0c0f2636ffeYFH1rVb42ytX0t"
+      ],
+      "name": "runner-policy-fix.py"
+    },
+    {
+      "capture_sha256": "e2adff3022b135b6a1fea832dc996fae0053625c690078dea5c7ff948fc78583",
+      "sessions": [
+        "ses_e0c0c4e32ffeH3poTb7a7u0ns1"
+      ],
+      "name": "runner-role-fix.py"
+    },
+    {
+      "capture_sha256": "58d64f52921e1d6a2101f67be9401166699aed3dd0ead73bb9d64b7521516750",
+      "sessions": [
+        "ses_e0c09979effe65TEhQe5JE0NcU"
+      ],
+      "name": "snapshot-static-fix.py"
+    },
+    {
+      "capture_sha256": "17938fe6d271ff94a492c2115b02fc1f2429403b5fb770f4f19c1ca593c13a01",
+      "sessions": [
+        "ses_e0c0585c8ffe3coyWchDTNsFpl"
+      ],
+      "name": "snapshot-boundary-test.py"
+    },
+    {
+      "capture_sha256": "7b899c980c8d361c3243fc1e2502cc6997464c9c5fc7c455defde2834bf3d33d",
+      "sessions": [
+        "ses_e0c013395ffeUB20Cn80289yKk"
+      ],
+      "name": "static-tiny.py"
+    },
+    {
+      "capture_sha256": "2a9eab31959f58217bb2d79958d037a00abd74c673ddaa2687425c68d813cca3",
+      "sessions": [
+        "ses_e0bff4b0fffe4FZAWvWZkoXAnO"
+      ],
+      "name": "cli-hook.py"
+    },
+    {
+      "capture_sha256": "c97e903f4ae717c37c92aa57824c6f4a0dee6b2364015a18870c86909abd10b3",
+      "sessions": [
+        "ses_e0bfe5ec7ffee9JEFWCCAcKzwm"
+      ],
+      "name": "cli-actual-fix.py"
+    },
+    {
+      "capture_sha256": "ad8274dae4ef865e6fce165a10b2206a853ab27355e590c846bd969cc8183fc7",
+      "sessions": [
+        "ses_e0bfc4d5affeTh8fm7EF4TmDRU"
+      ],
+      "name": "cli-test-api-fix.py"
+    },
+    {
+      "capture_sha256": "620e305f33832fdc723c5960e3ab8bc9ee76f770b70cf31e412d83c01e3e5811",
+      "sessions": [
+        "ses_e0bfbb0f1ffex54WFbat8Wk4Jy"
+      ],
+      "name": "eval-status-fix.py"
+    },
+    {
+      "capture_sha256": "4c9dea0d8468ee9d5b3f1ed6c0fcdc1a35ec4ebe43df2917799e9f7eab981257",
+      "sessions": [
+        "ses_e0bfa8b15ffebYLU3jmLo1p0Bm"
+      ],
+      "name": "cli-test-import-fix.py"
+    },
+    {
+      "capture_sha256": "543cd26fecea678c21a8ef82d84549451d84c385bf7767d2a24dd90581830593",
+      "sessions": [
+        "ses_e0bf25382ffe2JgVU8HA12r295"
+      ],
+      "name": "eval-authoritative.py"
+    },
+    {
+      "capture_sha256": "79a946dba1ffa00a153119b8aa0984c1e36ab3ab19ba3b1ed24ed92ea0297eab",
+      "sessions": [
+        "ses_e0beda49fffeeyQK3d1iaUJTdv"
+      ],
+      "name": "eval-cli-fixes.py"
+    },
+    {
+      "capture_sha256": "f8ebdc22f778342457eb614bd7e456b664f7546b89dba87f4478fafacf17d85e",
+      "sessions": [
+        "ses_e0bebf8c2ffey5mzH1VHwtId93"
+      ],
+      "name": "eval-test-shapes.py"
+    },
+    {
+      "capture_sha256": "bb842579fe3002c1771f4d5c23dffccee92e51711a4a7a9b7147ada610219686",
+      "sessions": [
+        "ses_e0beab03affeu3ct8b6zV6j7rA"
+      ],
+      "name": "cli-plan-command.py"
+    },
+    {
+      "capture_sha256": "e4d93ed7b12b2c234899fe49cd423f404f4ac3c9ab3a870288563e1f7111a310",
+      "sessions": [
+        "ses_e0be973c9ffeQoLqUz9p2X36LT"
+      ],
+      "name": "repair-patch-indent.py"
+    },
+    {
+      "capture_sha256": "a974083224e3db3c615bdd5b59ce07a40af1de03140c4206bfa37186429387f9",
+      "sessions": [
+        "ses_e0be7af2effeI5iGI7COCp9pYU"
+      ],
+      "name": "cli-correct-paths.py"
+    },
+    {
+      "capture_sha256": "46917a1c6f0f05db08cd0300f1dc067648cd791cadf85f5a3fff78b9bed79b9a",
+      "sessions": [
+        "ses_e0be68468ffeJ1TjaYrj7PEBsr"
+      ],
+      "name": "frontend-mobile.py"
+    }
+  ],
+  "note": "Patch capture list includes rejected/unapplied candidates; it is not an execution log. Applied transformations are described in review/bug records. Raw private source events retained locally.",
+  "updated_at": "2026-11-19T16:20:06.005794+00:00",
+  "historical_raw_preservation": "Earlier transient raw directories were lost on restart; six authentic sanitized native exports survived. Subsequent completed sessions are persistently archived privately. Missing originals are not reconstructed transcripts.",
+  "v03_supplement": "docs/verification/v0.3/source-provenance.json"
+}

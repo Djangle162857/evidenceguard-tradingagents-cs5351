@@ -1,0 +1,27 @@
+Verbatim request-200 _report fixture helper, runtime supplied with actual upstream schema/render imports.
+Not an accepted regression test.
+
+**Rating**: Hold
+
+**Executive Summary**: 信息不足。
+
+**Investment Thesis**: ### 利好因素
+信息不足。
+
+### 风险因素
+信息不足。
+
+### 关键分歧
+信息不足。
+
+### 未来一周观察
+推断：2026-11-19 至 2026-11-25，观察条件：上行或下行情景。 [cl-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]
+
+### 数据缺口
+信息不足。
+
+**Price Target**: not provided
+
+**Time Horizon**: not provided
+
+Observed validator result: ['section_headings_invalid']

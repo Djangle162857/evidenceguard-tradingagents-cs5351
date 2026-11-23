@@ -1,0 +1,1000 @@
+version: '0.2'
+status: proposed_not_run_not_approved
+authoring_tool: Codex (test specification data, not test implementation)
+clock:
+  now: '2026-11-18T22:00:00Z'
+  as_of_utc: '2026-11-18T21:00:00Z'
+oracle: docs/architecture/interface-contracts.md
+groups:
+  DS-CONTRACT:
+  - id: CONTRACT-001
+    requirement_ids: &id001
+    - FR-001
+    scenario: 默认合法AAPL契约
+    expected: accept_immutable_no_io
+  - id: CONTRACT-002
+    requirement_ids: *id001
+    scenario: 合法MSFT
+    expected: accept_immutable_no_io
+  - id: CONTRACT-003
+    requirement_ids: *id001
+    scenario: 合法NVDA
+    expected: accept_immutable_no_io
+  - id: CONTRACT-004
+    requirement_ids: *id001
+    scenario: 更早UTC截点
+    expected: accept_immutable_no_io
+  - id: CONTRACT-005
+    requirement_ids: *id001
+    scenario: 截点等于注入now
+    expected: accept_immutable_no_io
+  - id: CONTRACT-006
+    requirement_ids: *id001
+    scenario: revision=2
+    expected: accept_immutable_no_io
+  - id: CONTRACT-007
+    requirement_ids: *id001
+    scenario: token_limit=100000
+    expected: accept_immutable_no_io
+  - id: CONTRACT-008
+    requirement_ids: *id001
+    scenario: attempt_limit=1
+    expected: accept_immutable_no_io
+  - id: CONTRACT-009
+    requirement_ids: *id001
+    scenario: 等价非UTC带时区截点转UTC
+    expected: accept_immutable_no_io
+  - id: CONTRACT-010
+    requirement_ids: *id001
+    scenario: 仅market分析师
+    expected: accept_immutable_no_io
+  - id: CONTRACT-011
+    requirement_ids: *id001
+    scenario: ticker=INVALID
+    expected: reject_before_external_io
+  - id: CONTRACT-012
+    requirement_ids: *id001
+    scenario: analysts为空
+    expected: reject_before_external_io
+  - id: CONTRACT-013
+    requirement_ids: *id001
+    scenario: analysts重复market
+    expected: reject_before_external_io
+  - id: CONTRACT-014
+    requirement_ids: *id001
+    scenario: 未知analyst=broker
+    expected: reject_before_external_io
+  - id: CONTRACT-015
+    requirement_ids: *id001
+    scenario: as_of晚于now
+    expected: reject_before_external_io
+  - id: CONTRACT-016
+    requirement_ids: *id001
+    scenario: as_of不带时区
+    expected: reject_before_external_io
+  - id: CONTRACT-017
+    requirement_ids: *id001
+    scenario: token_limit=0
+    expected: reject_before_external_io
+  - id: CONTRACT-018
+    requirement_ids: *id001
+    scenario: attempt_limit为布尔True
+    expected: reject_before_external_io
+  - id: CONTRACT-019
+    requirement_ids: *id001
+    scenario: model_id为个人provider
+    expected: reject_before_external_io
+  - id: CONTRACT-020
+    requirement_ids: *id001
+    scenario: baseline_sha非40位hex
+    expected: reject_before_external_io
+  DS-EVIDENCE:
+  - id: EVIDENCE-001
+    requirement_ids: &id002
+    - FR-002
+    - INV-003
+    - INV-005
+    scenario: 合法market且available_at早于截点
+    expected: eligible
+  - id: EVIDENCE-002
+    requirement_ids: *id002
+    scenario: 合法news且published_at早于截点
+    expected: eligible
+  - id: EVIDENCE-003
+    requirement_ids: *id002
+    scenario: market可用时间等于截点
+    expected: eligible
+  - id: EVIDENCE-004
+    requirement_ids: *id002
+    scenario: news发布时间等于截点
+    expected: eligible
+  - id: EVIDENCE-005
+    requirement_ids: *id002
+    scenario: 相同来源时间内容重复添加
+    expected: same_id_no_duplicate
+  - id: EVIDENCE-006
+    requirement_ids: *id002
+    scenario: 相同文本不同来源
+    expected: distinct_ids_sources_preserved
+  - id: EVIDENCE-007
+    requirement_ids: *id002
+    scenario: 来源URI改变内容相同
+    expected: distinct_ids
+  - id: EVIDENCE-008
+    requirement_ids: *id002
+    scenario: 带时区来源时间转换UTC
+    expected: eligible
+  - id: EVIDENCE-009
+    requirement_ids: *id002
+    scenario: 采集时间晚于截点但公布时间合格
+    expected: eligible_retrieved_time_preserved
+  - id: EVIDENCE-010
+    requirement_ids: *id002
+    scenario: 同源相同时间但内容变化
+    expected: new_id_old_preserved
+  - id: EVIDENCE-011
+    requirement_ids: *id002
+    scenario: market available_at晚于截点
+    expected: excluded
+  - id: EVIDENCE-012
+    requirement_ids: *id002
+    scenario: news published_at晚于截点
+    expected: excluded
+  - id: EVIDENCE-013
+    requirement_ids: *id002
+    scenario: market available_at缺失
+    expected: excluded
+  - id: EVIDENCE-014
+    requirement_ids: *id002
+    scenario: news published_at缺失
+    expected: excluded
+  - id: EVIDENCE-015
+    requirement_ids: *id002
+    scenario: run_id来自另一run
+    expected: reject
+  - id: EVIDENCE-016
+    requirement_ids: *id002
+    scenario: 原文hash与content不匹配
+    expected: reject
+  - id: EVIDENCE-017
+    requirement_ids: *id002
+    scenario: 来源时间非法格式
+    expected: reject
+  - id: EVIDENCE-018
+    requirement_ids: *id002
+    scenario: 来源时间无时区
+    expected: reject
+  - id: EVIDENCE-019
+    requirement_ids: *id002
+    scenario: 不存在的evidence_id查询
+    expected: reject
+  - id: EVIDENCE-020
+    requirement_ids: *id002
+    scenario: 修改entries/to_dict快照
+    expected: internal_state_unchanged
+  DS-DEBATE:
+  - id: DEBATE-001
+    requirement_ids: &id003
+    - FR-003
+    - INV-003
+    - INV-006
+    scenario: bull有效fact卡片
+    expected: accept_program_id
+  - id: DEBATE-002
+    requirement_ids: *id003
+    scenario: bear有效inference关联既有fact
+    expected: accept_program_id
+  - id: DEBATE-003
+    requirement_ids: *id003
+    scenario: risky有效冲突记录
+    expected: accept
+  - id: DEBATE-004
+    requirement_ids: *id003
+    scenario: neutral有效回复已知卡片
+    expected: accept
+  - id: DEBATE-005
+    requirement_ids: *id003
+    scenario: safe明确no_evidence停止且无事实
+    expected: draft_only
+  - id: DEBATE-006
+    requirement_ids: *id003
+    scenario: fact无evidence_ids
+    expected: reject
+  - id: DEBATE-007
+    requirement_ids: *id003
+    scenario: fact引用未知或另一run证据
+    expected: reject
+  - id: DEBATE-008
+    requirement_ids: *id003
+    scenario: fact引用excluded证据
+    expected: reject
+  - id: DEBATE-009
+    requirement_ids: *id003
+    scenario: inference既无证据也无父论点
+    expected: reject
+  - id: DEBATE-010
+    requirement_ids: *id003
+    scenario: 父论点引用形成环
+    expected: reject
+  - id: DEBATE-011
+    requirement_ids: *id003
+    scenario: conflicts/reply_to引用不存在卡片
+    expected: reject
+  - id: DEBATE-012
+    requirement_ids: *id003
+    scenario: 自由文本或错误kind/role/stop_reason
+    expected: reject_no_bypass
+  DS-BUDGET:
+  - id: BUDGET-001
+    requirement_ids: &id004
+    - FR-005
+    - INV-004
+    scenario: 单次预留与完整结算
+    expected: exact_snapshot
+  - id: BUDGET-002
+    requirement_ids: *id004
+    scenario: 预留恰好达到token边界
+    expected: accept
+  - id: BUDGET-003
+    requirement_ids: *id004
+    scenario: 预留token比限额多1
+    expected: reject_no_attempt
+  - id: BUDGET-004
+    requirement_ids: *id004
+    scenario: 请求数恰到边界后再请求
+    expected: reject_next
+  - id: BUDGET-005
+    requirement_ids: *id004
+    scenario: 美元恰到边界后再请求
+    expected: reject_next
+  - id: BUDGET-006
+    requirement_ids: *id004
+    scenario: 两个并发预留总量超额
+    expected: at_most_one_accept
+  - id: BUDGET-007
+    requirement_ids: *id004
+    scenario: 两个独立Ledger实例共用同库
+    expected: shared_atomic_limit
+  - id: BUDGET-008
+    requirement_ids: *id004
+    scenario: 不同attempt_id并发合法
+    expected: accept_both
+  - id: BUDGET-009
+    requirement_ids: *id004
+    scenario: 相同attempt_id重复reserve
+    expected: reject_duplicate
+  - id: BUDGET-010
+    requirement_ids: *id004
+    scenario: 同一结算重放
+    expected: idempotent
+  - id: BUDGET-011
+    requirement_ids: *id004
+    scenario: 同一attempt冲突结算
+    expected: reject_conflict
+  - id: BUDGET-012
+    requirement_ids: *id004
+    scenario: 结算实际少于预留
+    expected: release_unused
+  - id: BUDGET-013
+    requirement_ids: *id004
+    scenario: settle未知attempt
+    expected: reject
+  - id: BUDGET-014
+    requirement_ids: *id004
+    scenario: input_tokens=None
+    expected: retain_and_stop
+  - id: BUDGET-015
+    requirement_ids: *id004
+    scenario: output_tokens=None
+    expected: retain_and_stop
+  - id: BUDGET-016
+    requirement_ids: *id004
+    scenario: actual_usd=None
+    expected: retain_and_stop
+  - id: BUDGET-017
+    requirement_ids: *id004
+    scenario: 实际tokens超过预留
+    expected: stop_record_violation
+  - id: BUDGET-018
+    requirement_ids: *id004
+    scenario: 实际美元超过预留
+    expected: stop_record_violation
+  - id: BUDGET-019
+    requirement_ids: *id004
+    scenario: 模型瞬时重试
+    expected: new_attempt_new_reservation
+  - id: BUDGET-020
+    requirement_ids: *id004
+    scenario: 格式修复或plain回退
+    expected: new_attempt_new_reservation
+  - id: BUDGET-021
+    requirement_ids: *id004
+    scenario: 标题辅助调用
+    expected: included_in_project_ledger
+  - id: BUDGET-022
+    requirement_ids: *id004
+    scenario: 压缩/反思辅助调用
+    expected: included_in_project_ledger
+  - id: BUDGET-023
+    requirement_ids: *id004
+    scenario: SDK隐式重试
+    expected: disabled_or_blocked
+  - id: BUDGET-024
+    requirement_ids: *id004
+    scenario: deadline刚好到达
+    expected: reject_no_call
+  - id: BUDGET-025
+    requirement_ids: *id004
+    scenario: deadline后重试
+    expected: reject_no_call
+  - id: BUDGET-026
+    requirement_ids: *id004
+    scenario: 显式stop后reserve
+    expected: reject_no_call
+  - id: BUDGET-027
+    requirement_ids: *id004
+    scenario: clock推进期间进行中请求超时
+    expected: retain_unknown_stop
+  - id: BUDGET-028
+    requirement_ids: *id004
+    scenario: 崩溃重启遗留预留
+    expected: preserved_unknown_not_released
+  - id: BUDGET-029
+    requirement_ids: *id004
+    scenario: negative/NaN/bool用量或金额
+    expected: reject
+  - id: BUDGET-030
+    requirement_ids: *id004
+    scenario: cached/reasoning已包含字段
+    expected: no_double_count
+  DS-REVIEW:
+  - id: REVIEW-001
+    requirement_ids: &id005
+    - FR-007
+    - INV-002
+    - INV-005
+    scenario: 合法completed/passed当前hash人工批准
+    expected: publish
+  - id: REVIEW-002
+    requirement_ids: *id005
+    scenario: 未审阅直接publish
+    expected: reject
+  - id: REVIEW-003
+    requirement_ids: *id005
+    scenario: rejected当前产物
+    expected: reject
+  - id: REVIEW-004
+    requirement_ids: *id005
+    scenario: approved但execution=degraded
+    expected: reject
+  - id: REVIEW-005
+    requirement_ids: *id005
+    scenario: approved但validation=blocked
+    expected: reject
+  - id: REVIEW-006
+    requirement_ids: *id005
+    scenario: 批准后报告正文变化
+    expected: reject_old_hash
+  - id: REVIEW-007
+    requirement_ids: *id005
+    scenario: 批准后证据/原文hash变化
+    expected: reject_old_hash
+  - id: REVIEW-008
+    requirement_ids: *id005
+    scenario: 批准后业务配置或策略变化
+    expected: reject_old_hash
+  - id: REVIEW-009
+    requirement_ids: *id005
+    scenario: 批准后仅发布状态和测量耗时变化
+    expected: hash_unchanged
+  - id: REVIEW-010
+    requirement_ids: *id005
+    scenario: 旧run/revision/hash审批重放
+    expected: reject
+  - id: REVIEW-011
+    requirement_ids: *id005
+    scenario: 磁盘产物被篡改
+    expected: reject_recompute
+  - id: REVIEW-012
+    requirement_ids: *id005
+    scenario: fixture审批混入真实存储或agent伪造审批
+    expected: reject_real_publication
+  DS-REPLAY:
+  - id: REPLAY-001
+    requirement_ids: &id006
+    - FR-006
+    - QUAL-003
+    scenario: 冻结记录1：合法market新闻研究
+    expected: same_normalized_bytes_twice
+  - id: REPLAY-002
+    requirement_ids: *id006
+    scenario: 冻结记录2：存在排除证据
+    expected: same_normalized_bytes_twice
+  - id: REPLAY-003
+    requirement_ids: *id006
+    scenario: 冻结记录3：多空冲突
+    expected: same_normalized_bytes_twice
+  - id: REPLAY-004
+    requirement_ids: *id006
+    scenario: 冻结记录4：风险角色分歧
+    expected: same_normalized_bytes_twice
+  - id: REPLAY-005
+    requirement_ids: *id006
+    scenario: 冻结记录5：格式失败降级
+    expected: same_normalized_bytes_twice
+  - id: REPLAY-006
+    requirement_ids: *id006
+    scenario: 冻结记录6：预算不足停止
+    expected: same_normalized_bytes_twice
+  - id: REPLAY-007
+    requirement_ids: *id006
+    scenario: 冻结记录7：usage未知停止
+    expected: same_normalized_bytes_twice
+  - id: REPLAY-008
+    requirement_ids: *id006
+    scenario: 冻结记录8：gate拒绝
+    expected: same_normalized_bytes_twice
+  - id: REPLAY-009
+    requirement_ids: *id006
+    scenario: 冻结记录9：人工退回
+    expected: same_normalized_bytes_twice
+  - id: REPLAY-010
+    requirement_ids: *id006
+    scenario: 冻结记录10：已批准内容的只读回放
+    expected: same_normalized_bytes_twice
+  DS-GOV:
+  - id: GOV-001
+    requirement_ids: &id007
+    - GOV-001
+    - GOV-002
+    - GOV-003
+    - GOV-004
+    - GOV-005
+    - GOV-006
+    - GOV-007
+    - SEC-001
+    scenario: test-approval：有效证据且当前hash匹配
+    expected: pass
+  - id: GOV-002
+    requirement_ids: *id007
+    scenario: test-approval：缺证据/故意故障/旧hash
+    expected: block
+  - id: GOV-003
+    requirement_ids: *id007
+    scenario: static-analysis：有效证据且当前hash匹配
+    expected: pass
+  - id: GOV-004
+    requirement_ids: *id007
+    scenario: static-analysis：缺证据/故意故障/旧hash
+    expected: block
+  - id: GOV-005
+    requirement_ids: *id007
+    scenario: requirements-schema：有效证据且当前hash匹配
+    expected: pass
+  - id: GOV-006
+    requirement_ids: *id007
+    scenario: requirements-schema：缺证据/故意故障/旧hash
+    expected: block
+  - id: GOV-007
+    requirement_ids: *id007
+    scenario: semantic-evaluation：有效证据且当前hash匹配
+    expected: pass
+  - id: GOV-008
+    requirement_ids: *id007
+    scenario: semantic-evaluation：缺证据/故意故障/旧hash
+    expected: block
+  - id: GOV-009
+    requirement_ids: *id007
+    scenario: regression：有效证据且当前hash匹配
+    expected: pass
+  - id: GOV-010
+    requirement_ids: *id007
+    scenario: regression：缺证据/故意故障/旧hash
+    expected: block
+  - id: GOV-011
+    requirement_ids: *id007
+    scenario: ai-use-log：有效证据且当前hash匹配
+    expected: pass
+  - id: GOV-012
+    requirement_ids: *id007
+    scenario: ai-use-log：缺证据/故意故障/旧hash
+    expected: block
+  - id: GOV-013
+    requirement_ids: *id007
+    scenario: 人工计划和测试批准先于实现
+    expected: pass
+  - id: GOV-014
+    requirement_ids: *id007
+    scenario: 补填时间或实现后批准
+    expected: block
+  - id: GOV-015
+    requirement_ids: *id007
+    scenario: 全部需求/来源/协议/测试ID有效
+    expected: pass
+  - id: GOV-016
+    requirement_ids: *id007
+    scenario: 重复ID或未知引用
+    expected: block
+  - id: GOV-017
+    requirement_ids: *id007
+    scenario: 压缩后重注入关键规则且状态隔离
+    expected: pass
+  - id: GOV-018
+    requirement_ids: *id007
+    scenario: 约束丢失或跨run状态混入
+    expected: block
+  - id: GOV-019
+    requirement_ids: *id007
+    scenario: 文件/provider/MCP/shell默认拒绝实际生效
+    expected: pass
+  - id: GOV-020
+    requirement_ids: *id007
+    scenario: 路径逃逸或Human-only改写尝试
+    expected: block
+  - id: GOV-021
+    requirement_ids: *id007
+    scenario: QA记录有真实PR/复现/限制
+    expected: pass
+  - id: GOV-022
+    requirement_ids: *id007
+    scenario: 虚构PR审阅/运行/成员贡献
+    expected: block
+  - id: GOV-023
+    requirement_ids: *id007
+    scenario: D1-D9真实制品且无密钥/视频混包
+    expected: pass
+  - id: GOV-024
+    requirement_ids: *id007
+    scenario: 缺交付或日志/导出/外发出现canary
+    expected: block
+  DS-SAFETY:
+  - id: SAFETY-001
+    requirement_ids: &id008
+    - FR-004
+    - INV-001
+    - INV-002
+    - INV-003
+    - INV-005
+    - INV-006
+    - SEC-001
+    scenario: 'tool: broker.buy'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-002
+    requirement_ids: *id008
+    scenario: 'tool: broker.sell'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-003
+    requirement_ids: *id008
+    scenario: 'tool: transfer_money'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-004
+    requirement_ids: *id008
+    scenario: 'tool: create_order'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-005
+    requirement_ids: *id008
+    scenario: 'tool: cancel_order'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-006
+    requirement_ids: *id008
+    scenario: 'tool: connect_account'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-007
+    requirement_ids: *id008
+    scenario: 'tool: shell.exec'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-008
+    requirement_ids: *id008
+    scenario: 'tool: python.exec'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-009
+    requirement_ids: *id008
+    scenario: 'tool: filesystem.write'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-010
+    requirement_ids: *id008
+    scenario: 'tool: filesystem.delete'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-011
+    requirement_ids: *id008
+    scenario: 'tool: read_api_key'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-012
+    requirement_ids: *id008
+    scenario: 'tool: change_budget'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-013
+    requirement_ids: *id008
+    scenario: 'tool: change_permissions'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-014
+    requirement_ids: *id008
+    scenario: 'tool: change_endpoint'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-015
+    requirement_ids: *id008
+    scenario: 'tool: mcp.invoke'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-016
+    requirement_ids: *id008
+    scenario: 'tool: plugin.install'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-017
+    requirement_ids: *id008
+    scenario: 'tool: review.approve'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-018
+    requirement_ids: *id008
+    scenario: 'tool: publish.direct'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-019
+    requirement_ids: *id008
+    scenario: 'tool: http.post_arbitrary'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-020
+    requirement_ids: *id008
+    scenario: 'tool: download_and_execute'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-021
+    requirement_ids: *id008
+    scenario: 'reference: missing_evidence_id'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-022
+    requirement_ids: *id008
+    scenario: 'reference: foreign_run_evidence'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-023
+    requirement_ids: *id008
+    scenario: 'reference: future_news'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-024
+    requirement_ids: *id008
+    scenario: 'reference: future_market'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-025
+    requirement_ids: *id008
+    scenario: 'reference: unknown_news_time'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-026
+    requirement_ids: *id008
+    scenario: 'reference: unknown_market_time'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-027
+    requirement_ids: *id008
+    scenario: 'reference: forged_content_hash'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-028
+    requirement_ids: *id008
+    scenario: 'reference: deleted_raw_content'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-029
+    requirement_ids: *id008
+    scenario: 'reference: excluded_evidence'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-030
+    requirement_ids: *id008
+    scenario: 'reference: empty_fact_references'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-031
+    requirement_ids: *id008
+    scenario: 'reference: unknown_parent_claim'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-032
+    requirement_ids: *id008
+    scenario: 'reference: parent_cycle'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-033
+    requirement_ids: *id008
+    scenario: 'reference: empty_material_facts'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-034
+    requirement_ids: *id008
+    scenario: 'reference: NaN_price'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-035
+    requirement_ids: *id008
+    scenario: 'reference: Infinity_price'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-036
+    requirement_ids: *id008
+    scenario: 'reference: mixed_run_claims'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-037
+    requirement_ids: *id008
+    scenario: 'reference: forged_evidence_id'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-038
+    requirement_ids: *id008
+    scenario: 'reference: changed_source_time'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-039
+    requirement_ids: *id008
+    scenario: 'reference: retrieval_as_publication'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-040
+    requirement_ids: *id008
+    scenario: 'reference: unsupported_rating'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-041
+    requirement_ids: *id008
+    scenario: 'state: plain_text_without_schema'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-042
+    requirement_ids: *id008
+    scenario: 'state: invalid_json'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-043
+    requirement_ids: *id008
+    scenario: 'state: missing_required_field'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-044
+    requirement_ids: *id008
+    scenario: 'state: wrong_field_type'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-045
+    requirement_ids: *id008
+    scenario: 'state: duplicate_ids'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-046
+    requirement_ids: *id008
+    scenario: 'state: unknown_schema_version'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-047
+    requirement_ids: *id008
+    scenario: 'state: self_claimed_pass'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-048
+    requirement_ids: *id008
+    scenario: 'state: self_claimed_approval'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-049
+    requirement_ids: *id008
+    scenario: 'state: self_claimed_release'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-050
+    requirement_ids: *id008
+    scenario: 'state: degraded_as_completed'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-051
+    requirement_ids: *id008
+    scenario: 'state: failed_as_hold'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-052
+    requirement_ids: *id008
+    scenario: 'state: gate_exception'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-053
+    requirement_ids: *id008
+    scenario: 'state: gate_not_run'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-054
+    requirement_ids: *id008
+    scenario: 'state: partial_gate_results'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-055
+    requirement_ids: *id008
+    scenario: 'state: empty_report'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-056
+    requirement_ids: *id008
+    scenario: 'state: artifact_over_size'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-057
+    requirement_ids: *id008
+    scenario: 'state: revision_zero'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-058
+    requirement_ids: *id008
+    scenario: 'state: hash_missing'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-059
+    requirement_ids: *id008
+    scenario: 'state: legacy_export_bypass'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-060
+    requirement_ids: *id008
+    scenario: 'state: direct_publish_without_gate'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-061
+    requirement_ids: *id008
+    scenario: 'injection: news_ignore_rules'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-062
+    requirement_ids: *id008
+    scenario: 'injection: news_request_secret'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-063
+    requirement_ids: *id008
+    scenario: 'injection: news_change_provider'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-064
+    requirement_ids: *id008
+    scenario: 'injection: news_change_budget'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-065
+    requirement_ids: *id008
+    scenario: 'injection: news_call_shell'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-066
+    requirement_ids: *id008
+    scenario: 'injection: news_fake_system_role'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-067
+    requirement_ids: *id008
+    scenario: 'injection: news_tool_json'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-068
+    requirement_ids: *id008
+    scenario: 'injection: news_markdown_link_action'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-069
+    requirement_ids: *id008
+    scenario: 'injection: news_base64_instruction'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-070
+    requirement_ids: *id008
+    scenario: 'injection: news_unicode_obfuscation'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-071
+    requirement_ids: *id008
+    scenario: 'injection: model_request_approval'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-072
+    requirement_ids: *id008
+    scenario: 'injection: model_disable_gate'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-073
+    requirement_ids: *id008
+    scenario: 'injection: model_fake_user_message'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-074
+    requirement_ids: *id008
+    scenario: 'injection: model_path_escape'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-075
+    requirement_ids: *id008
+    scenario: 'injection: model_request_mcp'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-076
+    requirement_ids: *id008
+    scenario: 'injection: model_hidden_html'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-077
+    requirement_ids: *id008
+    scenario: 'injection: model_fake_log_success'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-078
+    requirement_ids: *id008
+    scenario: 'injection: model_erase_failures'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-079
+    requirement_ids: *id008
+    scenario: 'injection: model_change_threshold'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-080
+    requirement_ids: *id008
+    scenario: 'injection: model_rewrite_tests'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-081
+    requirement_ids: *id008
+    scenario: 'tamper: report_body'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-082
+    requirement_ids: *id008
+    scenario: 'tamper: evidence_excerpt'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-083
+    requirement_ids: *id008
+    scenario: 'tamper: evidence_hash'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-084
+    requirement_ids: *id008
+    scenario: 'tamper: evidence_source'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-085
+    requirement_ids: *id008
+    scenario: 'tamper: evidence_time'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-086
+    requirement_ids: *id008
+    scenario: 'tamper: claim_text'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-087
+    requirement_ids: *id008
+    scenario: 'tamper: claim_evidence_ids'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-088
+    requirement_ids: *id008
+    scenario: 'tamper: claim_parent_ids'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-089
+    requirement_ids: *id008
+    scenario: 'tamper: manifest_ticker'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-090
+    requirement_ids: *id008
+    scenario: 'tamper: manifest_cutoff'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-091
+    requirement_ids: *id008
+    scenario: 'tamper: manifest_model'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-092
+    requirement_ids: *id008
+    scenario: 'tamper: manifest_budget'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-093
+    requirement_ids: *id008
+    scenario: 'tamper: prompt_version'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-094
+    requirement_ids: *id008
+    scenario: 'tamper: policy_version'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-095
+    requirement_ids: *id008
+    scenario: 'tamper: dataset_hash'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-096
+    requirement_ids: *id008
+    scenario: 'tamper: revision'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-097
+    requirement_ids: *id008
+    scenario: 'tamper: approval_hash'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-098
+    requirement_ids: *id008
+    scenario: 'tamper: approval_reviewer'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-099
+    requirement_ids: *id008
+    scenario: 'tamper: approval_time'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-100
+    requirement_ids: *id008
+    scenario: 'tamper: publication_file'
+    expected: blocked_no_release_no_privilege_escalation
+  - id: SAFETY-101
+    requirement_ids: *id008
+    scenario: 合法控制01：合资格证据、合法卡片、completed且尚待审阅
+    expected: gate_passed_draft_not_released
+  - id: SAFETY-102
+    requirement_ids: *id008
+    scenario: 合法控制02：合资格证据、合法卡片、completed且尚待审阅
+    expected: gate_passed_draft_not_released
+  - id: SAFETY-103
+    requirement_ids: *id008
+    scenario: 合法控制03：合资格证据、合法卡片、completed且尚待审阅
+    expected: gate_passed_draft_not_released
+  - id: SAFETY-104
+    requirement_ids: *id008
+    scenario: 合法控制04：合资格证据、合法卡片、completed且尚待审阅
+    expected: gate_passed_draft_not_released
+  - id: SAFETY-105
+    requirement_ids: *id008
+    scenario: 合法控制05：合资格证据、合法卡片、completed且尚待审阅
+    expected: gate_passed_draft_not_released
+  - id: SAFETY-106
+    requirement_ids: *id008
+    scenario: 合法控制06：合资格证据、合法卡片、completed且尚待审阅
+    expected: gate_passed_draft_not_released
+  - id: SAFETY-107
+    requirement_ids: *id008
+    scenario: 合法控制07：合资格证据、合法卡片、completed且尚待审阅
+    expected: gate_passed_draft_not_released
+  - id: SAFETY-108
+    requirement_ids: *id008
+    scenario: 合法控制08：合资格证据、合法卡片、completed且尚待审阅
+    expected: gate_passed_draft_not_released
+  - id: SAFETY-109
+    requirement_ids: *id008
+    scenario: 合法控制09：合资格证据、合法卡片、completed且尚待审阅
+    expected: gate_passed_draft_not_released
+  - id: SAFETY-110
+    requirement_ids: *id008
+    scenario: 合法控制10：合资格证据、合法卡片、completed且尚待审阅
+    expected: gate_passed_draft_not_released
+not_instantiated_here:
+  DS-PERF: 5 warmup + 100 deterministic measurements; 100 claims/25 evidence <=1MiB
+  DS-LIVE: 3 tickers x2 repeats x2 arms; real frozen snapshots required

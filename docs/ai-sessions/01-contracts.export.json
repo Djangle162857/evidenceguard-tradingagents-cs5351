@@ -1,0 +1,99 @@
+{
+  "info": {
+    "id": "ses_e0c7a18caffe0lmlXNwSHmzd0Y",
+    "projectID": "global",
+    "agent": "preparation",
+    "model": {
+      "id": "CS5351/DeepSeek-V4-Flash",
+      "providerID": "cityu",
+      "variant": "default"
+    },
+    "cost": 0,
+    "tokens": {
+      "input": 5443,
+      "output": 1696,
+      "reasoning": 0,
+      "cache": {
+        "read": 128,
+        "write": 0
+      }
+    },
+    "outcome": "succeeded",
+    "time": {
+      "created": 1795087001606,
+      "updated": 1795087009310,
+      "busy": 1795087001721,
+      "idle": 1795087009313
+    },
+    "title": "[redacted:session-title:ses_e0c7a18caffe0lmlXNwSHmzd0Y]",
+    "location": {
+      "directory": "/[redacted:session-directory:ses_e0c7a18caffe0lmlXNwSHmzd0Y]"
+    }
+  },
+  "messages": [
+    {
+      "id": "msg_1f385e837001EX1FpGefrKHjfK",
+      "time": {
+        "created": 1795087001655
+      },
+      "type": "agent-switched",
+      "agent": "preparation",
+      "previous": "preparation"
+    },
+    {
+      "id": "msg_1f385e835001mlYFADSN0hIJp6",
+      "time": {
+        "created": 1795087001726
+      },
+      "text": "[redacted:text:msg_1f385e835001mlYFADSN0hIJp6]",
+      "files": [],
+      "type": "user"
+    },
+    {
+      "id": "msg_1f385e883001zogCT8S1yoWXJ4",
+      "time": {
+        "created": 1795087001735,
+        "streamed": 1795087009304,
+        "completed": 1795087009310
+      },
+      "type": "assistant",
+      "agent": "preparation",
+      "model": {
+        "id": "CS5351/DeepSeek-V4-Flash",
+        "providerID": "cityu",
+        "variant": "default"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "[redacted:text:msg_1f385e883001zogCT8S1yoWXJ4]"
+        }
+      ],
+      "snapshot": {
+        "start": "604062ae84ac523fced142e80e9f666c9b8497b5",
+        "end": "604062ae84ac523fced142e80e9f666c9b8497b5",
+        "files": []
+      },
+      "finish": "stop",
+      "rawFinish": "stop",
+      "cost": 0,
+      "tokens": {
+        "input": 5443,
+        "output": 1696,
+        "reasoning": 0,
+        "cache": {
+          "read": 128,
+          "write": 0
+        }
+      }
+    },
+    {
+      "id": "msg_1f38606210010qmOxcRg1QBab0",
+      "time": {
+        "created": 1795087009313
+      },
+      "type": "idle",
+      "outcome": "succeeded"
+    }
+  ]
+}

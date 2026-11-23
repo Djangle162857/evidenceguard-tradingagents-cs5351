@@ -1,0 +1,104 @@
+{
+  "info": {
+    "id": "ses_e0be7af2effeI5iGI7COCp9pYU",
+    "projectID": "4419f129e498b7a30eb9fd397cf1515552ebff04",
+    "agent": "source-generation",
+    "model": {
+      "id": "CS5351/DeepSeek-V4-Flash",
+      "providerID": "cityu",
+      "variant": "default"
+    },
+    "cost": 0,
+    "tokens": {
+      "input": 607,
+      "output": 586,
+      "reasoning": 0,
+      "cache": {
+        "read": 1536,
+        "write": 0
+      }
+    },
+    "outcome": "succeeded",
+    "time": {
+      "created": 1795096596897,
+      "updated": 1795096600828,
+      "busy": 1795096597034,
+      "idle": 1795096600831
+    },
+    "title": "[redacted:session-title:ses_e0be7af2effeI5iGI7COCp9pYU]",
+    "location": {
+      "directory": "/[redacted:session-directory:ses_e0be7af2effeI5iGI7COCp9pYU]"
+    }
+  },
+  "messages": [
+    {
+      "id": "msg_1f41851df001IPhNVjY94dAmVH",
+      "time": {
+        "created": 1795096596959
+      },
+      "type": "agent-switched",
+      "agent": "source-generation",
+      "previous": "source-generation"
+    },
+    {
+      "id": "msg_1f41851dc001vzXM9VbcSHye6s",
+      "time": {
+        "created": 1795096597040
+      },
+      "text": "[redacted:text:msg_1f41851dc001vzXM9VbcSHye6s]",
+      "files": [],
+      "type": "user"
+    },
+    {
+      "id": "msg_1f4185236001lbiJvyNJPlM3N6",
+      "time": {
+        "created": 1795096597049,
+        "streamed": 1795096600808,
+        "completed": 1795096600828
+      },
+      "type": "assistant",
+      "agent": "source-generation",
+      "model": {
+        "id": "CS5351/DeepSeek-V4-Flash",
+        "providerID": "cityu",
+        "variant": "default"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "[redacted:text:msg_1f4185236001lbiJvyNJPlM3N6]"
+        }
+      ],
+      "snapshot": {
+        "start": "4aec400cd8d3c8e3b3005db29b28b74f13db2c9a",
+        "end": "2fa74b33bf80f9a5b9c4098e36f23503d24541a2",
+        "files": [
+          "src/evidenceguard/evaluation.py",
+          "src/evidenceguard/live_cli.py",
+          "test/offline/test_evaluation.py",
+          "test/offline/test_live_cli.py"
+        ]
+      },
+      "finish": "stop",
+      "rawFinish": "stop",
+      "cost": 0,
+      "tokens": {
+        "input": 607,
+        "output": 586,
+        "reasoning": 0,
+        "cache": {
+          "read": 1536,
+          "write": 0
+        }
+      }
+    },
+    {
+      "id": "msg_1f41860ff001PwyUcR4kT1MB0f",
+      "time": {
+        "created": 1795096600831
+      },
+      "type": "idle",
+      "outcome": "succeeded"
+    }
+  ]
+}

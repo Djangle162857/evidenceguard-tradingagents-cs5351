@@ -1,0 +1,99 @@
+{
+  "info": {
+    "id": "ses_e0c286f12ffeQkjxLkrs1ZD0cH",
+    "projectID": "4419f129e498b7a30eb9fd397cf1515552ebff04",
+    "agent": "source-generation",
+    "model": {
+      "id": "CS5351/DeepSeek-V4-Flash",
+      "providerID": "cityu",
+      "variant": "default"
+    },
+    "cost": 0,
+    "tokens": {
+      "input": 1321,
+      "output": 2064,
+      "reasoning": 0,
+      "cache": {
+        "read": 1536,
+        "write": 0
+      }
+    },
+    "outcome": "succeeded",
+    "time": {
+      "created": 1795092353504,
+      "updated": 1795092362197,
+      "busy": 1795092353669,
+      "idle": 1795092362202
+    },
+    "title": "[redacted:session-title:ses_e0c286f12ffeQkjxLkrs1ZD0cH]",
+    "location": {
+      "directory": "/[redacted:session-directory:ses_e0c286f12ffeQkjxLkrs1ZD0cH]"
+    }
+  },
+  "messages": [
+    {
+      "id": "msg_1f3d79224001VyelrnFoFAag3G",
+      "time": {
+        "created": 1795092353572
+      },
+      "type": "agent-switched",
+      "agent": "source-generation",
+      "previous": "source-generation"
+    },
+    {
+      "id": "msg_1f3d792200019rsBPxtvxXpk2y",
+      "time": {
+        "created": 1795092353675
+      },
+      "text": "[redacted:text:msg_1f3d792200019rsBPxtvxXpk2y]",
+      "files": [],
+      "type": "user"
+    },
+    {
+      "id": "msg_1f3d79293001j9dklZFElQd9hK",
+      "time": {
+        "created": 1795092353687,
+        "streamed": 1795092362184,
+        "completed": 1795092362197
+      },
+      "type": "assistant",
+      "agent": "source-generation",
+      "model": {
+        "id": "CS5351/DeepSeek-V4-Flash",
+        "providerID": "cityu",
+        "variant": "default"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "[redacted:text:msg_1f3d79293001j9dklZFElQd9hK]"
+        }
+      ],
+      "snapshot": {
+        "start": "eb1557cb26650ba1f9971858aedf3a0f07d4d4aa",
+        "end": "eb1557cb26650ba1f9971858aedf3a0f07d4d4aa",
+        "files": []
+      },
+      "finish": "stop",
+      "rawFinish": "stop",
+      "cost": 0,
+      "tokens": {
+        "input": 1321,
+        "output": 2064,
+        "reasoning": 0,
+        "cache": {
+          "read": 1536,
+          "write": 0
+        }
+      }
+    },
+    {
+      "id": "msg_1f3d7b3da001Jz49DvBA2ouV54",
+      "time": {
+        "created": 1795092362202
+      },
+      "type": "idle",
+      "outcome": "succeeded"
+    }
+  ]
+}

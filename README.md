@@ -1,3 +1,50 @@
+# EvidenceGuard TradingAgents — CS5351
+
+This branch is the v0.3 engineering candidate. Acceptance and the formal paired evaluation are pending.
+
+[CityU Beamer source and bilingual speaker notes](docs/delivery/presentation/) · [GitHub checks](https://github.com/Djangle162857/evidenceguard-tradingagents-cs5351/actions/workflows/course-gates.yml)
+
+Solo course extension of the pinned TradingAgents baseline. EvidenceGuard adds time-qualified evidence, structured claims, an independent gate, atomic budget accounting and hash-bound human review to the actual upstream graph. The CLI supports frozen snapshots, candidate/baseline draft runs, offline replay and paired evaluation plan preparation. Live business evaluation remains pending; replay fixtures are synthetic.
+
+```bash
+python -m venv .venv
+.venv/bin/python -m pip install -e '.[dev]'
+.venv/bin/evidenceguard replay examples/offline-replay.json --out results/demo.json
+.venv/bin/evidenceguard inspect results/demo.json
+.venv/bin/python -m pytest
+```
+
+The historical backend checkpoint has **1,617 passing tests and 100 passing subtests**; see [checkpoint 2](docs/verification/checkpoint-2.md). The current v0.3 candidate has **1,687 passing tests**, one optional AWS skip, one online integration deselection and 24 warnings. Full-repository Ruff and seven JS syntax checks pass. Model and Yahoo calls are mocked in the offline suite. **v0.3 remains unaccepted:** an actual structured-manager render probe fails on the first section heading, and independent brief/version/workbench tests are incomplete. See the [current v0.3 review](docs/verification/v0.3/final-review.md).
+
+The replay creates a draft. `evidenceguard review show results/demo.json` displays its contents and hash. Human review and publication are separate explicit CLI commands; no automatic approval is issued by replay.
+
+For an explicitly authorized live pilot, `evidenceguard snapshot AAPL --out results/AAPL.json` freezes current Yahoo data and `evidenceguard run results/AAPL.json --candidate-sha <40-character-commit> --out results/AAPL-draft.json` uses the configured course API. Course credentials stay outside the repository. Add `--arm baseline` for the baseline. Current quote/news snapshots are not archived historical data. Live pilot and formal evaluation require the concrete review described in the execution plan.
+
+`evidenceguard evaluate results/AAPL.json results/MSFT.json results/NVDA.json --candidate-sha <40-character-commit> --out results/plan.json` prepares the fixed 12-row paired plan without model calls. `evaluate-run` executes an approved plan serially through the existing runner; current source review and paid evaluation authorization remain pending. Semantic annotations and the student’s delayed recheck are separate steps. The `run` CLI now defaults to `--policy-version v0.3`; baseline stays v0.2. The v0.3 rendering defect must be repaired and the candidate refrozen before a paid pilot.
+
+- [Requirements](docs/req/requirements-analysis.md) and [execution plan](docs/execution-plan.md)
+- [Implementation progress](docs/progress.md) and [interface contracts](docs/architecture/interface-contracts.md)
+- [AI-use record](docs/ai-use-log.yaml)
+- [Six authentic OpenCode sessions](docs/ai-sessions/index.md) and [current review bundle](docs/verification/checkpoint-2.md)
+
+Project API spending is capped at USD95. Credentials, private operational logs, course originals, and environments are excluded from Git. Application and test source is generated or corrected through local OpenCode using the course DeepSeek model; Codex orchestrates and verifies. Exact test-source preapproval and human-only rules are still outstanding and are not represented as completed.
+
+The local Chinese frontend previews reports and an independent public market chart. Start it from the repository root:
+
+```bash
+.venv/bin/python -m http.server 8766 --bind 127.0.0.1 --directory src/evidenceguard/web
+```
+
+Open http://127.0.0.1:8766/ . This exact static-server command was used in browser QA. No frontend build or Node installation is required. The page starts with a synthetic offline replay fixture. Import multiple report JSON files, select AAPL/MSFT/NVDA or a historical revision, follow Claim/Evidence references, switch the theme and export a local Markdown daily report. Imports stay in this page session and disappear on reload; different revisions remain separate and exact duplicate imports do not add another report. Missing brief sections are labelled and the original report stays available. See the [synthetic daily example](docs/verification/v0.3/daily-default-synthetic.md), [desktop/phone checks](docs/verification/v0.3/final-review.md) and [source/test hashes](docs/verification/v0.3/source-test-manifest.json).
+
+The independent TradingView panel needs network access and can be delayed; its ticker mismatch is shown when it differs from the selected report. The forecast comparison supports playback, hover, history/horizon controls and a five-second read of local `forecast.json`. Its bundled history/forecast/band remain explicitly synthetic, with no real forecast-series exporter. Invalid imports or failed refresh preserve the last valid data and show an error. Reading, importing, exporting and refreshing do not invoke a model. See the [forecast contract](docs/architecture/frontend-forecast-data.md). This is static file hosting: the proposed HTTP business API is paused and has not been delivered.
+
+Generation currently stops at the existing shared **200/200 development-request limit**. The USD95 ceiling remains unchanged; neither remaining dollars nor passing historical tests authorize bypassing the request limit or hand-editing application/test source. Outstanding repair, test and student-review actions are in [pending actions](docs/pending-actions.md).
+
+The upstream Apache-2.0 license and original project documentation follow.
+
+---
+
 <p align="center">
   <img src="tradingagents/assets/tauric-logo.svg" width="60%" alt="Tauric Research">
 </p>

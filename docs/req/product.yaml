@@ -1,0 +1,240 @@
+document:
+  title: EvidenceGuard TradingAgents 产品需求文档
+  version: '0.2'
+  date: '2026-11-19'
+  status: draft_for_checkpoint_1
+  approval_status: not_approved
+  team_size: 1
+registry: requirements.yaml
+schema: req-schema.json
+narrative: requirements-analysis.md
+problem: 研究者需要核对多智能体股票研究的事实来源、失败处置与完整资源消耗，避免自由文本回退或并发重试绕过约束。
+confirmed_direction: 用户确认单人、保留7项FR、本地OpenCode+课程API、项目支出上限95美元、公开GitHub和三次常规人审；后续明确要求直接工作，据此启动增量实现；不补造具体测试源码的事前批准。
+goals:
+- id: G1
+  statement: 重要事实可追踪并经独立语义核验
+  requirement_ids:
+  - FR-002
+  - FR-003
+  - FR-004
+  - QUAL-001
+- id: G2
+  statement: 累计资源受控且质量合格时降低token消耗
+  requirement_ids:
+  - FR-005
+  - INV-004
+  - COST-001
+- id: G3
+  statement: 失败可解释且不能绕过结果发布条件
+  requirement_ids:
+  - FR-004
+  - FR-007
+  - INV-002
+- id: G4
+  statement: 开发过程与课程交付真实可审计
+  requirement_ids:
+  - GOV-001
+  - GOV-002
+  - GOV-003
+  - GOV-004
+  - GOV-005
+  - GOV-006
+  - GOV-007
+stakeholders:
+- role: research_user
+  need: 按股票与日期取得可核对报告
+- role: human_reviewer
+  need: 核对当前内容，批准或退回发布
+- role: operator
+  need: 配置模型/数据源/预算，定位失败并回放
+- role: student_developer
+  need: 使用课程工具受控开发，保留真实贡献证据
+- role: assessor
+  need: 比较新增需求前后行为及工程方法
+scope:
+  must_requirement_ids:
+  - FR-001
+  - FR-002
+  - FR-003
+  - FR-004
+  - FR-005
+  - FR-006
+  - FR-007
+  - QUAL-001
+  - QUAL-002
+  - QUAL-003
+  - PERF-001
+  - SEC-001
+  - INV-001
+  - INV-002
+  - INV-003
+  - INV-004
+  - INV-005
+  - INV-006
+  - GOV-001
+  - GOV-002
+  - GOV-003
+  - GOV-004
+  - GOV-005
+  - GOV-006
+  - GOV-007
+  should_requirement_ids:
+  - COST-001
+  could:
+  - 更丰富的证据浏览界面
+  - 扩大股票支持范围
+  wont:
+  - 真实资金交易或券商账户接入
+  - 收益保证
+  - 多租户云平台和复杂移动端
+  - 从零重写TradingAgents
+research_profile:
+  tickers:
+  - AAPL
+  - MSFT
+  - NVDA
+  analysts:
+  - market
+  - news
+  time_semantics: 正式任务使用共同快照完成时的UTC截点；证据available_at/published_at不得晚于截点，不声称历史回测或开盘前策略。
+  runtime_model: CS5351/DeepSeek-V4-Flash
+  coding_agent: OpenCode
+  model_endpoint: https://llm.cs.cityu.edu.hk/v1
+  endpoint_compatibility: metadata_verified_generation_not_tested
+  research_debate_round_limit: 1
+  risk_debate_round_limit: 1
+  format_repair_limit: 1
+  data_vendor: yfinance
+proposed_limits:
+  status: proposed_for_checkpoint_1
+  run_token_limit: 60000
+  model_attempt_limit: 30
+  run_deadline_seconds: 900
+  input_token_upper_bound_per_call: 8000
+  output_token_reservation_per_call: 1024
+  model_transient_retry_limit: 1
+  data_source_retry_limit: 1
+  local_stop_flush_seconds: 2
+  reservation_rule: 已结算+在途最坏预留不得超额；未知用量保留预留并停止；无法证明保守上界则拒绝新调用。
+  billing_limitation: 本地停止不能保证提供方停止计费；无可靠token界限时不宣称绝对账单上限。
+states:
+  execution:
+  - queued
+  - running
+  - completed
+  - degraded
+  - failed
+  - cancelled
+  validation:
+  - not_run
+  - passed
+  - blocked
+  review:
+  - not_reviewed
+  - approved
+  - rejected
+  publication:
+  - draft
+  - released
+  release_condition: completed AND passed AND approved(current artifact_hash)；无任何交易权限。
+experiments:
+  protocol_id: VP-LIVE
+  dataset_id: DS-LIVE
+  status: protocol_draft_not_run
+  baseline_sha: 9fa1196fffbcfd9de5146d2dd2869df84ab99838
+  candidate_sha: null
+  repeats_per_task: 2
+  arms:
+  - baseline
+  - candidate
+  total_runs: 12
+  tasks:
+  - id: LIVE-01
+    ticker: AAPL
+    as_of_utc: null
+    snapshot_status: not_collected
+  - id: LIVE-02
+    ticker: MSFT
+    as_of_utc: null
+    snapshot_status: not_collected
+  - id: LIVE-03
+    ticker: NVDA
+    as_of_utc: null
+    snapshot_status: not_collected
+  controls:
+  - 同一原始数据快照与哈希
+  - 相同模型端点和部署标识
+  - 基础分析师和轮次相同
+  - 禁用跨运行记忆或每次从同一只读快照开始
+  - 两组独立运行目录和状态
+  - 不复用模型完成缓存
+  - 同一外部观测与900秒实验期限
+  - 预登记交替/随机执行顺序
+  - 失败和超时保留在分母
+  - 单人隐藏组别标注，至少间隔24小时复核；保留修改轨迹，披露有限盲法
+  - 正式实验前冻结任务、rubric和阈值
+  usable_report_definition: completed、共同外部检查通过、至少1条重要事实、事实支持率≥0.95、实用性≥4/5；实验统计不等于产品已获人工发布批准。
+  rubric:
+  - 回应指定标的与日期
+  - 清楚呈现正反观点
+  - 分离事实与推断
+  - 揭示不确定性和缺失数据
+  - 结论与引用一致
+  limitations: 小样本描述性结论，不外推收益、所有市场或其他模型。
+  solo_annotation:
+    labels:
+    - supported
+    - unsupported
+    - unverifiable
+    recheck_delay_hours: 24
+    second_human_agreement_claimed: false
+    ai_labels_are_auxiliary: true
+  discrete_usable_threshold: 每组6次；candidate至少5/6可用且成功数不少于baseline。
+retention_proposal:
+  raw_business_days: 7
+  redacted_metadata_days: 30
+  course_evidence_days_after_course: 90
+  status: pending_team_review
+  automatic_deletion_authorized: false
+  upload_run_data_by_default: false
+open_questions:
+- id: OQ-03
+  question: 课程端点生成、工具调用、usage、输出上限与本地费用边界尚待真实验证
+- id: OQ-04
+  question: 三个标的的合资格快照尚待采集
+- id: OQ-05
+  question: pilot是否在已批准限额内完成；不得根据正式结果修改质量阈值
+- id: OQ-07
+  question: 统一调用入口须证明覆盖辅助调用、回退和SDK重试
+- id: OQ-09
+  question: 非五人组会话份数按至少五次真实会话准备，课程歧义保留说明
+implementation_entry_conditions:
+- 审阅单人需求、架构、执行计划和具体测试集，记录真实批准哈希
+- 用户亲自建立Human-only规则，agent只读
+- 零费用mock确认OpenCode配置、权限和输出限制
+- 首次准备调用前建立有界本地传输；应用实现必须晚于检查点1
+- 正式评估必须晚于检查点2批准且快照/协议已冻结
+team:
+  student_count: 1
+  student_contribution_percent: 100
+  contribution_weight: 1.0
+  requirement_owner: solo_student
+  ai_is_student_member: false
+project_budget:
+  currency: USD
+  authorized_maximum: 95.0
+  top_up_authorized: false
+  personal_provider_fallback_authorized: false
+  allocations:
+    development: 55.0
+    compatibility_and_pilot: 5.0
+    formal_evaluation: 25.0
+    contingency_and_demo: 10.0
+  project_generation_spend_to_date: 0.0
+  account_balance_is_not_project_spending_authorization: true
+  credential_in_repository: false
+repository:
+  visibility: public
+  proposed_name: evidenceguard-tradingagents-cs5351
+  remote_created: false
+  private_course_materials_publication_authorized: false

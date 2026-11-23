@@ -1,0 +1,685 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cs5351:evidenceguard:requirements:1.0",
+  "title": "CS5351 EvidenceGuard Requirements Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "$comment": "本schema校验结构和局部约束；ID唯一性、跨引用、协议、已验证证据路径须在跨文件检查中验证。格式通过不是业务验收通过。",
+  "required": [
+    "schema_version",
+    "document",
+    "sources",
+    "datasets",
+    "requirements"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "version",
+        "date",
+        "status",
+        "language",
+        "project_group",
+        "baseline_repository",
+        "candidate_baseline_sha",
+        "baseline_status",
+        "team_size",
+        "approval_status",
+        "approvals",
+        "threshold_status",
+        "application_implementation_status",
+        "authoring_tool",
+        "scope_decision"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "type": "string",
+          "minLength": 1
+        },
+        "project_group": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline_repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "candidate_baseline_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "baseline_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "team_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "approval_status": {
+          "enum": [
+            "not_approved",
+            "approved"
+          ]
+        },
+        "approvals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "reviewer",
+              "timestamp",
+              "artifact_hash"
+            ],
+            "properties": {
+              "reviewer": {
+                "type": "string",
+                "minLength": 1
+              },
+              "timestamp": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifact_hash": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "threshold_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "application_implementation_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authoring_tool": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_decision": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "title",
+          "reference",
+          "note"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^SRC-[A-Z-]+$"
+          },
+          "kind": {
+            "enum": [
+              "course",
+              "user",
+              "team_proposal",
+              "upstream"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "datasets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "protocol_id",
+          "status",
+          "planned_cases",
+          "definition",
+          "fixture_path",
+          "results_path"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^DS-[A-Z]+$"
+          },
+          "protocol_id": {
+            "type": "string",
+            "pattern": "^VP-[A-Z]+$"
+          },
+          "status": {
+            "enum": [
+              "planned",
+              "frozen",
+              "executed"
+            ]
+          },
+          "planned_cases": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "definition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fixture_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "results_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/requirement"
+      }
+    }
+  },
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "operator",
+        "target",
+        "unit",
+        "measurement"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]+$"
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "lte",
+            "gte"
+          ]
+        },
+        "target": {
+          "type": [
+            "number",
+            "boolean",
+            "string"
+          ]
+        },
+        "unit": {
+          "enum": [
+            "ratio",
+            "count",
+            "pairs",
+            "seconds",
+            "milliseconds",
+            "points_out_of_5",
+            "boolean"
+          ]
+        },
+        "measurement": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "unit": {
+                "const": "boolean"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "type": "boolean"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "target": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "unit": {
+                "enum": [
+                  "ratio"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "minimum": -1,
+                "maximum": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "unit": {
+                "enum": [
+                  "count",
+                  "pairs"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "title",
+        "statement",
+        "priority",
+        "status",
+        "owner",
+        "scope",
+        "source_ids",
+        "rationale",
+        "tradeoff",
+        "related_ids",
+        "fit_criterion",
+        "verification"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(FR|QUAL|PERF|COST|SEC|INV|GOV)-[0-9]{3}$"
+        },
+        "type": {
+          "enum": [
+            "functional",
+            "quality",
+            "performance",
+            "cost",
+            "security",
+            "invariant",
+            "governance"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority": {
+          "enum": [
+            "Must",
+            "Should",
+            "Could",
+            "Won't"
+          ]
+        },
+        "status": {
+          "enum": [
+            "proposed",
+            "approved",
+            "implemented",
+            "verified",
+            "retired"
+          ]
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "enum": [
+            "increment",
+            "extended_baseline",
+            "course_obligation"
+          ]
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tradeoff": {
+          "type": "string",
+          "minLength": 1
+        },
+        "related_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "fit_criterion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "protocol_id",
+            "preconditions",
+            "metrics",
+            "positive_case",
+            "negative_case"
+          ],
+          "properties": {
+            "protocol_id": {
+              "type": "string",
+              "pattern": "^VP-[A-Z]+$"
+            },
+            "preconditions": {
+              "type": "string",
+              "minLength": 1
+            },
+            "metrics": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/metric"
+              }
+            },
+            "positive_case": {
+              "type": "string",
+              "minLength": 1
+            },
+            "negative_case": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tier",
+            "planned_test_ids",
+            "evidence_status",
+            "evidence_paths"
+          ],
+          "properties": {
+            "tier": {
+              "enum": [
+                "structural",
+                "regression",
+                "behavioral"
+              ]
+            },
+            "planned_test_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true,
+              "minItems": 2
+            },
+            "evidence_status": {
+              "enum": [
+                "not_run",
+                "passed",
+                "failed",
+                "inconclusive"
+              ]
+            },
+            "evidence_paths": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "invariant"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^INV-"
+              },
+              "priority": {
+                "const": "Must"
+              },
+              "fit_criterion": {
+                "properties": {
+                  "metrics": {
+                    "items": {
+                      "properties": {
+                        "operator": {
+                          "const": "eq"
+                        },
+                        "target": {
+                          "const": 0
+                        },
+                        "unit": {
+                          "const": "count"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "verified"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "verification": {
+                "properties": {
+                  "evidence_status": {
+                    "const": "passed"
+                  },
+                  "evidence_paths": {
+                    "minItems": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "functional"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^FR-"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "quality"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^QUAL-"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "performance"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^PERF-"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "cost"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^COST-"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "security"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^SEC-"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "governance"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^GOV-"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

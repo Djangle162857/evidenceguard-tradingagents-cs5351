@@ -1,0 +1,1144 @@
+schema_version: '1.0'
+document:
+  title: EvidenceGuard TradingAgents 需求注册表
+  version: '0.2'
+  date: '2026-11-19'
+  status: draft_for_checkpoint_1
+  language: zh-CN
+  project_group: '23'
+  baseline_repository: https://github.com/TauricResearch/TradingAgents
+  candidate_baseline_sha: 9fa1196fffbcfd9de5146d2dd2869df84ab99838
+  baseline_status: imported_pinned_unmodified
+  team_size: 1
+  approval_status: not_approved
+  approvals: []
+  threshold_status: proposed_not_measured
+  application_implementation_status: in_progress
+  authoring_tool: Codex
+  scope_decision: 单人负责全部7项FR；OpenCode+课程LiteLLM；项目最高95美元；公开GitHub；常规三次人审。具体测试与实现批准仍待记录。
+sources:
+- id: SRC-COURSE-SPEC
+  kind: course
+  title: CS5351 Project Requirement Sheet, pp. 3, 5–10
+  reference: reference/CS5351-2026-2027-project.pdf
+  note: 正式课程要求；没有指定本提案的业务数值阈值。
+- id: SRC-COURSE-INTRO
+  kind: course
+  title: Introduction, pp. 5–6, 20, 23, 25
+  reference: reference/cs5351-introduction.pdf
+  note: OpenCode/DeepSeek、TradingAgents 方向、N 人组范围、视频与工程改进。
+- id: SRC-COURSE-RUNTIME
+  kind: course
+  title: Runtime policy clarification, 2026-11-13
+  reference: https://canvas.cityu.edu.hk/courses/70607/discussion_topics/646070
+  note: 发现错误后应有明确决策和处置路径。
+- id: SRC-COURSE-DEMO
+  kind: course
+  title: Demo video and presentation clarification, 2026-11-17
+  reference: https://canvas.cityu.edu.hk/courses/70607/discussion_topics/646809
+  note: 前后对比、软件工程思想、追踪与治理。
+- id: SRC-USER
+  kind: user
+  title: 用户于2026-11-19确认的项目决策
+  reference: current_chat
+  note: 单人、7FR、课程API、最高95美元、公开仓库、三次常规人审，授权开始准备；不等同对尚未呈现测试和安全代码的批准。
+- id: SRC-PROPOSAL
+  kind: team_proposal
+  title: EvidenceGuard v0.2 单人需求提案
+  reference: docs/req/requirements-analysis.md
+  note: 业务阈值是项目设计；先批准，后实现和正式评估。
+- id: SRC-UP-README
+  kind: upstream
+  title: README.md
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/README.md
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+- id: SRC-UP-CONFIG
+  kind: upstream
+  title: tradingagents/default_config.py
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/tradingagents/default_config.py
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+- id: SRC-UP-STRUCT
+  kind: upstream
+  title: tradingagents/agents/structured.py
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/tradingagents/agents/structured.py
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+- id: SRC-UP-PM
+  kind: upstream
+  title: tradingagents/agents/managers/portfolio_manager.py
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/tradingagents/agents/managers/portfolio_manager.py
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+- id: SRC-UP-SCHEMA
+  kind: upstream
+  title: tradingagents/agents/schemas.py
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/tradingagents/agents/schemas.py
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+- id: SRC-UP-GRAPH
+  kind: upstream
+  title: tradingagents/graph/trading_graph.py
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/tradingagents/graph/trading_graph.py
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+- id: SRC-UP-PARALLEL
+  kind: upstream
+  title: tradingagents/graph/setup.py
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/tradingagents/graph/setup.py
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+- id: SRC-UP-STATS
+  kind: upstream
+  title: cli/stats_handler.py
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/cli/stats_handler.py
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+- id: SRC-UP-DATE
+  kind: upstream
+  title: tradingagents/dataflows/date_window.py
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/tradingagents/dataflows/date_window.py
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+- id: SRC-UP-NODATA
+  kind: upstream
+  title: tests/test_no_data_handling.py
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/tests/test_no_data_handling.py
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+- id: SRC-UP-CI
+  kind: upstream
+  title: .github/workflows/ci.yml
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/.github/workflows/ci.yml
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+- id: SRC-UP-LAYOUT
+  kind: upstream
+  title: pyproject.toml
+  reference: https://github.com/TauricResearch/TradingAgents/blob/9fa1196fffbcfd9de5146d2dd2869df84ab99838/pyproject.toml
+  note: 固定 SHA 的静态阅读，非执行或性能证据；详情见 baseline-review.md。
+datasets:
+- id: DS-CONTRACT
+  protocol_id: VP-CONTRACT
+  status: planned
+  planned_cases: 20
+  definition: 10 合法 + 10 非法输入；冻结 ticker、日期、预算、模型、策略与 prompt；拒绝前无外部请求。
+  fixture_path: null
+  results_path: null
+- id: DS-EVIDENCE
+  protocol_id: VP-EVIDENCE
+  status: planned
+  planned_cases: 20
+  definition: 正常、重复、不同来源同文、未来、时间未知、引用越 run、无数据及源不可达。
+  fixture_path: null
+  results_path: null
+- id: DS-DEBATE
+  protocol_id: VP-DEBATE
+  status: planned
+  planned_cases: 12
+  definition: 论点卡片、事实/推断分离、引用缺失、冲突、重复和受预算限制的停止。
+  fixture_path: null
+  results_path: null
+- id: DS-SAFETY
+  protocol_id: VP-SAFETY
+  status: planned
+  planned_cases: 110
+  definition: 100 个违规案例（5 类各 20）另加 10 合法控制；分类为交易/工具越权、引用与时点、格式与状态绕过、注入、篡改。
+  fixture_path: null
+  results_path: null
+- id: DS-BUDGET
+  protocol_id: VP-BUDGET
+  status: planned
+  planned_cases: 30
+  definition: 成功/失败/回退/重试/并发预留/未知用量/输出上限/超时；用模拟时钟和 provider stub，不消耗真实额度。
+  fixture_path: null
+  results_path: null
+- id: DS-REVIEW
+  protocol_id: VP-REVIEW
+  status: planned
+  planned_cases: 12
+  definition: 合法批准、拒绝、未审阅、内容更改、策略更改与旧批准重放。
+  fixture_path: null
+  results_path: null
+- id: DS-REPLAY
+  protocol_id: VP-REPLAY
+  status: planned
+  planned_cases: 10
+  definition: 10 个已冻结响应 fixture 各回放两次；排除 run ID、时间与耗时后比内容和状态。
+  fixture_path: null
+  results_path: null
+- id: DS-PERF
+  protocol_id: VP-PERF
+  status: planned
+  planned_cases: 100
+  definition: 5 次预热后 100 次纯本地 gate；100 个事实、25 个证据、输入 ≤1 MiB；p95 为排序第95个。
+  fixture_path: null
+  results_path: null
+- id: DS-LIVE
+  protocol_id: VP-LIVE
+  status: planned
+  planned_cases: 12
+  definition: 3固定股票任务×2重复×baseline/candidate；共同当期快照，单人隐藏组别标注并间隔复核，所有失败保留。
+  fixture_path: null
+  results_path: null
+- id: DS-GOV
+  protocol_id: VP-GOV
+  status: planned
+  planned_cases: 24
+  definition: 至少24例：GOV-003六类gate各一例通过和一例拒绝（12例），另六条治理要求各一对（12例）；分支保护与ADR等还需配置证据。
+  fixture_path: null
+  results_path: null
+requirements:
+- id: FR-001
+  type: functional
+  title: 版本化研究运行契约
+  statement: 系统必须在任何模型或行情请求前校验 ticker、UTC 分析截点、模型、数据源与预算，并为合法输入保存不可变版本的 RunManifest；首版支持 AAPL/MSFT/NVDA 与 market/news
+    分析师。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: extended_baseline
+  source_ids:
+  - SRC-USER
+  - SRC-UP-README
+  - SRC-UP-GRAPH
+  - SRC-PROPOSAL
+  rationale: 把新增策略绑定具体运行，减少不可比较实验和配置漂移。
+  tradeoff: 首版仅三个美股标的；不将上游已有的 CLI 和 ticker 选择视为原创。
+  related_ids:
+  - FR-002
+  - FR-005
+  fit_criterion:
+    protocol_id: VP-CONTRACT
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: contract_assertion_pass_rate
+      operator: gte
+      target: 1.0
+      unit: ratio
+      measurement: DS-CONTRACT 中符合预期的输入、冻结与状态断言数 / 全部预定断言数。
+    - name: external_calls_on_invalid_input
+      operator: eq
+      target: 0
+      unit: count
+      measurement: 10 个非法输入在拒绝前启动的模型与数据请求总数。
+    positive_case: 合法 AAPL 与非未来日期生成包含模型/prompt/policy/预算/数据版本且不含密钥的 manifest。
+    negative_case: ticker 含路径穿越、未来日期、未知模型或负预算时，拒绝且请求数为0。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-FR-001-POS
+    - AT-FR-001-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: FR-002
+  type: functional
+  title: 证据台账与时点资格
+  statement: 系统必须为市场和新闻数据建立 run 隔离的 Evidence 台账，记录来源、抓取时间、公开可用时间、片段、哈希及资格；同来源同时间同内容可去重，不得用抓取时间替代未知公开时间。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: extended_baseline
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-UP-DATE
+  - SRC-UP-NODATA
+  - SRC-PROPOSAL
+  rationale: 为引用、语义评估和回放提供可核对证据。
+  tradeoff: 时间资格未知时允许降级，不能用扩大覆盖牺牲时点完整性。
+  related_ids:
+  - FR-001
+  - INV-003
+  fit_criterion:
+    protocol_id: VP-EVIDENCE
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: evidence_assertion_pass_rate
+      operator: gte
+      target: 1.0
+      unit: ratio
+      measurement: DS-EVIDENCE 中字段、唯一性、去重、引用及时间资格断言通过数 / 总断言数。
+    positive_case: 合格新闻保留 published_at 与片段；重复同源材料合并，独立来源指针保留。
+    negative_case: 未来或发布日期未知的材料被隔离；源不可达不能记录为真实无新闻。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-FR-002-POS
+    - AT-FR-002-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: FR-003
+  type: functional
+  title: 带引用的结构化论点与冲突记录
+  statement: AI 研究流程必须以 Claim 卡片表达重要事实、推断、引用和不确定性，明确多空冲突及结论依据；默认研究/风险辩论各最多1轮，格式修正至多1次且经过预算预留。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: extended_baseline
+  source_ids:
+  - SRC-UP-SCHEMA
+  - SRC-UP-PARALLEL
+  - SRC-COURSE-INTRO
+  - SRC-PROPOSAL
+  rationale: 让推理材料可检查，减少无效重复；实际质量与成本另行实验。
+  tradeoff: 减少轮次不能替代质量评估；保留上游角色职责，不承诺辩论必然节省token。
+  related_ids:
+  - FR-002
+  - FR-004
+  - FR-005
+  fit_criterion:
+    protocol_id: VP-DEBATE
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: debate_assertion_pass_rate
+      operator: gte
+      target: 1.0
+      unit: ratio
+      measurement: DS-DEBATE 中事实/推断分离、引用要求、冲突与停止状态断言通过数 / 全部断言数。
+    - name: uncited_facts_in_publishable_artifact
+      operator: eq
+      target: 0
+      unit: count
+      measurement: 可进入发布检查的重要事实卡片中，合格引用为空的数量。
+    positive_case: 多空卡片引用不同证据，结论说明如何处理冲突，不复制无关历史。
+    negative_case: 缺引用、格式错误或重复卡片在有限修正后仍无效，输出 blocked/degraded 草稿。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-FR-003-POS
+    - AT-FR-003-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: FR-004
+  type: functional
+  title: 独立最终输出门禁
+  statement: 系统必须用独立于 LLM 的确定性代码检查最终 Schema、引用身份、时间资格、数值类型与状态条件；任何结构化或自由文本回退结果都经过同一门禁，检查失败或验证器故障时保持 draft/blocked。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-UP-STRUCT
+  - SRC-UP-PM
+  - SRC-PROPOSAL
+  rationale: 构成课程要求的确定性安全边界。
+  tradeoff: Schema和引用通过不等于语义真实；QUAL-001还需单独验证。
+  related_ids:
+  - FR-002
+  - FR-003
+  - INV-002
+  fit_criterion:
+    protocol_id: VP-SAFETY
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: invalid_artifact_release_count
+      operator: eq
+      target: 0
+      unit: count
+      measurement: 100 个违规安全案例中被标记 released 的产物数。
+    - name: valid_control_awaiting_review_rate
+      operator: gte
+      target: 1.0
+      unit: ratio
+      measurement: 10 个合法控制案例中进入 completed+passed+not_reviewed+draft 的比例。
+    positive_case: 合格结构化产物得到 passed 和待审阅状态，保存每项 gate 结果。
+    negative_case: 伪造引用、未来证据、解析失败、free-text 回退或验证器异常均不能绕过检查。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-FR-004-POS
+    - AT-FR-004-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: FR-005
+  type: functional
+  title: 全局预算与失败处置
+  statement: 所有模型尝试必须经统一、原子化的运行账本预留和结算，含失败、重试、回退、反思和模型评估；默认60,000累计token、30次模型尝试、900秒期限；模型与数据源瞬时失败各最多重试1次，禁止未观测的SDK重试。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: extended_baseline
+  source_ids:
+  - SRC-UP-CONFIG
+  - SRC-UP-STATS
+  - SRC-COURSE-RUNTIME
+  - SRC-PROPOSAL
+  rationale: 已有单调用上限和统计不足以证明整次运行资源受控。
+  tradeoff: 终止可能增加降级；取消本地请求不等于提供方停止计费。
+  related_ids:
+  - FR-001
+  - INV-004
+  fit_criterion:
+    protocol_id: VP-BUDGET
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: budget_scenario_pass_rate
+      operator: gte
+      target: 1.0
+      unit: ratio
+      measurement: 30 个预算案例中记账、并发、未知用量和终止行为全符合预期的比例。
+    - name: calls_started_after_stop
+      operator: eq
+      target: 0
+      unit: count
+      measurement: 在模拟期限、预算或安全停止事件后的新外部请求数。
+    - name: local_stop_event_flush_max
+      operator: lte
+      target: 2
+      unit: seconds
+      measurement: provider stub 和模拟时钟下，停止判定至终止事件落盘的最大本地耗时。
+    positive_case: 并发前共同预留，正常返回按 provider 定义结算，所有回退可追踪。
+    negative_case: 剩余不足、用量未知、429或超时后停止新请求，记录明确原因而不伪装为 Hold。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-FR-005-POS
+    - AT-FR-005-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: FR-006
+  type: functional
+  title: 完整成对评估包
+  statement: 系统必须导出 baseline/candidate 的逐任务逐重复评估记录，包含版本、相同输入哈希、全部调用用量、耗时、质量、失败与局限；保留所有6对运行，关联新增 gate 和证据摘要。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: extended_baseline
+  source_ids:
+  - SRC-COURSE-DEMO
+  - SRC-UP-README
+  - SRC-PROPOSAL
+  rationale: 使工程改进有前后对比证据，支持10分钟演示。
+  tradeoff: 复用上游报告导出，新增的是证据、门禁和实验契约而非导出本身。
+  related_ids:
+  - FR-004
+  - FR-005
+  - COST-001
+  fit_criterion:
+    protocol_id: VP-LIVE
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: evaluation_pair_record_count
+      operator: eq
+      target: 6
+      unit: pairs
+      measurement: 3固定股票任务×2重复，每对含两组状态；失败和超时仍有记录。
+    - name: evaluation_metadata_complete_rate
+      operator: gte
+      target: 1.0
+      unit: ratio
+      measurement: 12条记录的版本、输入、状态、失败原因和已知/未知用量标记完整比例。
+    positive_case: 两组同源快照和模型，分别导出结果与指标，并能定位每个失败。
+    negative_case: 缺少baseline、删掉失败、改变数据却使用相同实验名，评估包判无效。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-FR-006-POS
+    - AT-FR-006-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: FR-007
+  type: functional
+  title: 绑定产物版本的人工审阅发布
+  statement: 系统必须记录人工审阅者、时间、理由、run、修订和内容哈希；只有completed+passed且当前哈希获得人工批准的报告可released，内容、证据或策略改变应使旧批准失效。 artifact_hash覆盖规范化业务配置、证据、事实/推断、正文与验证策略，排除自身、审阅事件、发布状态及耗时。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 人工审阅是产品发布边界，与开发阶段的计划批准区分。
+  tradeoff: 人工审阅增加步骤，但不授予任何真实交易权限；机器不可伪造人工批准。
+  related_ids:
+  - FR-004
+  - INV-002
+  - INV-005
+  fit_criterion:
+    protocol_id: VP-REVIEW
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: unauthorized_review_release_count
+      operator: eq
+      target: 0
+      unit: count
+      measurement: DS-REVIEW 中无当前有效批准却变为released的案例数。
+    - name: valid_review_path_pass_rate
+      operator: gte
+      target: 1.0
+      unit: ratio
+      measurement: 预定合法人工批准案例的状态与审计断言通过比例。
+    positive_case: 审阅者核对当前hash并批准，应用发布相同内容，保留批准记录。
+    negative_case: 重用旧hash审批、未审、拒绝或审后改文，保持draft并提示重新审阅。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-FR-007-POS
+    - AT-FR-007-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: QUAL-001
+  type: quality
+  title: 事实的证据语义支持
+  statement: 候选方案必须对重要事实逐条提供支持证据；DS-LIVE由唯一学生隐藏组别标注并至少间隔24小时复核，保留修改轨迹；不报告第二位人类一致率，空报告不得满分。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 防止把引用可解析误当作真实与可靠。
+  tradeoff: 采用可核对的人类标签汇总；不使用同一模型自评分作为唯一真值。
+  related_ids:
+  - FR-002
+  - FR-004
+  - QUAL-002
+  fit_criterion:
+    protocol_id: VP-LIVE
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: supported_material_claim_ratio
+      operator: gte
+      target: 0.95
+      unit: ratio
+      measurement: 候选完成报告的supported重要事实 / 全部重要事实；unsupported和unverifiable都不算支持。
+    - name: material_claim_annotation_coverage
+      operator: eq
+      target: 1.0
+      unit: ratio
+      measurement: 全部重要事实均有supported/unsupported/unverifiable标签、理由和证据定位。
+    - name: solo_recheck_coverage
+      operator: eq
+      target: 1.0
+      unit: ratio
+      measurement: 全部已标注重要事实有至少间隔24小时的同人复核记录；AI标签不能替代。
+    positive_case: 重要数字、事件与推荐理由中的事实均进入标注，引用确能支持所述范围。
+    negative_case: 引用存在但不支持、无法验证或选择性漏标重要事实，计不支持或协议无效。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-QUAL-001-POS
+    - AT-QUAL-001-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: QUAL-002
+  type: quality
+  title: 可用性与实用性保护
+  statement: 候选6次评估的可用率必须至少80%且不低于baseline可用率减0.05，可用报告平均实用性至少4/5；至少一条重要事实、支持率达标且完成外部共同检查的报告才可用。 六次中至少5次可用，且成功数不少于baseline。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 防止用减少有用输出取得表面成本改善。
+  tradeoff: 每组6次，仅支持冻结样本的描述性结论；不外推收益或宣称统计显著。
+  related_ids:
+  - FR-006
+  - QUAL-001
+  - COST-001
+  fit_criterion:
+    protocol_id: VP-LIVE
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: candidate_usable_rate
+      operator: gte
+      target: 0.8
+      unit: ratio
+      measurement: 符合冻结可用定义的candidate报告数 / 6；失败、超时和空报告不删除。
+    - name: candidate_minus_baseline_usable_rate
+      operator: gte
+      target: -0.05
+      unit: ratio
+      measurement: candidate可用率减baseline可用率；两组同分母6。
+    - name: usable_report_mean_rubric_score
+      operator: gte
+      target: 4.0
+      unit: points_out_of_5
+      measurement: 可用报告按5项各1分rubric的平均分；无可用报告则失败。
+    positive_case: 报告回应标的日期、有正反观点、分离事实推断、说明不确定性、结论与引用一致。
+    negative_case: 提前拒绝全部任务虽节省token，仍因可用率不足失败；删除超时样本使协议无效。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-QUAL-002-POS
+    - AT-QUAL-002-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: QUAL-003
+  type: quality
+  title: 离线回放确定性
+  statement: 对冻结数据、响应、策略和版本的10个fixture各回放两次，移除运行标识和耗时等非语义字段后，报告正文、引用、决策与门禁状态必须逐字节一致。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 隔离外部非确定性，支持调试与回归。
+  tradeoff: 不要求真实LLM在重复请求中输出相同。
+  related_ids:
+  - FR-006
+  - INV-005
+  fit_criterion:
+    protocol_id: VP-REPLAY
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: normalized_replay_match_ratio
+      operator: eq
+      target: 1.0
+      unit: ratio
+      measurement: 规范化后两次结果相等的fixture数 / 10。
+    positive_case: 相同记录的模型响应和证据回放得到相同正文及安全判定。
+    negative_case: 跨run证据混入或未固定策略导致结果不同，不能仅忽略正文差异让比较通过。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-QUAL-003-POS
+    - AT-QUAL-003-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: PERF-001
+  type: performance
+  title: 本地门禁开销
+  statement: 在记录硬件与Python版本、固定100事实/25证据/总输入≤1MiB的本地数据上，5次预热后测量100次独立gate检查，nearest-rank p95不得超过250ms。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 避免新增治理产生明显本地处理瓶颈。
+  tradeoff: 250ms是待pilot的提案；不是现有实测值或端到端速度承诺。
+  related_ids:
+  - FR-004
+  fit_criterion:
+    protocol_id: VP-PERF
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: local_gate_latency_p95
+      operator: lte
+      target: 250
+      unit: milliseconds
+      measurement: 100个本地gate耗时排序第95个；不含文件采集、模型和网络。
+    positive_case: 规范化固定大小产物，在同机报告p50/p95/max及环境。
+    negative_case: 把公网LLM等待混入或更换更小输入，不能作为该指标证据。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-PERF-001-POS
+    - AT-PERF-001-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: COST-001
+  type: cost
+  title: 带质量保护的token改善
+  statement: 在全部6对同任务实验中，candidate的总input+output token必须不超过baseline的80%，并同时满足QUAL-001与QUAL-002；计入失败、回退、重试、反思和任何模型评估调用。
+  priority: Should
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-INTRO
+  - SRC-UP-CONFIG
+  - SRC-UP-STATS
+  - SRC-PROPOSAL
+  rationale: 贴合课程减少应用token的工程改进方向。
+  tradeoff: 该需求为Should；安全、证据和Must优先，未达标如实报告。
+  related_ids:
+  - FR-005
+  - FR-006
+  - QUAL-001
+  - QUAL-002
+  fit_criterion:
+    protocol_id: VP-LIVE
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: candidate_to_baseline_total_token_ratio
+      operator: lte
+      target: 0.8
+      unit: ratio
+      measurement: candidate全部6次总token / baseline全部6次总token；两组字段完整且分母>0，否则不可判定。
+    - name: quality_guard_requirements_pass
+      operator: eq
+      target: true
+      unit: boolean
+      measurement: QUAL-001和QUAL-002所有阈值均通过才可声明成本达标。
+    positive_case: 相同数据和模型，以减少无效重复实现节省，输出质量与可用性符合保护条件。
+    negative_case: 隐去失败用量、只算最终回答、以0替代未知或大幅增拒绝率，不能判为通过。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-COST-001-POS
+    - AT-COST-001-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: SEC-001
+  type: security
+  title: 密钥隔离与脱敏
+  statement: 系统只能从环境加载凭据，认证信息只可发往预配置且获授权的模型端点；日志、提示正文、报告、数据源请求和交付文件不得包含密钥内容。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-INTRO
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 落实课程禁止提交API Key的要求并保护运行凭据。
+  tradeoff: 无需真实密钥即可做负面测试；不将全量原始环境写入排错日志。
+  related_ids:
+  - INV-006
+  fit_criterion:
+    protocol_id: VP-SAFETY
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: secret_canary_leak_count
+      operator: eq
+      target: 0
+      unit: count
+      measurement: 在stub注入虚拟secret canary后，扫描日志、提示正文、导出、非授权网络目标与交付包的匹配数。
+    positive_case: 模型认证头仅到预设模型端点，导出使用脱敏配置，日志不记录凭据。
+    negative_case: 异常栈、恶意新闻或导出原始环境试图带出canary，拦截且匹配数为0。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-SEC-001-POS
+    - AT-SEC-001-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: INV-001
+  type: invariant
+  title: 禁止真实交易权限
+  statement: 应用任何路径都不得具备真实下单、转账或券商账户操作权限；研究报告的人工批准不会改变该边界。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 以确定性代码保持零容忍边界，故障时执行明确拒绝/停止/隔离。
+  tradeoff: 安全边界优先于完成率、运行速度和token节省。
+  related_ids:
+  - FR-007
+  fit_criterion:
+    protocol_id: VP-SAFETY
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: real_transaction_side_effect_count
+      operator: eq
+      target: 0
+      unit: count
+      measurement: 100个违规安全案例及导入/工具清单审计中出现的真实交易请求或资金副作用数。
+    positive_case: 研究报告可以发布，但工具清单与网络目标均没有交易执行能力。
+    negative_case: 要求下单或在新闻中注入交易指令，确定性拒绝且产生安全事件。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-INV-001-POS
+    - AT-INV-001-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: INV-002
+  type: invariant
+  title: 发布必须同时通过检查与人审
+  statement: 仅completed+passed且当前artifact_hash获人工批准的产物可released；验证器故障、自由文本回退、未审或拒绝都不能被视为放行。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-UP-STRUCT
+  - SRC-PROPOSAL
+  rationale: 以确定性代码保持零容忍边界，故障时执行明确拒绝/停止/隔离。
+  tradeoff: 安全边界优先于完成率、运行速度和token节省。
+  related_ids:
+  - FR-004
+  - FR-007
+  fit_criterion:
+    protocol_id: VP-REVIEW
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: release_condition_violation_count
+      operator: eq
+      target: 0
+      unit: count
+      measurement: DS-SAFETY与DS-REVIEW中released状态不满足全部前置条件的数量。
+    positive_case: 合格且有当前hash批准的报告发布。
+    negative_case: 篡改状态、跳过validator或使用旧批准，保持draft/blocked并记录原因。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-INV-002-POS
+    - AT-INV-002-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: INV-003
+  type: invariant
+  title: 证据身份与时间资格不可伪造
+  statement: 可发布的重要事实只能引用本run且published_at/available_at不晚于UTC分析截点的合格证据；时间未知不能用retrieved_at伪补。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-UP-DATE
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 以确定性代码保持零容忍边界，故障时执行明确拒绝/停止/隔离。
+  tradeoff: 安全边界优先于完成率、运行速度和token节省。
+  related_ids:
+  - FR-002
+  - FR-004
+  fit_criterion:
+    protocol_id: VP-EVIDENCE
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: ineligible_evidence_in_released_claim_count
+      operator: eq
+      target: 0
+      unit: count
+      measurement: 发布事实中跨run、未来、未知时间或不存在的证据引用数量。
+    positive_case: 同run已公开的有效证据可进入门禁。
+    negative_case: 未来或未知时间证据被隔离，受影响结论不得released。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-INV-003-POS
+    - AT-INV-003-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: INV-004
+  type: invariant
+  title: 全局额度和停止权威
+  statement: 原子预留token加已结算token不得超过冻结额度，模型尝试数不得超过上限；输入/输出上界不可保守确定或用量未知时停止后续调用并保留最坏预留。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-UP-PARALLEL
+  - SRC-UP-CONFIG
+  - SRC-PROPOSAL
+  rationale: 以确定性代码保持零容忍边界，故障时执行明确拒绝/停止/隔离。
+  tradeoff: 安全边界优先于完成率、运行速度和token节省。
+  related_ids:
+  - FR-005
+  fit_criterion:
+    protocol_id: VP-BUDGET
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: budget_or_stop_violation_count
+      operator: eq
+      target: 0
+      unit: count
+      measurement: DS-BUDGET中出现超额预留、漏算调用、并发竞争超限或停止后新增请求的数量。
+    positive_case: 最后一份剩余额度只被一个并发请求占用，另一请求拒绝。
+    negative_case: SDK隐式重试、缺失usage或忽略输出上限，停止并标记usage_unknown；不宣称绝对账单上限。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-INV-004-POS
+    - AT-INV-004-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: INV-005
+  type: invariant
+  title: 修订与批准身份不可覆盖
+  statement: 同一run修订的证据、配置、报告与审阅记录不得静默覆盖；内容或策略改变生成新修订，旧批准不得应用于新hash。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 以确定性代码保持零容忍边界，故障时执行明确拒绝/停止/隔离。
+  tradeoff: 安全边界优先于完成率、运行速度和token节省。
+  related_ids:
+  - FR-007
+  - QUAL-003
+  fit_criterion:
+    protocol_id: VP-REVIEW
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: immutable_revision_or_approval_violation_count
+      operator: eq
+      target: 0
+      unit: count
+      measurement: DS-REVIEW与DS-REPLAY中静默覆写或审批哈希不匹配的次数。
+    positive_case: 相同批准对应相同hash，变更后生成新的待审阅版本。
+    negative_case: 把新内容写到旧修订或重放旧审批，拒绝发布并保留原记录。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-INV-005-POS
+    - AT-INV-005-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: INV-006
+  type: invariant
+  title: 不可信文本不能扩大权限
+  statement: 新闻、模型输出及用户输入不能修改工具/文件/数据源/预算白名单或调用任意命令；外部副作用只能通过预配置确定性策略。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: increment
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 以确定性代码保持零容忍边界，故障时执行明确拒绝/停止/隔离。
+  tradeoff: 安全边界优先于完成率、运行速度和token节省。
+  related_ids:
+  - FR-002
+  - SEC-001
+  fit_criterion:
+    protocol_id: VP-SAFETY
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: unauthorized_side_effect_count
+      operator: eq
+      target: 0
+      unit: count
+      measurement: DS-SAFETY中因不可信输入产生的越权工具、命令、越界路径或外部目标访问次数。
+    positive_case: 正常新闻作为数据处理，仅允许预先配置的只读数据和模型调用。
+    negative_case: 提示注入要求读取密钥、改预算、执行shell或遍历路径时拒绝副作用。
+  verification:
+    tier: behavioral
+    planned_test_ids:
+    - AT-INV-006-POS
+    - AT-INV-006-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: GOV-001
+  type: governance
+  title: 需求注册表与追踪完整性
+  statement: 每项需求必须包含ID、类型、来源、MoSCoW、验收、正负案例；需求变化同步组件/测试/监控追踪，不得以计划ID冒充已执行证据。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: course_obligation
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 落实课程对可审计软件工程过程及真实交付的要求。
+  tradeoff: 治理记录必须与真实过程同步；本次不伪造未来实现、测试或人工批准。
+  related_ids:
+  - FR-001
+  fit_criterion:
+    protocol_id: VP-GOV
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: requirement_and_trace_coverage
+      operator: eq
+      target: 1.0
+      unit: ratio
+      measurement: 全部非退休需求满足结构/有效引用/后续组件测试监控映射的比例；草案仅验证已有字段，后续追踪未完成不能标为verified。
+    positive_case: 完整需求和有效来源通过Schema；实现后可由每项需求定位证据。
+    negative_case: 重复ID、未知来源、缺fit criterion或把不存在的测试记为通过，校验失败。
+  verification:
+    tier: structural
+    planned_test_ids:
+    - AT-GOV-001-POS
+    - AT-GOV-001-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: GOV-002
+  type: governance
+  title: 实现前的计划和测试批准
+  statement: 每轮代码实现前必须有人工对执行计划和变更测试的批准；记录审阅者、真实事件时间及计划/测试哈希，并证明早于首个实现提交。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: course_obligation
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-COURSE-INTRO
+  rationale: 落实课程对可审计软件工程过程及真实交付的要求。
+  tradeoff: 治理记录必须与真实过程同步；本次不伪造未来实现、测试或人工批准。
+  related_ids:
+  - GOV-003
+  fit_criterion:
+    protocol_id: VP-GOV
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: valid_preimplementation_approval_coverage
+      operator: eq
+      target: 1.0
+      unit: ratio
+      measurement: 需批准的代码变更中有真实人工记录且审批哈希、时序与首个实现提交一致的比例。
+    positive_case: 计划和测试审批先发生，后续代码变更按批准范围实现。
+    negative_case: 实现后补填时间、机器自批或测试变更后沿用旧批准，不能合并。
+  verification:
+    tier: structural
+    planned_test_ids:
+    - AT-GOV-002-POS
+    - AT-GOV-002-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: GOV-003
+  type: governance
+  title: 六类CI阻断与分支保护
+  statement: 真实GitHub仓库必须执行测试预批准、静态分析、需求Schema、语义评估、回归和AI-use log六类门禁；安全关键变更需ADR与人工审阅，保护分支要求所有必需检查通过。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: course_obligation
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-UP-CI
+  rationale: 落实课程对可审计软件工程过程及真实交付的要求。
+  tradeoff: 治理记录必须与真实过程同步；本次不伪造未来实现、测试或人工批准。
+  related_ids:
+  - GOV-002
+  - GOV-004
+  fit_criterion:
+    protocol_id: VP-GOV
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: required_gate_and_protection_evidence_coverage
+      operator: eq
+      target: 1.0
+      unit: ratio
+      measurement: 六类gate各有失败阻断和修复通过记录，加分支保护、ADR和人审规则实际配置的完成比例；本地workflow存在不算生效证据。
+    positive_case: 真实PR通过必需检查才合并，安全路径有人审与ADR。
+    negative_case: 各gate独立故障均阻断，缺日志/审批/语义评估时不得合并。
+  verification:
+    tier: structural
+    planned_test_ids:
+    - AT-GOV-003-POS
+    - AT-GOV-003-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: GOV-004
+  type: governance
+  title: 真实AI使用与干预记录
+  statement: 实现使用OpenCode和课程兼容DeepSeek模型，完整保留原始会话、人工干预理由和及时AI-use log；本次Codex需求文档工作须明确区分，不伪造OpenCode会话或未知token。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: course_obligation
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-COURSE-INTRO
+  rationale: 落实课程对可审计软件工程过程及真实交付的要求。
+  tradeoff: 治理记录必须与真实过程同步；本次不伪造未来实现、测试或人工批准。
+  related_ids:
+  - GOV-003
+  fit_criterion:
+    protocol_id: VP-GOV
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: ai_change_log_and_transcript_coverage
+      operator: eq
+      target: 1.0
+      unit: ratio
+      measurement: 代码/prompt变更具有对应真实会话、人工干预与日志更新的比例；未知信息显式标为unknown，不编造。
+    positive_case: 真实会话可核对计划批准、生成、验证和修订，文档作者工具如实记录。
+    negative_case: 代码变更无日志、摘要冒充raw transcript或编造批准/用量，门禁拒绝。
+  verification:
+    tier: structural
+    planned_test_ids:
+    - AT-GOV-004-POS
+    - AT-GOV-004-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: GOV-005
+  type: governance
+  title: 上下文与最小权限治理
+  statement: 应用和coding agent权限分别定义，默认拒绝再白名单；每轮AI上下文记录分层/组装/预算，压缩后重注入关键约束，不跨run污染状态。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: course_obligation
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-PROPOSAL
+  rationale: 落实课程对可审计软件工程过程及真实交付的要求。
+  tradeoff: 治理记录必须与真实过程同步；本次不伪造未来实现、测试或人工批准。
+  related_ids:
+  - INV-004
+  - INV-006
+  fit_criterion:
+    protocol_id: VP-GOV
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: context_and_permission_scenario_pass_rate
+      operator: eq
+      target: 1.0
+      unit: ratio
+      measurement: 压缩、重启、跨run与权限负面案例中关键约束保留且无越权/串用的预定断言通过比例。
+    positive_case: 压缩后关键约束仍在，业务证据不能修改agent权限。
+    negative_case: 清除关键约束或把其他run状态注入，拒绝并保持隔离。
+  verification:
+    tier: structural
+    planned_test_ids:
+    - AT-GOV-005-POS
+    - AT-GOV-005-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: GOV-006
+  type: governance
+  title: 审阅、缺陷、技术债与过程记录
+  statement: 每个PR必须有规格/架构/代码/测试审阅和结论，重大bug有症状/复现/分类/根因/修复/不变量缺口，持续更新技术债、变更与实际成员贡献。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: course_obligation
+  source_ids:
+  - SRC-COURSE-SPEC
+  rationale: 落实课程对可审计软件工程过程及真实交付的要求。
+  tradeoff: 治理记录必须与真实过程同步；本次不伪造未来实现、测试或人工批准。
+  related_ids:
+  - GOV-001
+  fit_criterion:
+    protocol_id: VP-GOV
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: required_process_record_coverage
+      operator: eq
+      target: 1.0
+      unit: ratio
+      measurement: 应有记录的PR、重大缺陷与变更中按课程字段完整且链接真实证据的比例。
+    positive_case: 审阅给出APPROVE/CHANGES REQUIRED/REJECT，bug和贡献可追溯。
+    negative_case: 只有总结口号、缺复现或无产出却填满贡献，不能作为完成证据。
+  verification:
+    tier: structural
+    planned_test_ids:
+    - AT-GOV-006-POS
+    - AT-GOV-006-NEG
+    evidence_status: not_run
+    evidence_paths: []
+- id: GOV-007
+  type: governance
+  title: 完整可复现交付
+  statement: 提交须包含课程D1-D9对应制品、真实GitHub与运行说明、保留上游归属许可；报告/ZIP/视频满足课程要求，打包前去密钥，视频与ZIP分开。
+  priority: Must
+  status: proposed
+  owner: solo_student
+  scope: course_obligation
+  source_ids:
+  - SRC-COURSE-SPEC
+  - SRC-COURSE-INTRO
+  - SRC-COURSE-DEMO
+  rationale: 落实课程对可审计软件工程过程及真实交付的要求。
+  tradeoff: 治理记录必须与真实过程同步；本次不伪造未来实现、测试或人工批准。
+  related_ids:
+  - GOV-004
+  - GOV-006
+  - SEC-001
+  fit_criterion:
+    protocol_id: VP-GOV
+    preconditions: 阈值、基线、数据集与协议先经人工评审并冻结；下列测试尚未实施。
+    metrics:
+    - name: submission_checklist_pass_rate
+      operator: eq
+      target: 1.0
+      unit: ratio
+      measurement: 最终冻结的课程交付清单各项经真实文件/运行/仓库链接验证通过的比例；当前需求包不等同全部提交。
+    positive_case: 新环境按README复现offline/live命令与适当凭据配置，完整ZIP无视频和密钥。
+    negative_case: 缺代码/会话/GitHub证据、含密钥、视频混入ZIP或宣称草案已全部交付，清单失败。
+  verification:
+    tier: structural
+    planned_test_ids:
+    - AT-GOV-007-POS
+    - AT-GOV-007-NEG
+    evidence_status: not_run
+    evidence_paths: []

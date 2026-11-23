@@ -1,0 +1,32 @@
+# Private credentials, raw course evidence and operational state
+.private/
+.runtime/
+.env
+.env.*
+!.env.example
+reference/
+CS5351-final-project-requirements.zh.md
+*.key
+*.pem
+*api-key*
+
+# Reproducible environments, caches and generated delivery artifacts
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+build/
+dist/
+results/
+dataflows/data_cache/
+*.zip
+*.mp4
+.DS_Store
+
+# Local human review and unpublished course presentation material
+/.opencode/
+/docs/delivery/defense-*/

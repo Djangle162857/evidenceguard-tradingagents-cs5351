@@ -1,0 +1,411 @@
+schema_version: '1.0'
+entries:
+- id: AI-DOC-20261119-001
+  date: '2026-11-19'
+  activity: requirements_analysis_draft
+  tool: Codex
+  model_id: null
+  model_id_status: not_exposed_in_authored_record
+  human_interventions:
+  - action: selected_project_direction
+    value: TradingAgents enhancement
+  generated_artifacts:
+  - docs/req/requirements-analysis.md
+  - docs/req/product.yaml
+  - docs/req/requirements.yaml
+  - docs/req/req-schema.json
+  - docs/req/baseline-review.md
+  - docs/req/validation-report.md
+  - docs/ai-use-log.yaml
+  read_only_upstream_inspection:
+    repository: https://github.com/TauricResearch/TradingAgents
+    sha: 9fa1196fffbcfd9de5146d2dd2869df84ab99838
+    method: shallow clone and static source reading
+    application_executed: false
+  application_source_modified: false
+  upstream_tests_executed: false
+  paid_model_api_calls: 0
+  application_acceptance_tests_status: not_implemented_not_run
+  document_validation: YAML/JSON Schema and cross-reference checks; details in validation-report.md
+  token_usage: null
+  token_usage_status: not_recorded
+  approvals: []
+  course_tool_limitation: 此记录是Codex文档辅助工作，不能冒充OpenCode+DeepSeek的实现会话。
+- id: AI-PREP-20261119-002
+  date: '2026-11-19'
+  activity: solo_execution_preparation
+  tool: Codex
+  confirmed_decisions:
+  - one_student
+  - all_7_FR
+  - course_LiteLLM
+  - project_budget_USD_95
+  - public_repository
+  - three_normal_human_checkpoints
+  application_source_modified: false
+  paid_model_api_calls: 0
+  metadata_requests_only: true
+  human_implementation_approval: pending_concrete_checkpoint_1_bundle
+  credential_value_logged: false
+  token_usage: null
+  token_usage_status: not_recorded
+  approvals: []
+  budget_revision:
+    instruction: 请将预算改成最高95美元.
+    authorized_maximum_usd: 95.0
+    previous_maximum_usd: 50.0
+- id: AI-IMPL-20261119-003
+  date: '2026-11-19'
+  activity: incremental_boundary_implementation
+  tool: local OpenCode
+  model_id: CS5351/DeepSeek-V4-Flash
+  orchestrator: Codex
+  source_method: verbatim generated Python from authentic JSON events; wrapper removal only
+  generated_artifacts:
+  - src/evidenceguard/contracts.py
+  - src/evidenceguard/evidence.py
+  - src/evidenceguard/claims.py
+  - src/evidenceguard/gate.py
+  - test/offline/test_contracts_preapproval.py
+  - test/offline/test_evidence_claims.py
+  human_exact_test_source_preapproval: not_recorded
+  implementation_review: pending
+  validation:
+    contracts_and_evidence_claims: 62 passed
+    upstream_offline: 1412 passed; 1 optional AWS skip; 1 integration deselected; 100 subtests passed
+    first_upstream_attempt: 45 environment failures; retained; dependency and loopback environment corrected
+  corrections:
+  - OpenCode fixed evidence source URI missing return; two failing tests passed after fix
+  - OpenCode fixed test imports and None reply fixture
+  - OpenCode corrected an acyclic test fixture to contain the intended cycle; assertions retained
+  development_cost_accounting: conservative full-input-price upper bound; raw request ledger retained privately
+  credential_value_logged: false
+- id: AI-DOC-20261119-AUTONOMY-001
+  date: '2026-11-19'
+  activity: autonomous_execution_workflow_documentation
+  tool: Codex
+  generated_artifacts:
+  - AGENTS.md
+  - docs/ai-use-log.yaml
+  change_classification: orchestration_documentation_only
+  workflow_changes:
+  - execute_authorized_work_without_routine_confirmation
+  - resolve_routine_choices_within_existing_permissions
+  - prepare_concrete_review_artifacts_before_reporting_blockers
+  - consolidate_human_actions_and_continue_independent_work
+  application_source_modified: false
+  test_source_modified: false
+  application_prompts_modified: false
+  human_only_file_modified: false
+  safety_and_approval_boundaries_changed: false
+  opencode_requests: 0
+  course_model_api_calls: 0
+  application_tests_status: not_run_documentation_only
+  token_usage: null
+  token_usage_status: not_recorded
+  approvals: []
+- id: AI-IMPL-20261119-004
+  date: '2026-11-19'
+  activity: incremental_boundary_graph_and_evaluation
+  tool: local OpenCode
+  model_id: CS5351/DeepSeek-V4-Flash
+  orchestrator: Codex
+  application_source_modified: true
+  test_source_modified: true
+  human_exact_test_source_preapproval: not_recorded
+  human_implementation_review: pending
+  approvals: []
+  development_stopped: false
+  input_tokens: 371998
+  output_tokens: 182423
+  cost_method: Full input price, cached tokens not discounted; each actual HTTP request reserved/settled including
+    retries and auxiliary calls. OpenCode displayed custom-provider cost is not actual expense.
+  credential_value_logged: false
+  validation_evidence: docs/progress.md and checkpoint source hashes; failures and repairs in bug diary
+  observed_generation_failures:
+  - invented package/import/API names and response fields
+  - truncated and repeated output blocks; rejected incomplete artifacts
+  - textual attempted tool calls while source-generation tools were disabled
+  - invalid patch anchors and incorrect fixture types/clock/hash assumptions
+  source_method: Verbatim complete Python capture, wrapper removal only; rejected outputs preserved. Corrections
+    through generated scripts; mechanical formatting directed by OpenCode.
+- id: AI-DOC-20261119-RULES-001
+  date: '2026-11-19'
+  activity: delegated_rules_creation
+  tool: Codex
+  generated_artifacts:
+  - .opencode/rules.md
+  - docs/approvals/rules-creation-authorization.md
+  rules_sha256: b516dc1064f53ae8457887fe57f00f8a9eaa1494ea6e2710f2b709f769161b0b
+  student_independent_authorship: false
+  human_only_compliance: not_established_by_agent_creation
+  application_source_modified: false
+  test_source_modified: false
+  paid_model_api_calls: 0
+  approvals: []
+- id: AI-IMPL-20261119-005
+  date: '2026-11-19'
+  activity: quality_batch_governance_and_delivery_preparation
+  tool: local OpenCode
+  model_id: CS5351/DeepSeek-V4-Flash
+  orchestrator: Codex
+  human_implementation_review: pending_current_manifest
+  approvals: []
+  source_method: Verbatim complete generated artifacts and reviewed generated patches; source was not manually
+    repaired by Codex. Rejected candidate tests and failures retained privately. OpenCode-directed Ruff formatting.
+  development_stopped: false
+  account_balance_queried: false
+  raw_preservation: Earlier transient raw directories were lost on restart; six authentic sanitized native
+    exports survived. Subsequent completed sessions are persistently archived privately. Missing originals
+    are not reconstructed transcripts.
+  validation:
+    full_offline: 1669 passed; 100 subtests passed; 1 optional AWS skip; 1 online integration deselected;
+      11.19s
+    static: Ruff full repository passed; git diff --check passed
+    semantic_bindings: 11 synthetic fixture cases passed; no real formal evaluation
+    benchmark: 100 facts/25 evidence, 5 warmups +100 samples; p95 1.068981ms; preparatory synthetic measurement
+  credential_value_logged: false
+- id: AI-DOC-20261119-COMPARATIVE-PLAN-001
+  date: '2026-11-19'
+  activity: fincept_fingpt_daily_stock_comparative_improvement_plan
+  tool: Codex
+  generated_artifacts:
+  - docs/architecture/fincept-fingpt-daily-stock-improvement-plan.md
+  reference_repositories:
+  - repository: https://github.com/Fincept-Corporation/FinceptTerminal
+    commit_sha: 914134de5fd227fe66969c4591ac9ca7e461cdf4
+    license: AGPL-3.0
+    application_executed: false
+  - repository: https://github.com/AI4Finance-Foundation/FinGPT
+    commit_sha: 464916bdf91afaaecb5a504aee1b2a66bc444653
+    license: MIT
+    application_executed: false
+  - repository: https://github.com/ZhuLinsen/daily_stock_analysis
+    commit_sha: e55d8ff15f3dafd3aef8007645dcce353147b064
+    license: MIT
+    application_executed: false
+  research_method: Read-only public GitHub metadata, README, selected source and documentation; official Fincept
+    and FinGPT screenshots inspected. No downloaded source executed.
+  plan_status: proposed_not_implemented_or_approved
+  application_source_modified: false
+  test_source_modified: false
+  application_prompts_modified: false
+  local_opencode_invoked_for_this_planning_activity: false
+  paid_course_model_api_calls_for_this_planning_activity: 0
+  project_budget_ceiling_usd: 95
+  token_usage: null
+  token_usage_status: Codex planning usage not recorded as course API usage
+  approvals: []
+  credential_value_logged: false
+  validation:
+    ai_use_log: YAML parsed with duplicate-key and duplicate-entry rejection
+    local_document_links: all 6 resolve
+    whitespace: no trailing whitespace; git diff --check passed
+    application_tests: not_run_documentation_only
+- id: AI-UI-20261119-DARK
+  date: '2026-11-19'
+  activity: local_dark_market_and_forecast_frontend
+  coding_tool: Local OpenCode
+  coding_model: CS5351/DeepSeek-V4-Flash
+  codex_role:
+  - design and task allowlists
+  - verbatim capture/review
+  - local execution/browser QA/screenshots
+  - documentation
+  application_source_authored_directly_by_codex: false
+  references: docs/design/frontend-references.md
+  verification: docs/verification/frontend-review.md
+  shared_development_ledger_checkpoint:
+    request_count: 165
+    stopped: false
+    scope: Shared generation ledger, not frontend-only or account balance
+  runtime_frontend_model_calls: 0
+  forecast_data: Explicitly synthetic UI fixture; backend model-series exporter unimplemented
+  human_approvals: []
+  validation:
+    offline: 1669 passed, 1 skipped, 1 deselected, 24 warnings, 10.53s
+    syntax: 4 JS files passed
+    static: Ruff and diff checks passed
+    browser: Market/hover/playback/ranges/import rejection/download equality/v2 auto-refresh verified; phone
+      dimensions not applied
+- id: AI-PROMPT-20261119-API
+  date: '2026-11-19'
+  activity: generate_current_project_http_api_development_prompt
+  interpretation: '接口: HTTP backend adapter and existing frontend integration, replacing prior visual-redesign
+    prompt intent'
+  generation_tool: Local OpenCode
+  model: CS5351/DeepSeek-V4-Flash
+  artifacts:
+  - docs/design/project-api-generation-prompt.md
+  - docs/design/project-api-prompt-provenance.json
+  application_implemented: false
+  paid_business_model_calls: 0
+  human_approvals: []
+  validation: Reviewed actual CLI/contracts and final prompt; no application/test changes, no new runtime/regression
+    pass claimed
+  superseded_draft: Earlier visual prompt preserved privately after user correction; its pending wording repair
+    was archived but not applied.
+- id: AI-V03-20261120-HANDOFF
+  date: '2026-11-20'
+  activity: v03_research_context_brief_workbench_candidate_and_incomplete_handoff
+  tool: local OpenCode
+  model_id: CS5351/DeepSeek-V4-Flash
+  codex_role:
+  - scoping and explicit allowlists
+  - verbatim source capture and reviewed generated patch execution
+  - engineering review, full offline checks and real browser QA
+  - documentation, manifests and unaccepted local review package
+  application_source_authored_directly_by_codex: false
+  test_source_authored_directly_by_codex: false
+  application_prompts_authored_directly_by_codex: false
+  synthetic_ui_qa_data_authored_by: Codex orchestration; not application/test source, business research or
+    semantic labels
+  status: incomplete_changes_required
+  verification: docs/verification/v0.3/final-review.md
+  source_test_manifest: docs/verification/v0.3/source-test-manifest.json
+  raw_archive_count: 32
+  budget_checkpoint:
+    scope: shared development ledger; cumulative, not this task exclusive or course account balance
+    request_count: 200
+    max_requests: 200
+    stopped_flag: false
+    next_generation_status: denied_429_request_count_exhausted
+    ledger_reset: false
+    limit_increased: false
+    project_ceiling_usd: 95
+    development_ceiling_usd: 55
+    application_and_reserve_usd: 40
+  token_usage: null
+  token_usage_status: not aggregated here; actual per-request usage remains in original private ledger/events,
+    no invented zero
+  accepted_last_request: complete source-status HELPER only, captured verbatim
+  rejected_last_request: brief/workbench tests with invented imports, invalid fake/assertions and truncated
+    JS; not installed
+  validation:
+    offline: 1687 passed, 1 skipped, 1 deselected, 24 warnings, 11.15s
+    static: full repository Ruff passed; seven JS syntax checks passed
+    historical_tests: 21 starting test hashes unchanged; baseline upstream test tree unchanged
+    browser: actual 1440x1000 desktop and 390x844 phone CSS viewports, multi-report operations, references,
+      exports, theme and forecast refresh failure preservation observed with synthetic fixtures
+    structured_render_probe: 'failed: section_headings_invalid; uncovered acceptance blocker BUG-V03-001'
+  runtime_frontend_model_calls: 0
+  paid_business_experiments_this_round: 0
+  human_approvals: []
+  unresolved:
+  - BUG-V03-001 upstream inline first heading conflicts with validator and frontend parser
+  - independent brief, version/call-count and workbench regression coverage missing
+  - generation request count exhausted; no hand-written repair or bypass
+  - real student exact-hash approval, formal labels and delayed recheck pending
+  http_implementation: paused; private draft not connected
+  credential_value_logged: false
+- id: AI-RESEARCH-20261120-STOCK-CARDS
+  date: '2026-11-20'
+  activity: public_source_collection_and_stock_research_cards
+  authoring_tool: Codex
+  scope: standalone research documentation; no application, test or application-prompt edits
+  tickers:
+  - AAPL
+  - MSFT
+  - NVDA
+  artifacts:
+  - docs/research/2026-11-20/README.md
+  - docs/research/2026-11-20/cards.md
+  - docs/research/2026-11-20/cards.json
+  - docs/research/2026-11-20/sources.json
+  - docs/research/2026-11-20/verification.json
+  card_count: 36
+  source_count: 34
+  selected_hn_comments: 20
+  retained_public_http_attempts: 80
+  retained_public_http_failures: 4
+  initial_unsaved_connectivity_probes: 4
+  course_model_requests: 0
+  other_provider_generation_requests: 0
+  application_or_formal_evaluation_run: false
+  application_imported: false
+  human_approvals: []
+  source_archive: local private public-research-2026-11-20 only; not uploaded
+  limitations:
+  - purposive collection and convenience comments, not representative sentiment or satisfaction
+  - two iFixit publication metadata conflicts retained; no inferred publication timestamp
+  - manufacturer benchmarks and satisfaction claims not independently reproduced
+  - no population defect, return, churn or warranty rates
+  - no application gate or runtime regression pass claimed for documentation-only work
+  validation: source hashes, excerpts, comment times, references, graph, file links and final document hashes
+    checked
+- id: AI-DEFENSE-20261120-CITYUBEAMER
+  date: '2026-11-20'
+  activity: current_evidence_defense_preparation_in_latex_cityubeamer
+  authoring_tool: Codex
+  scope: documentation, LaTeX slides, rehearsal notes, Q&A, demo checklist and packaging only
+  task_contract: docs/delivery/defense-2026-11-20/task-contract.md
+  artifacts:
+  - docs/delivery/defense-2026-11-20/output/EvidenceGuard-Group42-defense.pdf
+  - docs/delivery/defense-2026-11-20/output/EvidenceGuard-Group42-cityubeamer-source.zip
+  - docs/delivery/defense-2026-11-20/cityubeamer/main.tex
+  - docs/delivery/defense-2026-11-20/speaker-notes.zh.md
+  - docs/delivery/defense-2026-11-20/questions-and-answers.md
+  - docs/delivery/defense-2026-11-20/demo-runbook.md
+  - docs/delivery/defense-2026-11-20/sources.json
+  - docs/delivery/defense-2026-11-20/verification.json
+  presentation:
+    language: English slides with Chinese rehearsal notes
+    pdf_pages: 20
+    main_body_pages: 15
+    backup_pages: 3
+    cover_and_closing_pages: 2
+    planned_talk_seconds: 1070
+    question_answer_count: 18
+    status: current-evidence preparation draft; not accepted application or final course submission
+  template:
+    repository: https://github.com/inscripoem/cityu-beamer
+    commit: 13e6b1d2f56e9480563d91e75df5b3215f235470
+    provenance: docs/delivery/defense-2026-11-20/cityubeamer/template-provenance.json
+    original_theme_and_backgrounds_modified: false
+    licenses_and_artwork_notice_preserved: true
+  fonts:
+    source: official CTAN tex-gyre.zip
+    bundled_otf_files: 12
+    provenance: docs/delivery/defense-2026-11-20/cityubeamer/fonts/provenance.json
+    gust_license_preserved: true
+  validation:
+    offline: 1687 passed, 1 skipped, 1 deselected, 24 warnings, 10.98s
+    compiler: local XeLaTeX and desktop LaTeX compiler reported success
+    layout: all 20 rendered pages inspected; modified pages re-rendered and inspected; no overflow warnings
+    demo: existing synthetic fixture replay, inspect and review show exited 0; publication without current-hash
+      approval exited 2
+    demo_publication_file_exists: false
+    demo_states: completed / passed / pending / draft
+    package: 36 ZIP members; CRC and packaged file bytes verified; final artifact SHA256 recorded
+    overleaf_cloud_compile: not tested
+  course_model_requests: 0
+  external_generation_api_requests: 0
+  application_source_edited: false
+  test_source_edited: false
+  application_prompts_edited: false
+  human_approvals: []
+  formal_business_experiments_run: false
+  student_reflection_or_contribution_evidence_fabricated: false
+  video_recorded: false
+  email_sent: false
+  course_materials_submitted: false
+  public_upload_performed: false
+  unresolved:
+  - v0.3 rendering defect and independent regression gaps remain disclosed; no application repair attempted
+  - formal evaluation, genuine student labels and delayed recheck, current-hash review and online gate evidence
+    remain pending
+- id: AI-DOC-20261123-PRESENTATION
+  date: '2026-11-23'
+  activity: bilingual_beamer_presentation_and_public_candidate_snapshot
+  tool: Codex
+  course_model_api_calls: 0
+  application_source_modified: false
+  test_source_modified: false
+  application_prompts_modified: false
+  human_only_file_modified: false
+  validation:
+    regression: 1687 passed, 1 skipped, 1 deselected, 24 warnings
+    demo: synthetic draft retained; publication without review rejected
+  approvals: []
+publication_scope: Public documentation copy. Request ledgers, private session references and private instructions
+  are retained locally. Selected sanitized OpenCode exports are in docs/ai-sessions.

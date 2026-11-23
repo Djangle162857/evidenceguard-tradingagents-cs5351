@@ -1,0 +1,16 @@
+{
+  "phone": {
+    "height": 844,
+    "scrollTop": 135.3333282470703,
+    "scrollWidth": 375,
+    "theme": "dark",
+    "width": 390
+  },
+  "desktop": {
+    "height": 1000,
+    "scrollTop": 0,
+    "scrollWidth": 1425,
+    "theme": "dark",
+    "width": 1440
+  }
+}

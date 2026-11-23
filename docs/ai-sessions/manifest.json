@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "sessions": [
+    {
+      "name": "01-contracts",
+      "session_id": "ses_e0c7a18caffe0lmlXNwSHmzd0Y",
+      "model_id": "CS5351/DeepSeek-V4-Flash",
+      "export": "docs/ai-sessions/01-contracts.export.json",
+      "transcript": "docs/ai-sessions/01-contracts.md",
+      "export_sha256": "4f94111a762a04468a86602a97ed2cfaf02bd42b43d34547b2701a55101a0986",
+      "transcript_sha256": "b434c0ded6cb93ffb970352658aa3e9a90c500a67fe84d9568251c4dcb6d86c8",
+      "original_export_sha256": "4f94111a762a04468a86602a97ed2cfaf02bd42b43d34547b2701a55101a0986",
+      "original_events_sha256": "9802bba7ed3cd23d1c17a15408a7b553b2a49f3afe5492694a0f4050597e82e9"
+    },
+    {
+      "name": "02-budget",
+      "session_id": "ses_e0c5615aaffe7zNIpWIWaGEyVz",
+      "model_id": "CS5351/DeepSeek-V4-Flash",
+      "export": "docs/ai-sessions/02-budget.export.json",
+      "transcript": "docs/ai-sessions/02-budget.md",
+      "export_sha256": "5fa511e8750f4a8f10769cdf740c38451d31ee1380079da11eb34e9d17642e94",
+      "transcript_sha256": "7b6461994648e7ed51be15d7ad5fce6800ec7fa0742b6f5662d2d69f04e86ff2",
+      "original_export_sha256": "5fa511e8750f4a8f10769cdf740c38451d31ee1380079da11eb34e9d17642e94",
+      "original_events_sha256": "1af34df764607cd9366affcc564695032a0eea8dec99e206742da16429ff2430"
+    },
+    {
+      "name": "03-sdk-graph",
+      "session_id": "ses_e0c2b51e6ffexpEuhCYpTVboZQ",
+      "model_id": "CS5351/DeepSeek-V4-Flash",
+      "export": "docs/ai-sessions/03-sdk-graph.export.json",
+      "transcript": "docs/ai-sessions/03-sdk-graph.md",
+      "export_sha256": "444906c3f35f395943e54ac2244d50f1e449f4413bf4bb5acd3784777eebeabd",
+      "transcript_sha256": "e658d7f8189a21c424015b596d58904756dbcc5b80f9b901ab0f6ce4844cda47",
+      "original_export_sha256": "444906c3f35f395943e54ac2244d50f1e449f4413bf4bb5acd3784777eebeabd",
+      "original_events_sha256": "1acb863be0991cadf28d283a64a7d15ad76f4be1a9f868e25372080ce46bab76"
+    },
+    {
+      "name": "04-upstream-runner",
+      "session_id": "ses_e0c286f12ffeQkjxLkrs1ZD0cH",
+      "model_id": "CS5351/DeepSeek-V4-Flash",
+      "export": "docs/ai-sessions/04-upstream-runner.export.json",
+      "transcript": "docs/ai-sessions/04-upstream-runner.md",
+      "export_sha256": "800c2d10e11b6b91346be9c2b4f1c663b0a33644e3e5b67e974a7ae03e9b61f9",
+      "transcript_sha256": "ea8d49002c8b371ba2223e17d51d6e092486d26c497b14f46e28c5a6160016f6",
+      "original_export_sha256": "800c2d10e11b6b91346be9c2b4f1c663b0a33644e3e5b67e974a7ae03e9b61f9",
+      "original_events_sha256": "8d9540f40ddcb197f02f1b145c724833a5554fbfe6e0bb3becb9e45c299ecf25"
+    },
+    {
+      "name": "05-evaluation-tests",
+      "session_id": "ses_e0bee6856ffet99U7x8YP7Jqez",
+      "model_id": "CS5351/DeepSeek-V4-Flash",
+      "export": "docs/ai-sessions/05-evaluation-tests.export.json",
+      "transcript": "docs/ai-sessions/05-evaluation-tests.md",
+      "export_sha256": "f31a0da63749111104213b4b7ebc965611cdee445ab3bd4f06cb41ffbfff1121",
+      "transcript_sha256": "df910a00cb543a5816d9bd5e0fe942ba42f3a353dde9d7c5add6dff3b619c5ab",
+      "original_export_sha256": "f31a0da63749111104213b4b7ebc965611cdee445ab3bd4f06cb41ffbfff1121",
+      "original_events_sha256": "f9c5d028806c338d29f54142d17dc00d18be0533e28c2fc6e4ec5dda838cb32d"
+    },
+    {
+      "name": "06-cli-repair",
+      "session_id": "ses_e0be7af2effeI5iGI7COCp9pYU",
+      "model_id": "CS5351/DeepSeek-V4-Flash",
+      "export": "docs/ai-sessions/06-cli-repair.export.json",
+      "transcript": "docs/ai-sessions/06-cli-repair.md",
+      "export_sha256": "06c3b66e5e95788687dff33986178f05f1c2be824acd4155e57722a6da68813d",
+      "transcript_sha256": "ec5a074a93e39dd488fa5c7ae7437c8e50568e9273847d335aacb5fd48dfb2fd",
+      "original_export_sha256": "06c3b66e5e95788687dff33986178f05f1c2be824acd4155e57722a6da68813d",
+      "original_events_sha256": "c2929da3a283a8e0672afcd9cdc098b33109f6f63e1a107e1f9d61db024d076d"
+    }
+  ],
+  "human_approvals_recorded": false,
+  "temporary_original_status": "lost on system restart; public copies and recorded hashes preserved; new sessions archived persistently"
+}
