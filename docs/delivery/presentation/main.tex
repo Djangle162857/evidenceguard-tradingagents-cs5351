@@ -1,311 +1,184 @@
-% Codex-assisted presentation document, not application/test source.
-% XeLaTeX. Theme provenance and rights: template-provenance.json and NOTICE.md.
+% Compile with XeLaTeX.
 \documentclass[aspectratio=169,11pt,t]{beamer}
-\PassOptionsToPackage{no-math}{fontspec}
-\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage[no-math]{fontspec}
 \defaultfontfeatures{Path=fonts/}
 \usetheme[sectionpages=false]{CityU}
 \defaultfontfeatures{}
-\usepackage{booktabs,tabularx,amsmath}
+\usepackage{booktabs,tabularx}
 \usetikzlibrary{arrows.meta,positioning}
-\setbeameroption{hide notes}
-% Match the physical PDF pages used in the bilingual notes index.
+
+% Use PDF page numbers so each slide matches the speaker notes.
 \addtobeamertemplate{footline}{%
   \begingroup
   \def\insertframenumber{\thepage}%
   \def\inserttotalframenumber{\insertdocumentendpage}%
 }{\endgroup}
-\setlength{\tabcolsep}{5pt}
+\setlength{\tabcolsep}{6pt}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcommand{\source}[1]{\par\vfill{\fontsize{6.6}{8}\selectfont\color{CityUMuted}Source: #1\par}}
-\newcommand{\takeaway}[1]{\par\medskip{\color{CityUTeal}\bfseries #1\par}}
 \newcommand{\code}[1]{{\ttfamily\small #1}}
+
 \title[EvidenceGuard]{EvidenceGuard\\TradingAgents}
-\subtitle{Deterministic evidence and release checks}
-\author{Group 42}
+\subtitle{Evidence traceability for stock research}
 \institute{CS5351 Software Engineering, City University of Hong Kong}
-\date{Evidence snapshot: 20 November 2026}
-\cityufooter{EvidenceGuard \quad CS5351 \quad Group 42 \quad Status: 20 Nov 2026}
+\date{}
+\cityufooter{EvidenceGuard \quad CS5351}
 \begin{document}
 \cityutitlepage
 
-\begin{frame}{Research problem and scope}
- A persuasive stock report can still contain references that are difficult to audit.
+\begin{frame}{Stock research and evidence}
+ EvidenceGuard gives reviewers a way to trace the claims in a stock research report.
  \medskip
- \begin{itemize}\setlength\itemsep{6pt}
-  \item Was the source available at the analysis cutoff?
-  \item Does each factual claim identify eligible evidence?
-  \item Do retries stay within the run and project budgets?
-  \item Has a person approved this exact report revision?
+ \begin{itemize}\setlength\itemsep{8pt}
+  \item Each run records the ticker, cutoff time and configuration.
+  \item Each evidence record carries a source, timestamp and content hash.
+  \item Claim references connect the report to its supporting records.
  \end{itemize}
- \takeaway{Initial scope: AAPL, MSFT and NVDA, with market and news analysts}
- \small One investment debate round and one risk debate round. Local research only.
- \source{Report.md, sections 1 and 3; Blueprint.md}
+ \medskip\textbf{Research scope}\quad AAPL, MSFT and NVDA, with market and news analysts.
+ \source{Blueprint.md and docs/architecture/interface-contracts.md}
 \end{frame}
 
-\begin{frame}{Upstream reuse and extension}
+\begin{frame}{TradingAgents integration}
  \small
- \begin{tabularx}{\textwidth}{@{}L{.43\textwidth}Y@{}}
- \toprule\textbf{TradingAgents already provides}&\textbf{EvidenceGuard adds}\\\midrule
- Analysts, investment debate and risk debate & Evidence IDs, source times and content hashes\\[5pt]
- Structured decisions and plain-text fallback & Claim references and an independent final gate\\[5pt]
- Model settings and token statistics & Request reservation, settlement and stopping\\[5pt]
- CLI and report generation & Replay, paired evaluation and hash-bound review\\\bottomrule
+ \begin{tabularx}{\textwidth}{@{}L{.42\textwidth}Y@{}}
+ \toprule TradingAgents & EvidenceGuard extension\\\midrule
+ Analyst and debate graph & Evidence ledger and structured claim references\\[6pt]
+ Structured investment decision & Independent artifact validation\\[6pt]
+ Model client & Request reservations and usage settlement\\[6pt]
+ Report generation & Offline replay and hash-bound review\\\bottomrule
  \end{tabularx}
- \medskip\normalsize Upstream license, layout and historical tests remain in place.
- \par\small Extension: \code{src/evidenceguard/}; optional upstream graph boundary.
- \source{docs/req/baseline-review.md; Report.md, section 2. Upstream SHA: 9fa1196fffbcfd9de5146d2dd2869df84ab99838}
+ \par\medskip\normalsize
+ EvidenceGuard integrates through an optional boundary in \code{GraphSetup}.
+ \source{tradingagents/graph/setup.py and docs/req/baseline-review.md}
 \end{frame}
 
-\begin{frame}{Seven functional requirements}
- \small
- \begin{tabularx}{\textwidth}{@{}L{1.5cm}L{3.7cm}Y@{}}
- \toprule ID&Capability&Observable result\\\midrule
- FR-001&Frozen run contract&Versioned inputs and analysis cutoff\\
- FR-002&Evidence qualification&Eligible and excluded evidence retained\\
- FR-003&Claim and conflict cards&References within the same run\\
- FR-004&Independent validation&Violations block progression\\
- FR-005&Request budgets&Reserved, settled, unknown or stopped\\
- FR-006&Replay and evaluation&Frozen plan, failures and usage retained\\
- FR-007&Human review&Approval bound to the current hash\\\bottomrule
- \end{tabularx}
- \takeaway{Component implementation exists. Full protocol acceptance remains incomplete.}
- \source{docs/req/requirements.yaml; docs/architecture/trace-matrix.md; v0.3/final-review.md}
-\end{frame}
-
-\begin{frame}{Architecture and decision authority}
+\begin{frame}{Report architecture}
  \centering
- \begin{tikzpicture}[node distance=5mm and 5mm,box/.style={draw=CityUTeal,rounded corners=1mm,align=center,font=\small,minimum height=10mm,text width=25mm,inner sep=3pt},arr/.style={-{Latex[length=2mm]},thick,draw=CityUMuted}]
- \node[box] (contract) {Frozen\\contract};
+ \begin{tikzpicture}[node distance=6mm, box/.style={draw=CityUTeal,rounded corners=1mm,align=center,font=\small,minimum height=12mm,text width=25mm,inner sep=3pt},arr/.style={-{Latex[length=2mm]},thick,draw=CityUMuted}]
+ \node[box] (contract) {Run\\manifest};
  \node[box,right=of contract] (ledger) {Evidence\\ledger};
- \node[box,right=of ledger] (graph) {Upstream graph\\and claim turns};
- \node[box,right=of graph] (gate) {Independent\\final gate};
- \node[box,below=12mm of gate] (draft) {Draft artifact};
- \node[box,left=of draft] (human) {Human review\\of current hash};
- \node[box,left=of human] (release) {Publication\\recheck};
- \node[box,left=of release] (budget) {Request budget\\ledger};
- \draw[arr] (contract)--(ledger);\draw[arr] (ledger)--(graph);\draw[arr] (graph)--(gate);
- \draw[arr] (gate)--(draft);\draw[arr] (draft)--(human);\draw[arr] (human)--(release);
- \draw[arr,dashed] (budget.north east)--(graph.south);
+ \node[box,right=of ledger] (graph) {TradingAgents\\graph};
+ \node[box,right=of graph] (gate) {Artifact\\validation};
+ \node[box,below=of graph] (budget) {Request\\budget};
+ \draw[arr] (contract)--(ledger);
+ \draw[arr] (ledger)--(graph);
+ \draw[arr] (graph)--(gate);
+ \draw[arr,dashed] (budget)--(graph);
  \end{tikzpicture}
  \par\medskip\raggedright
- \textbf{LLM:} proposes claims, inferences and conflicts.\par
- \textbf{Code:} validates eligibility, references, budgets and release conditions.\par
- \textbf{Student:} reviews semantic support and makes genuine approval decisions.
- \source{Blueprint.md; docs/architecture/interface-contracts.md; Report.md, section 3}
+ The manifest fixes the run inputs. The graph produces structured claims. The validation gate checks source eligibility and report references.
+ \source{Blueprint.md and docs/architecture/interface-contracts.md}
 \end{frame}
 
 \begin{frame}{Evidence time and context}
  \begin{columns}[T,onlytextwidth]
- \begin{column}{.49\textwidth}
- \textbf{Qualification rule}\medskip
- \begin{itemize}\setlength\itemsep{5pt}
- \item Market: \code{available\_at}
- \item News: \code{published\_at}
- \item Compare source time with cutoff
- \item Keep unknown or future sources as excluded
+ \begin{column}{.48\textwidth}
+ \textbf{Qualification timestamps}\medskip
+ \begin{itemize}\setlength\itemsep{7pt}
+ \item Market data uses \code{available\_at}.
+ \item News uses \code{published\_at}.
+ \item Eligibility is evaluated at the run cutoff.
  \end{itemize}
  \end{column}
- \begin{column}{.47\textwidth}
- \textbf{v0.3 context contract}\medskip
- \begin{itemize}\setlength\itemsep{5pt}
- \item At most one market record
- \item At most three news records
- \item Stable time and ID ordering
- \item Full ledger and missing-data notes remain
+ \begin{column}{.48\textwidth}
+ \textbf{Context selection}\medskip
+ \begin{itemize}\setlength\itemsep{7pt}
+ \item Up to one eligible market record
+ \item Up to three eligible news records
+ \item Consistent ordering by time and ID
  \end{itemize}
  \end{column}
  \end{columns}
- \takeaway{Retrieval time cannot establish when information became available.}
- \source{docs/architecture/interface-contracts.md; docs/verification/v0.3/final-review.md}
+ \medskip The evidence ledger retains the full record set.
+ \source{src/evidenceguard/evidence.py and src/evidenceguard/research\_context.py}
 \end{frame}
 
-\begin{frame}{Artifact state and human review}
+\begin{frame}{From report text to source records}
  \small
- \begin{tabularx}{\textwidth}{@{}L{2.9cm}L{3.2cm}Y@{}}
- \toprule Axis&Example values&Meaning\\\midrule
- Execution&completed / failed&Did the run finish?\\
- Validation&passed / failed&Did independent checks pass?\\
- Review&pending / approved&Did a person review this hash?\\
- Publication&draft / released&Did publication recheck succeed?\\\bottomrule
+ \begin{tabularx}{\textwidth}{@{}L{.26\textwidth}Y@{}}
+ \toprule Object & Traceable fields\\\midrule
+ Report & Text with embedded claim IDs\\[6pt]
+ Claim & Claim ID, text and evidence IDs\\[6pt]
+ Evidence & Source URI, qualification time and content hash\\\bottomrule
  \end{tabularx}
- \medskip\normalsize
- \[\text{release}\Rightarrow\text{completed}\land\text{gate passed}\land\text{approval of current hash}\]
- Business content changes produce a new hash and invalidate the old approval.
- \source{src/evidenceguard/review.py; docs/architecture/interface-contracts.md}
+ \par\medskip\normalsize
+ A reviewer can use the claim ID in the report to find the corresponding evidence record.
+ \source{src/evidenceguard/claims.py and src/evidenceguard/evidence.py}
 \end{frame}
 
-\begin{frame}{Request budgets}
- \begin{itemize}\setlength\itemsep{7pt}
- \item Reserve a conservative bound before every HTTP request.
- \item Count retries, repair and auxiliary requests.
- \item Settle known usage. Retain reservations when usage is unknown.
- \item Stop generation when a boundary rejects the request.
- \end{itemize}
- \medskip
- Project ceiling: \textbf{USD95}. Development: USD55. Application and reserve: USD40.
- \takeaway{All 200 development requests had been used at the evidence cutoff.}
- \small The request count and dollar cap are enforced separately.
- \source{v0.3/final-review.md; docs/pending-actions.md. Recorded development request count}
+\begin{frame}{Hash-bound review}
+ \begin{enumerate}\setlength\itemsep{9pt}
+ \item Compute a SHA-256 hash over the report's business content.
+ \item Store the review decision with the run, revision and hash.
+ \item Recompute the current hash and check it against the review record.
+ \end{enumerate}
+ \medskip Business content includes the configuration, evidence, claims and report text. Editing it produces a new hash.
+ \source{src/evidenceguard/review.py and test/offline/test\_gate\_review.py}
 \end{frame}
 
-\begin{frame}{FR-007 traceability}
+\begin{frame}{Request budget}
  \small
- \begin{tabularx}{\textwidth}{@{}L{2.8cm}Y@{}}
- \toprule Artifact&FR-007: current-hash approval\\\midrule
- Requirement&A changed report cannot reuse a previous approval.\\[4pt]
- Design&Canonical business projection and SHA-256 hash.\\[4pt]
- Implementation&\code{review.artifact\_hash} and publication recheck.\\[4pt]
- Negative case&Change business content after review, then attempt publication.\\[4pt]
- Expected&Hash mismatch or missing current approval rejects publication.\\[4pt]
- Evidence&\code{test\_gate\_review.py} and regression logs.\\\bottomrule
+ \begin{tabularx}{\textwidth}{@{}L{.28\textwidth}Y@{}}
+ \toprule Step & Recorded action\\\midrule
+ Reserve & Allocate an input, output and cost bound before sending a request.\\[6pt]
+ Account & Give each attempt its own reservation, including retries.\\[6pt]
+ Settle & Apply returned usage to the attempt and update the ledger.\\\bottomrule
  \end{tabularx}
- \takeaway{Expected outcomes follow the contract, independently of model output.}
- \source{docs/architecture/trace-matrix.md; interface-contracts.md; src/evidenceguard/review.py; offline tests}
+ \par\medskip\normalsize The request count and resource ceilings are checked at reservation time.
+ \source{src/evidenceguard/budget.py and src/evidenceguard/transport.py}
 \end{frame}
 
 \begin{frame}{Research workbench}
- \begin{columns}[T,onlytextwidth]
- \begin{column}{.68\textwidth}
- \includegraphics[width=\linewidth,height=4.75cm,keepaspectratio]{figures/desktop-dark-top.jpg}
- \end{column}
- \begin{column}{.29\textwidth}\small
- Manual import\par\medskip Report revisions\par\medskip Claim references\par\medskip
- Source details\par\medskip Markdown and JSON export
- \end{column}
- \end{columns}
- \medskip\small\alert{Actual browser QA with synthetic fixtures. Business quality remains unmeasured.}
- \source{docs/verification/v0.3/screenshots/desktop-dark-top.jpg; final-review.md, browser QA}
-\end{frame}
-
-\begin{frame}{Offline demonstration}
- \begin{enumerate}\setlength\itemsep{8pt}
- \item Replay the existing synthetic fixture.
- \item Inspect evidence times, claim references and the report.
- \item Show \textbf{completed / passed / pending / draft}.
- \item Attempt publication without approval and observe rejection.
+ \begin{enumerate}\setlength\itemsep{9pt}
+ \item Import a report JSON file and select a revision.
+ \item Select a claim reference to inspect the evidence details.
+ \item Export a Markdown daily report or download the source JSON.
  \end{enumerate}
- \takeaway{Deterministic replay uses zero model requests.}
- \small Fixture version identity is a placeholder. This is separate from formal evaluation.
- \source{examples/offline-replay.json; src/evidenceguard/\_\_main\_\_.py; v0.3/public-regression.txt}
+ \medskip The workbench uses the ticker, run ID, revision and artifact hash to identify reports.
+ \source{src/evidenceguard/web/app.js, report-store.js and daily.js}
 \end{frame}
 
-\begin{frame}{Verification evidence and its limits}
- \small
- \begin{tabularx}{\textwidth}{@{}L{3.0cm}L{3.1cm}Y@{}}
- \toprule Check&Recorded result&Scope\\\midrule
- Offline regression&1687 passed&Rerun on 20 Nov, 1 skip and 1 deselection\\[4pt]
- Ruff and JS syntax&Passed&Prior archived run, seven JS scripts\\[4pt]
- Browser QA&Desktop and phone&Real UI operations, synthetic fixtures\\[4pt]
- Gate benchmark&p95 1.069 ms&Synthetic 100 claims, 25 evidence records\\[4pt]
- Business evaluation&Pending&No measured quality or token-saving result\\\bottomrule
- \end{tabularx}
- \takeaway{Passing regression does not establish complete v0.3 acceptance.}
- \source{docs/verification/v0.3/final-review.md; docs/verification/gate-performance.json}
-\end{frame}
-
-\begin{frame}{Renderer compatibility defect}
- The upstream renderer puts the first heading on the same line as a label.
+\begin{frame}{Offline replay}
+ \begin{enumerate}\setlength\itemsep{8pt}
+ \item Run \code{evidenceguard replay} on the bundled example.
+ \item Match the claim's evidence reference to the ledger ID.
+ \item Inspect the cutoff, source time and validation result.
+ \end{enumerate}
  \medskip
- \begin{beamercolorbox}[sep=7pt,wd=\textwidth]{block body}
- \ttfamily\small **Investment Thesis**: \#\#\# [first heading]
- \end{beamercolorbox}
- \medskip The v0.3 parser expects the heading at the start of a line.
- \begin{itemize}\setlength\itemsep{5pt}
- \item Actual renderer probe returns \code{section\_headings\_invalid}.
- \item Browser fixtures already contain a newline and miss this path.
- \item v0.3 remains unaccepted while the failure is unresolved.
- \end{itemize}
- \takeaway{Required repair: test the actual renderer with the gate and UI parser.}
- \source{v0.3/structured-render-probe.txt; v0.3/final-review.md; BUG-V03-001}
+ \begin{tabularx}{\textwidth}{@{}YYY@{}}
+ \textbf{1 evidence record}&\textbf{1 linked claim}&\textbf{Validation passed}
+ \end{tabularx}
+ \source{examples/offline-replay.json and docs/delivery/presentation/README.md}
 \end{frame}
 
-\begin{frame}{AI supervision and course gates}
- \begin{itemize}\setlength\itemsep{6pt}
- \item Module tasks specify allowed files, interfaces and exit conditions.
- \item OpenCode with the CityU model generates code and tests.
- \item Codex reviews, runs checks and records defects and provenance.
- \item Human approvals apply to reviewed artifacts and hashes.
- \end{itemize}
- \medskip\small
- Six defined checks: test approval, static analysis, schema, semantic evaluation, regression and AI-use log.
- \takeaway{Required-check enforcement and branch protection evidence remain pending.}
- \source{AGENTS.md; docs/execution-plan.md; docs/code-governance/github-evidence.md; docs/pending-actions.md}
-\end{frame}
-
-\begin{frame}{Quality and cost evaluation}
- \[3\ \text{stocks}\times2\ \text{repeats}\times2\ \text{arms}=12\ \text{planned runs}\]
- \begin{itemize}\setlength\itemsep{5pt}
- \item Same frozen inputs and model, with registered run order.
- \item Retain failures, all attempts and unknown usage.
- \item Student labels, rubric and a recheck after at least 24 hours.
- \end{itemize}
- \medskip\small
- Targets: support $\geq0.95$, rubric $\geq4/5$, at least $5/6$ usable candidates.\par
- Candidate usable count $\geq$ baseline. Token target $\leq80\%$ of baseline.
- \takeaway{These are acceptance targets. Actual paired results remain pending.}
- \source{docs/verification/test-plan.md; Report.md, section 7; docs/pending-actions.md}
-\end{frame}
-
-\begin{frame}{Contribution and remaining work}
- \textbf{Engineering contribution}\par\smallskip
- Evidence qualification, claim traceability and controlled release within the existing graph.
- \medskip\par\textbf{Current limitations}\par\smallskip
- Renderer compatibility, new regression coverage and real quality/cost measurement.
- \medskip\par\textbf{Remaining human work}\par\smallskip
- Current artifact review, report labels, delayed recheck and personal reflection.
- \takeaway{Release acceptance remains pending.}
- \source{v0.3/final-review.md; docs/pending-actions.md; Report.md, sections 8 and 9}
+\begin{frame}{Offline verification}
+ \small
+ \begin{tabularx}{\textwidth}{@{}L{.32\textwidth}Y@{}}
+ \toprule Check & Recorded result\\\midrule
+ Repository regression & 1,687 tests passed\\[6pt]
+ Evidence qualification & Market and news timestamps used in eligibility checks\\[6pt]
+ Artifact validation & Claim references checked against evidence records\\[6pt]
+ Review identity & Content change produces a new SHA-256 hash\\\bottomrule
+ \end{tabularx}
+ \par\medskip\normalsize Regression command\quad \code{python -m pytest}
+ \source{Offline regression, 24 November 2026. See test/offline/ for component cases.}
 \end{frame}
 
 \cityuclosing[Questions and discussion]{Thank you}
+
 \appendix
-\begin{frame}{Backup: rejection cases}
+\begin{frame}{Repository references}
  \small
- \begin{tabularx}{\textwidth}{@{}L{3.4cm}Y@{}}
- \toprule Scenario&Expected deterministic response\\\midrule
- Unknown or future source time&Preserve record as excluded\\[5pt]
- Missing or cross-run reference&Reject claim or final artifact\\[5pt]
- Unknown request usage&Keep reservation and stop generation\\[5pt]
- Missing approval for current hash&Reject publication\\[5pt]
- Report changed after approval&Recompute hash and reject stale approval\\\bottomrule
+ \begin{tabularx}{\textwidth}{@{}L{.32\textwidth}Y@{}}
+ \toprule Topic & Repository path\\\midrule
+ Requirements & \code{docs/req/requirements.yaml}\\[6pt]
+ Architecture & \code{Blueprint.md}\\[6pt]
+ Interface contracts & \nolinkurl{docs/architecture/interface-contracts.md}\\[6pt]
+ Offline example & \code{examples/offline-replay.json}\\[6pt]
+ Component tests & \code{test/offline/}\\\bottomrule
  \end{tabularx}
- \medskip These are contract outcomes. Complete protocol acceptance remains pending.
- \source{docs/architecture/interface-contracts.md; docs/verification/test-plan.md}
-\end{frame}
-
-\begin{frame}{Backup: mobile inspection}
- \begin{columns}[T,onlytextwidth]
- \begin{column}{.29\textwidth}\centering
- \includegraphics[height=5.0cm]{figures/phone-light.jpg}
- \end{column}
- \begin{column}{.67\textwidth}
- Real browser QA at a 390 px CSS viewport.
- \medskip
- \begin{itemize}\setlength\itemsep{7pt}
- \item Evidence inspection and explicit artifact states
- \item No page-wide horizontal overflow observed
- \item Narrow navigation remains a usability issue
- \end{itemize}
- \medskip\small\alert{Synthetic QA content. No proof of financial accuracy.}
- \end{column}
- \end{columns}
- \source{docs/verification/v0.3/screenshots/phone-light.jpg; final-review.md}
-\end{frame}
-
-\begin{frame}{Backup: evidence index}
- \small
- \begin{tabularx}{\textwidth}{@{}L{3.1cm}Y@{}}
- \toprule Topic&Local evidence\\\midrule
- Requirements&\code{requirements.yaml}, \code{Blueprint.md}\\[5pt]
- Acceptance&\code{v0.3/final-review.md}\\[5pt]
- Regression&\code{v0.3/final-review.md}, regression section\\[5pt]
- Renderer defect&\code{v0.3/structured-render-probe.txt}\\[5pt]
- Human actions&\code{pending-actions.md}\\[5pt]
- Repository&\href{https://github.com/Djangle162857/evidenceguard-tradingagents-cs5351/tree/codex/evidenceguard-candidate}{EvidenceGuard candidate on GitHub}\\\bottomrule
- \end{tabularx}
- \medskip\small Consult GitHub Actions for candidate check results and current branch status.
- \source{docs/verification/v0.3/final-review.md and docs/code-governance/github-evidence.md}
+ \par\medskip
+ \href{https://github.com/Djangle162857/evidenceguard-tradingagents-cs5351/tree/codex/evidenceguard-candidate}{EvidenceGuard repository on GitHub}
 \end{frame}
 \end{document}

@@ -407,5 +407,23 @@ entries:
     regression: 1687 passed, 1 skipped, 1 deselected, 24 warnings
     demo: synthetic draft retained; publication without review rejected
   approvals: []
+- id: AI-DOC-20261124-PRESENTATION-REVISION
+  date: '2026-11-24'
+  activity: revise_beamer_and_bilingual_speaker_notes
+  tool: Codex
+  course_model_api_calls: 0
+  application_source_modified: false
+  test_source_modified: false
+  application_prompts_modified: false
+  human_only_file_modified: false
+  artifacts:
+  - docs/delivery/presentation/main.tex
+  - docs/delivery/presentation/speaker-notes.zh-en.md
+  - docs/delivery/presentation/speaker-notes.zh-en.pdf
+  - docs/delivery/presentation/README.md
+  validation:
+    regression: 1687 passed, 1 skipped, 1 deselected, 24 warnings
+    replay: bundled example with one claim linked to one evidence record and artifact validation passed
+  approvals: []
 publication_scope: Public documentation copy. Request ledgers, private session references and private instructions
   are retained locally. Selected sanitized OpenCode exports are in docs/ai-sessions.
